@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using CM.Web.App_Start;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace CM.Web
@@ -11,8 +9,12 @@ namespace CM.Web
     {
         protected void Application_Start()
         {
+            // Init Database
+            //System.Data.Entity.Database.SetInitializer(null);
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
