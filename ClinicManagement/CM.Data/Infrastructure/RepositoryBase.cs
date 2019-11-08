@@ -11,7 +11,7 @@ namespace CM.Data.Infrastructure
     public abstract class RepositoryBase<T> where T : class
     {
         #region Properties
-        private StoreEntities dataContext;
+        
         private readonly IDbSet<T> dbSet;
 
         protected IDbFactory DbFactory
@@ -20,16 +20,16 @@ namespace CM.Data.Infrastructure
             private set;
         }
 
-        protected StoreEntities DbContext
-        {
-            get { return dataContext ?? (dataContext = DbFactory.Init()); }
-        }
+        //protected StoreEntities DbContext
+        //{
+        //    get { return dataContext ?? (dataContext = DbFactory.Init()); }
+        //}
         #endregion
 
         protected RepositoryBase(IDbFactory dbFactory)
         {
             DbFactory = dbFactory;
-            dbSet = DbContext.Set<T>();
+            //dbSet = DbContext.Set<T>();
         }
 
         #region Implementation
@@ -41,7 +41,7 @@ namespace CM.Data.Infrastructure
         public virtual void Update(T entity)
         {
             dbSet.Attach(entity);
-            dataContext.Entry(entity).State = EntityState.Modified;
+            //dataContext.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(T entity)

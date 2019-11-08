@@ -12,9 +12,17 @@ namespace CM.Web
             // Init Database
             //System.Data.Entity.Database.SetInitializer(null);
 
+            //Remove All View Engine  
+            ViewEngines.Engines.Clear();
+            //Add Razor View Engine  
+            ViewEngines.Engines.Add(new CSharpRazorViewEngine());
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Autofac and Automapper configurations
+            Bootstrapper.Run();
         }
     }
 }
