@@ -4,6 +4,7 @@ using Autofac.Integration.Mvc;
 using CM.Data.Mappings;
 using System.Reflection;
 using CM.Data.Infrastructure;
+using System.Web.Mvc;
 
 namespace CM.Web.App_Start
 {
