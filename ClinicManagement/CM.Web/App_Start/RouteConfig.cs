@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CM.Web.Areas.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +15,12 @@ namespace CM.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                 name: "Default",
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                 namespaces: new string[] { "CM.Web.Controllers" }
+             ).DataTokens["area"] = "Admin"; /*new RouteValueDictionary(new { area = "Admin" });*/
+            // here we are making an area as default routesss
         }
     }
 }

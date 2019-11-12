@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using CM.Web.Models;
 
-namespace CM.Web
+namespace CM.Web.App_Start
 {
     public partial class Startup
     {
