@@ -21,6 +21,12 @@ namespace CM.Web
                  namespaces: new string[] { "CM.Web.Controllers" }
              ).DataTokens["area"] = "Admin"; /*new RouteValueDictionary(new { area = "Admin" });*/
             // here we are making an area as default routesss
+
+            routes.MapRoute(
+                 name: "AdminLogin",
+                 url: "{controller}/{action}/{returnUrl}",
+                 defaults: new { controller = "Account", action = "Login", returnUrl = UrlParameter.Optional });
+
         }
     }
 }
