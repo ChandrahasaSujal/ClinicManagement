@@ -17,7 +17,7 @@ namespace CM.Web
             routes.MapRoute(
                  name: "Admin",
                  url: "{controller}/{action}/{id}",
-                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
                  namespaces: new string[] { "CM.Web.Controllers" }
              );
             // here we are making an area as default routesss

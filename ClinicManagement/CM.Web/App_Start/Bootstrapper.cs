@@ -18,7 +18,7 @@ namespace CM.Web.App_Start
         {
             // Init Database
             //System.Data.Entity.Database.SetInitializer(null);
-            //AreaRegistration.RegisterAllAreas();
+            AreaRegistration.RegisterAllAreas();
             //Remove All View Engine  
             ViewEngines.Engines.Clear();
             //Add Razor View Engine  

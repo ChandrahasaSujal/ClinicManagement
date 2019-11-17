@@ -58,12 +58,13 @@ namespace CM.Web.Controllers
 
         //
         // GET: /Account/Login
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Login()
         {
             if (HttpContext.Request.IsAuthenticated && Session["SessionId"] != null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", new { Area = "Admin" });
             }
             return View();
         }
@@ -85,15 +86,7 @@ namespace CM.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    if (string.IsNullOrWhiteSpace(returnUrl))
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        return RedirectToLocal(returnUrl);
-
-                    }
+                    return RedirectToAction("Index", "Home",new { Area = "Admin"});
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
