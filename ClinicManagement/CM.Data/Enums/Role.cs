@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CM.Data.Infrastructure
+namespace CM.Data.Enums
 {
-    public interface IDbFactory : IDisposable
+    public enum Role
     {
-        void Init();
+        Admin = 1
     }
 }

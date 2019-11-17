@@ -5,6 +5,10 @@ using CM.Data.Mappings;
 using System.Reflection;
 using CM.Data.Infrastructure;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.Optimization;
+using CM.Data;
+
 
 namespace CM.Web.App_Start
 {
@@ -12,9 +16,21 @@ namespace CM.Web.App_Start
     {
         public static void Run()
         {
-            SetAutofacContainer();
+            // Init Database
+            //System.Data.Entity.Database.SetInitializer(null);
+            //AreaRegistration.RegisterAllAreas();
+            //Remove All View Engine  
+            ViewEngines.Engines.Clear();
+            //Add Razor View Engine  
+            ViewEngines.Engines.Add(new CSharpRazorViewEngine());
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Seed.Initialize(ApplicationDbContext.Create());
+            // Autofac and Automapper configurations
+            //SetAutofacContainer();
             //Configure AutoMapper
-            AutoMapperConfiguration.Configure();
+            //AutoMapperConfiguration.Configure();
         }
 
         private static void SetAutofacContainer()
@@ -22,7 +38,6 @@ namespace CM.Web.App_Start
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
             // Repositories
             //builder.RegisterAssemblyTypes(typeof(GadgetRepository).Assembly)

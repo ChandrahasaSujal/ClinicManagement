@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CM.Web.App_Start
+namespace CM.Web.Common
 {
     public class BaseController : Controller
     {

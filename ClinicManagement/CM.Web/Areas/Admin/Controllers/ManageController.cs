@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using CM.Web.Models;
+using CM.Data.ViewModels;
+using CM.Data.ViewModels.Account;
 
 namespace CM.Web.Controllers
 {

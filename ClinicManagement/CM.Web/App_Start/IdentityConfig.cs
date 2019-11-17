@@ -5,12 +5,15 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using CM.Data.Infrastructure;
+using CM.Data.ViewModels;
+using CM.Model.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using CM.Web.Models;
+
 
 namespace CM.Web
 {

@@ -13,20 +13,14 @@ namespace CM.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapMvcAttributeRoutes();
             routes.MapRoute(
-                 name: "Default",
+                 name: "Admin",
                  url: "{controller}/{action}/{id}",
                  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                 namespaces: new string[] { "CM.Web.Controllers" }
+                 namespaces: new string[] { "CM.Web.Areas.Admin.Controllers" }
              ).DataTokens["area"] = "Admin"; /*new RouteValueDictionary(new { area = "Admin" });*/
             // here we are making an area as default routesss
-
-            routes.MapRoute(
-                 name: "AdminLogin",
-                 url: "{controller}/{action}/{returnUrl}",
-                 defaults: new { controller = "Account", action = "Login", returnUrl = UrlParameter.Optional });
-
         }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using System;
+using CM.Data.Infrastructure;
+using CM.Data.ViewModels;
+using CM.Model.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using CM.Web.Models;
+
 
 namespace CM.Web.App_Start
 {
