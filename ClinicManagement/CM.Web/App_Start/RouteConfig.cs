@@ -18,8 +18,8 @@ namespace CM.Web
                  name: "Admin",
                  url: "{controller}/{action}/{id}",
                  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                 namespaces: new string[] { "CM.Web.Areas.Admin.Controllers" }
-             ).DataTokens["area"] = "Admin"; /*new RouteValueDictionary(new { area = "Admin" });*/
+                 namespaces: new string[] { "CM.Web.Controllers" }
+             );
             // here we are making an area as default routesss
         }
     }
