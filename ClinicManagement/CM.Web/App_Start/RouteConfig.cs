@@ -15,12 +15,11 @@ namespace CM.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
             routes.MapRoute(
-                 name: "Admin",
+                 name: "Default",
                  url: "{controller}/{action}/{id}",
                  defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
                  namespaces: new string[] { "CM.Web.Controllers" }
-             );
-            // here we are making an area as default routesss
+             ).DataTokens["Area"] = "Admin";
         }
     }
 }
