@@ -1,10 +1,8 @@
-﻿using CM.Model.Models.Account;
+﻿using CM.Data.Migrations;
+using CM.Model.Models;
+using CM.Model.Models.Account;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace CM.Data.Infrastructure
 {
@@ -13,11 +11,15 @@ namespace CM.Data.Infrastructure
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer<ApplicationDbContext>(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Patient> Patients { get; set; }
     }
 }
