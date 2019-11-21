@@ -21,5 +21,9 @@ namespace CM.Data.Infrastructure
         }
 
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Specialization> Specializations { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Medicine>  Medicines { get; set; }
     }
 }

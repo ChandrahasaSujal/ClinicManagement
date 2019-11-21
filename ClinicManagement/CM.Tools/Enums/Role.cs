@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CM.Data.Enums
+namespace CM.Tools.Enums
 {
     public enum Role
     {

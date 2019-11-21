@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CM.Tools;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -36,8 +37,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
-
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -91,7 +91,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
             return predicate;
         }
@@ -114,7 +114,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
                 return 0;
             }
         }
@@ -131,7 +131,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
                 return 0;
             }
         }
@@ -151,6 +151,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -167,6 +168,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -183,7 +185,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -199,7 +201,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -217,7 +219,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -233,7 +235,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -254,7 +256,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -273,7 +275,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -311,7 +313,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -334,7 +336,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -360,6 +362,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -378,6 +381,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -404,6 +408,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -421,6 +426,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -438,6 +444,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -456,6 +463,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return null;
             }
         }
@@ -473,6 +481,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
             }
             return false;
         }
@@ -491,6 +500,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
             }
             return false;
         }
@@ -508,6 +518,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
                 return false;
             }
         }
@@ -524,6 +535,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -545,7 +557,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -604,7 +616,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 
@@ -619,7 +631,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);
             }
         }
 

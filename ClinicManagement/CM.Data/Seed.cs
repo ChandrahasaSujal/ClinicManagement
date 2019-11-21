@@ -1,9 +1,9 @@
-﻿using CM.Data.Enums;
-using CM.Data.Infrastructure;
+﻿using CM.Data.Infrastructure;
 using CM.Data.ViewModels;
 using CM.Model.Models;
 using CM.Model.Models.Account;
 using CM.Tools;
+using CM.Tools.Enums;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -62,7 +62,7 @@ namespace CM.Data
             }
             catch (Exception ex)
             {
-
+                GlobalUtil.LogException(ex);
             }
 
         }

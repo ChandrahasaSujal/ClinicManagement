@@ -19,6 +19,32 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Reminders</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-medical-bag menu-icon"></i>
+            </a>
+            <div class="collapse" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Reception", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("View", "ReceptionView", "Reception", new { Area = "Admin" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Billing</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-medical-bag menu-icon"></i>
+            </a>
+            <div class="collapse" id="general-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Reception", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("View", "ReceptionView", "Reception", new { Area = "Admin" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </li>
 
     </ul>
 </nav>

@@ -22,5 +22,10 @@ namespace CM.Tools
                 throw new Exception("Error in base64Encode" + ex.Message);
             }
         }
+
+        public static void LogException(Exception exception)
+        {
+
+        }
     }
 }

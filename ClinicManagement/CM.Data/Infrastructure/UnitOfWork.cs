@@ -1,4 +1,5 @@
 ﻿using CM.Model.Models.Account;
+using CM.Tools;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -59,7 +60,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                
+                GlobalUtil.LogException(ex);   
             }
         }
 
