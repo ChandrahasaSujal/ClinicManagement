@@ -8,7 +8,7 @@ namespace CM.Model.Models
 {
     public class Medicine : BaseEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Drug { get; set; }
         public string Purpose { get; set; }
         public int OrderLevel { get; set; }
