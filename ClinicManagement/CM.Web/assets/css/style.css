@@ -5081,7 +5081,7 @@ input[type="button"].btn-block {
       transition: none; } }
 
 .nav {
-  display: -webkit-box;
+  display: -webkit-box;        
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -13114,15 +13114,12 @@ dl {
         .sidebar .nav .nav-item .nav-link .badge {
           margin-right: auto;
           margin-left: 1rem; }
-        .sidebar .nav .nav-item .nav-link[aria-expanded="true"] .menu-arrow:before {
-          content: "\f140"; }
-      .sidebar .nav .nav-item.active {
-        background: #ffffff; }
-        .sidebar .nav .nav-item.active > .nav-link .menu-title {
-          color: #b66dff;
-          font-family: "ubuntu-medium", sans-serif; }
-        .sidebar .nav .nav-item.active > .nav-link i {
-          color: #b66dff; }
+.sidebar .nav .nav-item .nav-link[aria-expanded="true"] .menu-arrow:before {
+    content: "\f140";
+}
+.sidebar .nav .nav-item.active > .nav-link i {
+    color: #b66dff;
+}
       .sidebar .nav .nav-item:hover {
         background: #fcfcfc; }
       .sidebar .nav .nav-item.nav-profile .nav-link {
@@ -13188,9 +13185,6 @@ dl {
             .rtl .sidebar .nav.sub-menu .nav-item .nav-link:before {
               left: auto;
               right: 0; }
-          .sidebar .nav.sub-menu .nav-item .nav-link.active {
-            color: #b66dff;
-            background: transparent; }
           .sidebar .nav.sub-menu .nav-item .nav-link:hover {
             color: #555555; }
         .sidebar .nav.sub-menu .nav-item:hover {
@@ -13245,10 +13239,6 @@ dl {
             margin-left: 0; }
           .sidebar-icon-only .sidebar .nav .nav-item .nav-link i.menu-arrow {
             display: none; }
-          .sidebar-icon-only .sidebar .nav .nav-item .nav-link[aria-expanded] .menu-title {
-            border-radius: 0 5px 0 0px; }
-            .rtl.sidebar-icon-only .sidebar .nav .nav-item .nav-link[aria-expanded] .menu-title {
-              border-radius: 5px 0 0 0; }
         .sidebar-icon-only .sidebar .nav .nav-item.nav-profile {
           display: none; }
         .sidebar-icon-only .sidebar .nav .nav-item.nav-category {
