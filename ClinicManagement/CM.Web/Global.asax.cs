@@ -1,4 +1,5 @@
 ﻿using CM.Data;
+using CM.Data.Infrastructure;
 using CM.Data.ViewModels;
 using CM.Web.App_Start;
 using System;
@@ -15,7 +16,17 @@ namespace CM.Web
     {
         protected void Application_Start()
         {
-            Bootstrapper.Run();
+            // Init Database
+            //System.Data.Entity.Database.SetInitializer(null);
+            AreaRegistration.RegisterAllAreas();
+            //Remove All View Engine  
+            ViewEngines.Engines.Clear();
+            //Add Razor View Engine  
+            ViewEngines.Engines.Add(new CSharpRazorViewEngine());
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Seed.Initialize(ApplicationDbContext.Create());
         }
     }
 }

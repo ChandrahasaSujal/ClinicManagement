@@ -8,5 +8,6 @@ namespace CM.Service.ServiceInterfaces
 {
     public interface IReceptionService
     {
+        int Get();
     }
 }
