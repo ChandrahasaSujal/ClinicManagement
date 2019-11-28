@@ -18,5 +18,10 @@ namespace CM.Web.Controllers
         {
             return View();
         }
+
+        public ViewResult ServerError()
+        {
+            return View();
+        }
     }
 }
