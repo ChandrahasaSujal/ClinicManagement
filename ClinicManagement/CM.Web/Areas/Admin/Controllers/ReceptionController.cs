@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace CM.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ReceptionController : Controller
     {
         IReceptionService _receptionService;
@@ -14,13 +15,13 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             _receptionService = receptionService;
         }
-        public ActionResult Appointment()
+        public ActionResult AddAppointment()
         {
             var getting = _receptionService.Get();
             return View();
         }
 
-        public ActionResult ReceptionView()
+        public ActionResult ViewAppointments()
         {
             return View();
         }
