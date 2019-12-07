@@ -1,9 +1,46 @@
-﻿
+﻿@model CM.Data.ViewModels.Appointment.AppointmentViewModel
 @{
     ViewBag.Title = "Appointment";
 }
-<a class="btn btn-gradient-primary btn-fw" href="@Url.Action("AddAppointment","Appointment",new { Area="Admin"})">Add Appointment</a>
+<button class="btn btn-gradient-primary btn-fw" data-target="#addAppointment" data-toggle="modal">ADD APPOINTMENT</button>
 <hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="modal" data-keyboard="false" data-backdrop="static" id="addAppointment" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="card-title">Appointment Details</h4>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm("AddAppointment", "Appointment", new { Area = "Admin" }, FormMethod.Post))
+                            {
+                                @Html.HiddenFor(model => model.Id)
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.LabelFor(model => model.DOA, new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.DOA, new { htmlAttributes = new { @class = "form-control", id = "dateOfAppointment" } })
+                                </div>
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Add</button>
+                            <button type="reset" class="btn btn-gradient-light btn-rounded btn-fw">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-12 stretch-card">
@@ -28,7 +65,13 @@
 @section scripts{
     <script>
         $(function () {
+            $("#dateOfAppointment").datepicker();
+        });
+
+        $(function () {
             $('#appointmentsTable').DataTable();
         });
+
+        
     </script>
 }

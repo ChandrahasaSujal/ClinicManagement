@@ -32,6 +32,9 @@ namespace CM.Web
             bundles.Add(new ScriptBundle("~/assets/jqueryJs").Include(
                 "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/assets/bootstrapJs").Include(
+                "~/Scripts/bootstrap.min.js"));
+
             bundles.Add(new ScriptBundle("~/assets/jqueryUIJs").Include(
                "~/assets/js/jquery-ui.min.js"));
 

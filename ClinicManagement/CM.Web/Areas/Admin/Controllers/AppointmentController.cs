@@ -12,13 +12,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult AddAppointment(Guid? id)
-        {
-            return View();
-        }
-
+        
         [HttpPost]
         public ActionResult AddAppointment()
         {
