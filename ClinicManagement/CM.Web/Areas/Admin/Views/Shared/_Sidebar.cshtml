@@ -28,8 +28,7 @@
             </a>
             <div class="collapse" id="reception-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Reception", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
-                    <li class="nav-item"> @Html.ActionLink("View", "ReceptionView", "Reception", new { Area = "Admin" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item"> @Html.ActionLink("Appointments", "ViewAppointments", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
@@ -41,7 +40,7 @@
             </a>
             <div class="collapse" id="reminder-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Reception", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
@@ -53,11 +52,10 @@
             </a>
             <div class="collapse" id="billing-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Reception", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#medicine-pages" aria-expanded="false" aria-controls="general-pages">
                 <span class="menu-title">Medicine Stock</span>
@@ -66,10 +64,9 @@
             </a>
             <div class="collapse" id="medicine-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Reception", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
-
     </ul>
 </nav>

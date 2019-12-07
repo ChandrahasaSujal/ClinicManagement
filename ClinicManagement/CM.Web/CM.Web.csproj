@@ -178,7 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
-    <Compile Include="Areas\Admin\Controllers\ReceptionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\CSharpRazorViewEngine.cs" />
@@ -198,6 +198,11 @@
     <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\dataTables.bootstrap4.min.css" />
+    <Content Include="assets\css\jquery-ui.css" />
+    <Content Include="assets\css\jquery-ui.min.css" />
+    <Content Include="assets\css\jquery.dataTables.css" />
+    <Content Include="assets\css\jquery.dataTables.min.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\images\dashboard\circle.png" />
     <Content Include="assets\images\dashboard\circle.svg" />
@@ -244,15 +249,18 @@
     <Content Include="assets\images\sprites\jsgrid-icons.png" />
     <Content Include="assets\images\sprites\red.png" />
     <Content Include="assets\images\sprites\yellow.png" />
-    <Content Include="assets\js\chart.js" />
     <Content Include="assets\js\dashboard.js" />
+    <Content Include="assets\js\dataTables.bootstrap4.min.js" />
     <Content Include="assets\js\file-upload.js" />
     <Content Include="assets\js\hoverable-collapse.js" />
+    <Content Include="assets\js\jquery-ui.js" />
+    <Content Include="assets\js\jquery-ui.min.js" />
+    <Content Include="assets\js\jquery.dataTables.js" />
+    <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\misc.js" />
     <Content Include="assets\js\off-canvas.js" />
     <Content Include="assets\js\todo.js" />
     <Content Include="assets\js\todolist.js" />
-    <Content Include="assets\vendors\chart.js\Chart.min.js" />
     <Content Include="assets\vendors\css\vendor.bundle.base.css" />
     <Content Include="assets\vendors\js\vendor.bundle.base.js" />
     <Content Include="assets\vendors\mdi\css\materialdesignicons.min.css" />
@@ -355,10 +363,10 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Reception\Appointment.cshtml" />
-    <Content Include="Areas\Admin\Views\Reception\ReceptionView.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Navbar.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\Appointment\ViewAppointments.cshtml" />
+    <Content Include="Areas\Admin\Views\Appointment\AddAppointment.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

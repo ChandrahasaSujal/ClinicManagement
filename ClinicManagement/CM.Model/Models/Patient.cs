@@ -12,6 +12,7 @@ namespace CM.Model.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public DateTime DOA { get; set; }
         public Gender Gender { get; set; }
         public string Phone { get; set; }
         public string MailId { get; set; }

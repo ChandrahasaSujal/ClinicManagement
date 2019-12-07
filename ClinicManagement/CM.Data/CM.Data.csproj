@@ -112,6 +112,7 @@
     <Compile Include="Seed.cs" />
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="ViewModels\Account\ManageViewModels.cs" />
+    <Compile Include="ViewModels\Appointment\AppointmentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
