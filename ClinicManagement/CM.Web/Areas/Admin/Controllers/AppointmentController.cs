@@ -16,7 +16,7 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddAppointment()
         {
-            return View();
+            return View("ViewAppointments");
         }
     }
 }

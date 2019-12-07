@@ -16,7 +16,7 @@
                             <button class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            @using (Html.BeginForm("AddAppointment", "Appointment", new { Area = "Admin" }, FormMethod.Post))
+                            @using (Html.BeginForm("AddAppointment", "Appointment", new { Area = "Admin" }, FormMethod.Post,new { id="addAppointmentForm"}))
                             {
                                 @Html.HiddenFor(model => model.Id)
                                 <div class="form-group">
@@ -32,8 +32,8 @@
                             }
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Add</button>
-                            <button type="reset" class="btn btn-gradient-light btn-rounded btn-fw">Reset</button>
+                           <input type="submit" onclick="addAppointment()" class="btn btn-gradient-primary btn-rounded btn-fw" value="Add">
+                           <input type="button" data-dismiss="modal" class="btn btn-gradient-secondary btn-rounded btn-fw" value="Close">
                         </div>
                     </div>
                 </div>
@@ -51,10 +51,10 @@
                     <thead>
                         <tr>
                             <th> # </th>
-                            <th> First name </th>
-                            <th> Product </th>
-                            <th> Amount </th>
-                            <th> Deadline </th>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>DOA</th>
                         </tr>
                     </thead>
                 </table>
@@ -72,6 +72,11 @@
             $('#appointmentsTable').DataTable();
         });
 
-        
+        $('.modal').on('hidden.bs.modal', function () {
+            $(this).find('form')[0].reset();
+        });
+        function addAppointment() {
+            $("#addAppointmentForm").submit();
+        }
     </script>
 }
