@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin</title>
+    @Styles.Render("~/assets/bootstrapCss")
     @Styles.Render("~/assets/styles")
+    @Styles.Render("~/assets/jqueryUICss")
+    @Styles.Render("~/assets/jqueryDatatablesCss")
     <link rel="shortcut icon" href="~/assets/images/favicon.png" />
 </head>
 <body>
@@ -25,6 +28,11 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+
+    @Scripts.Render("~/assets/jqueryJs")
+    @Scripts.Render("~/assets/jqueryUIJs")
+    @Scripts.Render("~/assets/vendorJs")
+    @Scripts.Render("~/assets/datatablesJs")
     @Scripts.Render("~/assets/scripts")
     @RenderSection("scripts", required: false)
 </body>
