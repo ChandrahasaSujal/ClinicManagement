@@ -12,22 +12,9 @@ namespace CM.Model.Models
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public DateTime DOA { get; set; }
         public Gender Gender { get; set; }
         public string Phone { get; set; }
         public string MailId { get; set; }
-        public string Token { get; set; }
-        public DateTime BirthDate { get; set; }
-        public Guid CityFk { get; set; }
-        public Guid DoctorFk { get; set; }
-        public string Height { get; set; }
-        public string Weight { get; set; }
-        public Guid MedicineFk { get; set; }
-        [ForeignKey("MedicineFk")]
-        public Medicine Medicine { get; set; }
-        [ForeignKey("CityFk")]
-        public City Cities { get; set; }
-        [ForeignKey("DoctorFk")]
-        public Doctor Doctor { get; set; }
+        public DateTime DOA { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CM.Model.Models.Account;
+﻿using CM.Model.Models;
+using CM.Model.Models.Account;
 using CM.Tools;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CM.Data.Infrastructure
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         #region "Private Member(s)"
 
@@ -48,6 +49,15 @@ namespace CM.Data.Infrastructure
                 return _applicationUserRepository;
             }
         }
+
+        private DataRepository<Patient> patientRepository;
+
+        public DataRepository<Patient> PatientRepository
+        {
+            get { return patientRepository; }
+            set { patientRepository = value; }
+        }
+
 
         /// <summary>
         /// Save all th entity changed in context

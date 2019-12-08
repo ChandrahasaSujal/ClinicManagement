@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CM.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace CM.Service.ServiceInterfaces
 {
-    public interface IReceptionService
+    public interface IAppointmentService
     {
-        int Get();
+       IEnumerable<Patient> GetAppointments();
     }
 }

@@ -15,9 +15,9 @@ namespace CM.Data.ViewModels.Appointment
         public string Name { get; set; }
 
         [Required]
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
 
-        public string Email { get; set; }
+        public string MailId { get; set; }
 
         [Required]
         [Display(Name = "Date of Appointment")]

@@ -5,6 +5,7 @@ namespace CM.Web.App_Start
 {
     using System;
     using System.Web;
+    using CM.Data.Infrastructure;
     using CM.Service.ServiceInterfaces;
     using CM.Service.Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -46,7 +47,8 @@ namespace CM.Web.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-                kernel.Bind<IReceptionService>().To<ReceptionService>();
+                kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+                kernel.Bind<IAppointmentService>().To<AppointmentService>();
                 RegisterServices(kernel);
                 return kernel;
             }

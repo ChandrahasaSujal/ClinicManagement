@@ -22,8 +22,7 @@ namespace CM.Web
 
             bundles.Add(new StyleBundle("~/assets/styles").Include(
                         "~/assets/css/style.css",
-                        "~/assets/vendors/mdi/css/materialdesignicons.min.css",
-                        "~/assets/vendors/css/vendor.bundle.base.css"));
+                        "~/assets/vendors/mdi/css/materialdesignicons.min.css"));
 
             #endregion
 
@@ -35,18 +34,12 @@ namespace CM.Web
             bundles.Add(new ScriptBundle("~/assets/bootstrapJs").Include(
                 "~/Scripts/bootstrap.min.js"));
 
-            bundles.Add(new ScriptBundle("~/assets/jqueryUIJs").Include(
-               "~/assets/js/jquery-ui.min.js"));
-
-            bundles.Add(new ScriptBundle("~/assets/datatablesJs").Include(
-                "~/assets/vendors/js/vendor.bundle.base.js"));
-
-            bundles.Add(new ScriptBundle("~/assets/vendorJs").Include(
-                "~/assets/js/jquery.dataTables.min.js"));
-
             bundles.Add(new ScriptBundle("~/assets/datatablesJs").Include(
                 "~/assets/js/jquery.dataTables.min.js",
                 "~/assets/js/dataTables.bootstrap4.min.js"));
+
+            bundles.Add(new ScriptBundle("~/assets/jqueryUIJs").Include(
+               "~/assets/js/jquery-ui.min.js"));
 
             bundles.Add(new ScriptBundle("~/assets/scripts").Include(
                 "~/assets/js/off-canvas.js",
