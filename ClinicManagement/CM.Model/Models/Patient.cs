@@ -1,6 +1,7 @@
 ﻿using CM.Tools.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace CM.Model.Models
 {
     public class Patient : BaseEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Gender Gender { get; set; }

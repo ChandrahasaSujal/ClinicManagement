@@ -1,5 +1,6 @@
 ﻿using CM.Data;
 using CM.Data.Infrastructure;
+using CM.Data.Mappings;
 using CM.Data.ViewModels;
 using CM.Web.App_Start;
 using System;
@@ -27,6 +28,8 @@ namespace CM.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Seed.Initialize(ApplicationDbContext.Create());
+            //Configure AutoMapper
+            AutoMapperConfiguration.Configure();
         }
     }
 }

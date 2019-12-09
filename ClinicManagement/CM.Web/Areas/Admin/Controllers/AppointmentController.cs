@@ -22,9 +22,6 @@ namespace CM.Web.Areas.Admin.Controllers
         }
         public ActionResult ViewAppointments()
         {
-            //IEnumerable<AppointmentViewModel> appointments;
-            //IEnumerable<Patient> patients;
-            //patients = _appointmentService.GetAppointments();
             return View();
         }
 
@@ -34,24 +31,23 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddAppointment()
+        public ActionResult AddAppointment(AppointmentViewModel appointment)
         {
-            return View("ViewAppointments");
+            if (ModelState.IsValid)
+            {
+              var isSuccess = _appointmentService.AddAppointment(appointment);
+              return Json(new { success = isSuccess, message = "Added successfully!",JsonRequestBehavior.AllowGet});
+            }
+            return Json(new { success = false, message = "Error while Adding!", JsonRequestBehavior.AllowGet });
         }
 
         public ActionResult GetAppointments()
         {
             try
             {
-                Patient patient = new Patient()
-                {
-                    Name = "Chandu",
-                    DOA = DateTime.Now,
-                    MailId = "test@gmail.com",
-                    Phone = "95869875665",
-                    Gender = Gender.Male
-                };
-                return Json(new { data = patient }, JsonRequestBehavior.AllowGet);
+                var appointmentData = _appointmentService.GetAppointments();
+                
+                return Json(new { data =  appointmentData},JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

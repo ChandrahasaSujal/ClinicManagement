@@ -29,39 +29,69 @@
     <script>
         var popup, dataTable;
         $(function () {
-            $("#dateOfAppointment").datepicker();
+            $(".form_datetime").datetimepicker({
+                format: "dd MM yyyy - hh:ii",
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            });
         });
-
-        dataTable =  $(function () {
+        dataTable = $(function () {
             $('#appointmentsTable').DataTable({
                 "ajax": {
                     "url": "GetAppointments",
                     "type": "GET",
                     "datatype": "json"
                 },
+                "columns": [
+                    { "data": "Name" },
+                    { "data": "MailId" },
+                    { "data": "Phone" },
+                    { "data": "DOA" }
+                ],
                 "language": {
-                    "emptyTable":"No data found, please click on <b>Add New</b> Button"
+                    "emptyTable": "No data found, please click on <b>Add New</b> Button"
                 }
             });
         });
 
         function appointmentPopForm(url) {
-            debugger        
+            debugger
             var formDiv = $('<div/>');
             $.get(url)
                 .done(function (response) {
                     formDiv.html(response);
                     popup = formDiv.dialog({
+                        modal: true,
                         autoOpen: true,
                         resizable: false,
                         title: "Schedule Appointment",
                         height: 500,
-                        width: 700,
+                        width: 500,
                         close: function () {
                             popup.dialog('destroy').remove();
                         }
                     });
                 });
+        }
+
+        function onAddAppointment(form) {
+
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: form.seriliaze(),
+                    success: function (data) {
+                        if (data.success) {
+                            popup.dialog('close');
+                            dataTable.ajax.reload();
+                        }
+                    }
+                });
+            }
+            return false;
         }
     </script>
 }

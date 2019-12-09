@@ -1,4 +1,5 @@
 ﻿using CM.Data.Infrastructure;
+using CM.Data.ViewModels.Appointment;
 using CM.Model.Models;
 using CM.Service.ServiceInterfaces;
 using System;
@@ -22,6 +23,22 @@ namespace CM.Service.Services
             patients = new List<Patient>();
             patients = _unitOfWork.PatientRepository.Fetch();
             return patients;
+        }
+
+        public bool AddAppointment(AppointmentViewModel appointment)
+        {
+            if( appointment != null )
+            {
+                Patient patient = new Patient();
+                patient.Name = appointment.Name;
+                patient.Gender = appointment.Gender;
+                patient.Phone = appointment.Phone;
+                patient.MailId = appointment.MailId;
+                _unitOfWork.PatientRepository.Add(patient);
+                _unitOfWork.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

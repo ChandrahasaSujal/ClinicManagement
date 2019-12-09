@@ -54,10 +54,13 @@ namespace CM.Data.Infrastructure
 
         public DataRepository<Patient> PatientRepository
         {
-            get { return patientRepository; }
-            set { patientRepository = value; }
+            get
+            {
+                if (this.patientRepository == null)
+                    this.patientRepository = new DataRepository<Patient>(ApplicationDbContext);
+                return patientRepository;
+            }
         }
-
 
         /// <summary>
         /// Save all th entity changed in context

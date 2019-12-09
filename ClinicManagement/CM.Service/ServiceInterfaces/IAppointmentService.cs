@@ -1,4 +1,5 @@
-﻿using CM.Model.Models;
+﻿using CM.Data.ViewModels.Appointment;
+using CM.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace CM.Service.ServiceInterfaces
     public interface IAppointmentService
     {
        IEnumerable<Patient> GetAppointments();
+       bool AddAppointment(AppointmentViewModel appointment);
     }
 }

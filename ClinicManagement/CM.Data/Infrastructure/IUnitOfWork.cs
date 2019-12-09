@@ -9,7 +9,7 @@ namespace CM.Data.Infrastructure
 {
     public interface IUnitOfWork
     {
-        DataRepository<Patient> PatientRepository { get; set; }
+        DataRepository<Patient> PatientRepository { get;}
         void SaveChanges();
     }
 }
