@@ -25,21 +25,21 @@ namespace CM.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult AddAppointment(int id=0)
-        {
-            return View();
-        }
+        //public ActionResult AddAppointment(int id=0)
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult AddAppointment(AppointmentViewModel appointment)
-        {
-            if (ModelState.IsValid)
-            {
-              var isSuccess = _appointmentService.AddAppointment(appointment);
-              return Json(new { success = isSuccess, message = "Added successfully!",JsonRequestBehavior.AllowGet});
-            }
-            return Json(new { success = false, message = "Error while Adding!", JsonRequestBehavior.AllowGet });
-        }
+        //[HttpPost]
+        //public ActionResult AddAppointment(AppointmentViewModel appointment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //      var isSuccess = _appointmentService.AddAppointment(appointment);
+        //      return Json(new { success = isSuccess, message = "Added successfully!",JsonRequestBehavior.AllowGet});
+        //    }
+        //    return Json(new { success = false, message = "Error while Adding!", JsonRequestBehavior.AllowGet });
+        //}
 
         public ActionResult GetAppointments()
         {
