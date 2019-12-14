@@ -1,4 +1,5 @@
 ﻿using CM.Model.Models;
+using CM.Model.Models.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace CM.Data.Infrastructure
 {
     public interface IUnitOfWork
     {
+        ApplicationDbContext ApplicationDbContext { get; }
+        DataRepository<ApplicationUser> ApplicationUserRepository { get; }
         DataRepository<Patient> PatientRepository { get;}
         void SaveChanges();
     }

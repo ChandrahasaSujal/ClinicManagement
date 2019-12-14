@@ -4,8 +4,6 @@
 }
 <button class="btn btn-gradient-primary btn-sm mdi mdi-plus" data-target="#addAppointment" data-toggle="modal">Add New</button>
 <hr />
-
-
 <div class="container">
     <div class="row">
         <div class="modal" data-keyboard="false" data-backdrop="static" id="addAppointment" tabindex="-1">
@@ -22,20 +20,36 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Name, new { @class = "control-label" })
                                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
 
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
+                                @Html.DropDownListFor(model=>model.Gender, new List<SelectListItem>{
+                                    new SelectListItem{ Text="Male", Value="Male"},
+                                    new SelectListItem{ Text="Female", Value="Female"}
+                                }, "--- Select ---", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
                                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.MailId, new { @class = "control-label" })
                                 @Html.EditorFor(model => model.MailId, new { htmlAttributes = new { @class = "form-control" } })
-
+                            </div>
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.DOA, new { @class = "control-label" })
-                                <div class="input-group" id='dateOfAppointment'>
+                                <div class="input-group" id="dateOfAppointment">
                                     @Html.EditorFor(model => model.DOA, new { htmlAttributes = new { @class = "form-control" } })
                                     <span class="input-group-addon">
-                                        <span class="mdi mdi-calendar-clock"></span>
+                                        <span class="mdi mdi-calendar-clock calendar-icon"></span>
                                     </span>
                                 </div>
+                                @Html.ValidationMessageFor(model => model.DOA, "", new { @class = "text-danger" })
                             </div>
                         }
                     </div>
@@ -46,30 +60,28 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="col-lg-12 stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Appointments</h4>
-                <table id="appointmentsTable" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>DOA</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
+        <div class="col-lg-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Appointments</h4>
+                    <table id="appointmentsTable" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>DOA</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 @section scripts{
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -83,7 +95,8 @@
                     date: "mdi mdi-calendar",
                     up: "mdi mdi-arrow-up-bold-circle",
                     down: "mdi mdi-arrow-down-bold-circle"
-                }
+                },
+                format: 'DD/MM/YYYY HH:mm'
             });
         });
 
@@ -99,9 +112,10 @@
                 },
                 "columns": [
                     { "data": "Name" },
-                    { "data": "MailId" },
+                    { "data": "Gender" },
+                    { "data": "DOA" },
                     { "data": "Phone" },
-                    { "data": "DOA" }
+                    { "data": "MailId" }
                 ],
                 "language": {
                     "emptyTable": "No data found, please click on <b>Add New</b> Button"

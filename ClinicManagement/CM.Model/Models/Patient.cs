@@ -18,6 +18,6 @@ namespace CM.Model.Models
         public Gender Gender { get; set; }
         public string Phone { get; set; }
         public string MailId { get; set; }
-        public DateTime DOA { get; set; }
+        public string DOA { get; set; }
     }
 }

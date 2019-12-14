@@ -10,7 +10,7 @@ namespace CM.Service.ServiceInterfaces
 {
     public interface IAppointmentService
     {
-       IEnumerable<Patient> GetAppointments();
+       IEnumerable<AppointmentViewModel> GetAppointments();
        bool AddAppointment(AppointmentViewModel appointment);
     }
 }

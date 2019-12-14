@@ -34,8 +34,8 @@ namespace CM.Data
                     ApplicationUser adminUser = new ApplicationUser
                     {
                         Name = "Chandu",
-                        UserName = "CMTest@cm.com",
-                        Email = "CMTest@cm.com",
+                        UserName = "Admin@clinic.com",
+                        Email = "Admin@clinic.com",
                         EmailConfirmed = true,
                         UserPassword = GlobalUtil.EncodePasswordToBase64("test#123"),
                         IsDeleted = false
