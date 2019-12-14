@@ -145,8 +145,9 @@ namespace CM.Data.Infrastructure
             try
             {
                 PropertyInfo createdOn = entity.GetType().GetProperty("CreatedDate");
-                if (createdOn != null)
-                    createdOn.SetValue(entity, DateTime.UtcNow, null);
+                PropertyInfo modifiedOn = entity.GetType().GetProperty("ModifiedDate");
+                modifiedOn.SetValue(entity, DateTime.Now, null);
+                createdOn.SetValue(entity, DateTime.Now, null);
                 return _dbSet.Add(entity);
             }
             catch (Exception ex)

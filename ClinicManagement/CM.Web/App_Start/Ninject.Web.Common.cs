@@ -5,7 +5,9 @@ namespace CM.Web.App_Start
 {
     using System;
     using System.Web;
+    using AutoMapper;
     using CM.Data.Infrastructure;
+    using CM.Data.Mappings;
     using CM.Service.ServiceInterfaces;
     using CM.Service.Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -46,6 +48,10 @@ namespace CM.Web.App_Start
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+                var mapperConfiguration = new MapperConfiguration(cfg => { cfg.AddProfile<AutoMapperProfile>(); });
+                kernel.Bind<IMapper>().ToConstructor(c => new Mapper(mapperConfiguration)).InSingletonScope();
+                var mapper = kernel.Get<IMapper>();
+
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
                 kernel.Bind<IAppointmentService>().To<AppointmentService>();

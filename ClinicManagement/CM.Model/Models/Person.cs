@@ -9,15 +9,19 @@ using System.Threading.Tasks;
 
 namespace CM.Model.Models
 {
-    public class Patient : BaseEntity
+    public class Person : BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public Guid Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public Gender Gender { get; set; }
-        public string Phone { get; set; }
-        public string MailId { get; set; }
+        [Required]
         public string DOA { get; set; }
+        [Required]
+        public string Phone { get; set; }
+
+        public string MailId { get; set; }
     }
 }

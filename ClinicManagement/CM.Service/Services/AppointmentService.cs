@@ -1,4 +1,5 @@
-﻿using CM.Data.Infrastructure;
+﻿using AutoMapper;
+using CM.Data.Infrastructure;
 using CM.Data.ViewModels.Appointment;
 using CM.Model.Models;
 using CM.Service.ServiceInterfaces;
@@ -13,44 +14,44 @@ namespace CM.Service.Services
     public class AppointmentService : IAppointmentService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public AppointmentService(IUnitOfWork unitOfWork)
+        public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            this._unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public IEnumerable<AppointmentViewModel> GetAppointments()
         {
-            IEnumerable<Patient> patients;
-            IEnumerable<AppointmentViewModel> appointments;
-            appointments = new List<AppointmentViewModel>();
-            patients = new List<Patient>();
-            patients = _unitOfWork.PatientRepository.Fetch();
-            foreach (var item in patients)
+            try
             {
-                var appointment = new AppointmentViewModel();
-                appointment.Id = item.Id;
-                appointment.Name = item.Name;
-                appointment.DOA = item.DOA;
-                appointment.Gender = item.Gender;
-                appointment.Phone = item.Phone;
+                IEnumerable<Person> people = new List<Person>();
+                IEnumerable<AppointmentViewModel> appointments = new List<AppointmentViewModel>();
+                people = _unitOfWork.PersonRepository.Fetch();
+                _mapper.Map(people, appointments);
+                return appointments;
+            }
+            catch (Exception)
+            {
 
             }
-            return appointments;
+            return null;
         }
 
         public bool AddAppointment(AppointmentViewModel appointment)
         {
-            if (appointment != null)
+            try
             {
-                Patient patient = new Patient();
-                patient.Id = appointment.Id;
-                patient.Name = appointment.Name;
-                patient.Gender = appointment.Gender;
-                patient.Phone = appointment.Phone;
-                patient.MailId = appointment.MailId;
-                var item =_unitOfWork.PatientRepository.Add(patient);
+                Person person = new Person();
+                person = _mapper.Map(appointment, person);
+                person.Id = Guid.NewGuid();
+                _unitOfWork.PersonRepository.Add(person);
                 _unitOfWork.SaveChanges();
                 return true;
+            }
+            catch (Exception)
+            {
+
             }
             return false;
         }

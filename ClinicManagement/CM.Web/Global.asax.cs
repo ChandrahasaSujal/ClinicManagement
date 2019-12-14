@@ -28,8 +28,6 @@ namespace CM.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Seed.Initialize(ApplicationDbContext.Create());
-            //Configure AutoMapper
-            AutoMapperConfiguration.Configure();
         }
     }
 }

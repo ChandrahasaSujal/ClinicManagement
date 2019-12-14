@@ -50,15 +50,15 @@ namespace CM.Data.Infrastructure
             }
         }
 
-        private DataRepository<Patient> patientRepository;
+        private DataRepository<Person> personRepository;
 
-        public DataRepository<Patient> PatientRepository
+        public DataRepository<Person> PersonRepository
         {
             get
             {
-                if (this.patientRepository == null)
-                    this.patientRepository = new DataRepository<Patient>(ApplicationDbContext);
-                return patientRepository;
+                if (this.personRepository == null)
+                    this.personRepository = new DataRepository<Person>(ApplicationDbContext);
+                return personRepository;
             }
         }
 

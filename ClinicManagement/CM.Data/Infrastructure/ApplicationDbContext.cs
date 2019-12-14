@@ -19,6 +19,6 @@ namespace CM.Data.Infrastructure
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Person> People { get; set; }
     }
 }

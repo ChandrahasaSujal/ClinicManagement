@@ -16,10 +16,12 @@ namespace CM.Web.Areas.Admin.Controllers
     public class AppointmentController : BaseController
     {
         private readonly IAppointmentService _appointmentService;
+
         public AppointmentController(IAppointmentService appointmentService)
         {
             this._appointmentService = appointmentService;
         }
+
         public ActionResult ViewAppointments()
         {
             return View();
@@ -45,11 +47,6 @@ namespace CM.Web.Areas.Admin.Controllers
             try
             {
                 var appointmentData = _appointmentService.GetAppointments();
-
-                foreach (var item in appointmentData)
-                {
-                    var it = item;
-                }
 
                 return Json(new { data = appointmentData }, JsonRequestBehavior.AllowGet);
             }

@@ -80,7 +80,7 @@
   <ItemGroup>
     <Compile Include="Models\Account\ApplicationUser.cs" />
     <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

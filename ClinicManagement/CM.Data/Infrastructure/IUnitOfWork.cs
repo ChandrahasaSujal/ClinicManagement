@@ -12,7 +12,7 @@ namespace CM.Data.Infrastructure
     {
         ApplicationDbContext ApplicationDbContext { get; }
         DataRepository<ApplicationUser> ApplicationUserRepository { get; }
-        DataRepository<Patient> PatientRepository { get;}
+        DataRepository<Person> PersonRepository { get;}
         void SaveChanges();
     }
 }
