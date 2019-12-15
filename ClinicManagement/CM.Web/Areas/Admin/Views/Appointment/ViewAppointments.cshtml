@@ -31,6 +31,17 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <script>
+        function Appointment() {
+            var submitButtonValue = $("#appointmentButton").val();
+            switch (submitButtonValue) {
+                case "Add":
+                    addAppointment();
+                    break;
+                case "Update":
+                    updateAppointment();
+                    break;
+            }
+        }
 
         $(function () {
             $("#dateOfAppointment").datetimepicker({
@@ -47,7 +58,14 @@
         $('.modal').on('hidden.bs.modal', function () {
             $(this).find('form')[0].reset();
             setButtonValueBasedOnAppointmentId();
+            //Removes validation from input-fields
+            $('.input-validation-error').addClass('input-validation-valid');
+            $('.input-validation-error').removeClass('input-validation-error');
+            //Removes validation message after input-fields
+            $('.field-validation-error').addClass('field-validation-valid');
+            $('.field-validation-error').removeClass('field-validation-error');
         });
+
         var appointMentTable =  $('#appointmentsTable').DataTable({
                 "ajax": {
                     "url": "GetAppointments",
@@ -107,12 +125,13 @@
         function getAppointment(appointmentId) {
             $.ajax({
                 type: "GET",
-                url: "EditAppointment",
+                url: "GetAppointment",
                 data: {
                     id: appointmentId
                 },
                 success: function (data) {
                     if (data.success) {
+                        $("#appointmentId").val(data.appointee.Id);
                         $("#appointeeName").val(data.appointee.Name);
                         $("#appointeeGender").val(data.appointee.Gender);
                         $("#appointeePhone").val(data.appointee.Phone);
@@ -126,6 +145,29 @@
                     alert("something goes wrong!");
                 }
             });
+            return false;
+        }
+
+        function updateAppointment() {
+            $.validator.unobtrusive.parse(addAppointmentForm);
+            if ($("#addAppointmentForm").valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: "UpdateAppointment",
+                    data: $("#addAppointmentForm").serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            $('.modal').modal('hide');
+                            appointMentTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+                        }
+                    }
+                });
+            }
             return false;
         }
 

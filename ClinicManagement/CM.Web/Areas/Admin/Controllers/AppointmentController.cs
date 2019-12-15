@@ -16,6 +16,7 @@ namespace CM.Web.Areas.Admin.Controllers
     public class AppointmentController : BaseController
     {
         private readonly IAppointmentService _appointmentService;
+        bool isSuccess = false;
 
         public AppointmentController(IAppointmentService appointmentService)
         {
@@ -30,7 +31,6 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddAppointment(AppointmentViewModel appointment)
         {
-            var isSuccess = false;
             try
             {
                 isSuccess = _appointmentService.AddAppointment(appointment);
@@ -57,11 +57,11 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditAppointment(string id)
+        public ActionResult GetAppointment(string id)
         {
             if (id != null)
             {
-                var appointment =_appointmentService.GetAppointment(id);
+                var appointment = _appointmentService.GetAppointment(id);
                 if (appointment != null)
                 {
                     return Json(new { success = true, appointee = appointment }, JsonRequestBehavior.AllowGet);
@@ -75,13 +75,14 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditAppointment(AppointmentViewModel appointment)
+        public ActionResult UpdateAppointment(AppointmentViewModel appointment)
         {
-            if (appointment!=null)
+            if (appointment != null)
             {
-                _appointmentService.EditAppointment(appointment);
+                isSuccess = _appointmentService.UpdateAppointment(appointment);
+                return Json(new { success = true, message = "Updated Successfully!" }, JsonRequestBehavior.AllowGet);
             }
-            return View();
+            return Json(new { success = false, message = "Error in Updating!" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

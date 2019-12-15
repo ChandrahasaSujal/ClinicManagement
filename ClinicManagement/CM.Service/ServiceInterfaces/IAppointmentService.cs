@@ -13,6 +13,6 @@ namespace CM.Service.ServiceInterfaces
        IEnumerable<AppointmentViewModel> GetAppointments();
        AppointmentViewModel GetAppointment(string appointmentId);
        bool AddAppointment(AppointmentViewModel appointment);
-       bool EditAppointment(AppointmentViewModel appointment);
+       bool UpdateAppointment(AppointmentViewModel appointment);
     }
 }

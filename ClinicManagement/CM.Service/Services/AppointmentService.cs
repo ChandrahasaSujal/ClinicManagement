@@ -67,7 +67,7 @@ namespace CM.Service.Services
             return false;
         }
 
-        public bool EditAppointment(AppointmentViewModel appointment)
+        public bool UpdateAppointment(AppointmentViewModel appointment)
         {
             try
             {
@@ -75,9 +75,13 @@ namespace CM.Service.Services
                 {
                     Person = new Person();
                     Person = _unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointment.Id);
-                    Person = _mapper.Map(appointment, Person);
-                    _unitOfWork.PeopleRepository.Update(Person);
-                    _unitOfWork.SaveChanges();
+                    if(Person!=null)
+                    {
+                        Person = _mapper.Map(appointment, Person);
+                        _unitOfWork.PeopleRepository.Update(Person);
+                        _unitOfWork.SaveChanges();
+                        return true;
+                    }
                 }
             }
             catch (Exception)
