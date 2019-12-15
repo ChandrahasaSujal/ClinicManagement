@@ -13,9 +13,6 @@ namespace CM.Web
             bundles.Add(new StyleBundle("~/assets/materialDesignIconsCss").Include(
                         "~/assets/vendors/mdi/css/materialdesignicons.min.css"));
 
-            bundles.Add(new StyleBundle("~/assets/vendorsCss").Include(
-                        "~/assets/vendors/css/vendor.bundle.base.css"));
-
             bundles.Add(new StyleBundle("~/assets/styles").Include(
                         "~/assets/css/style.css"));
 
