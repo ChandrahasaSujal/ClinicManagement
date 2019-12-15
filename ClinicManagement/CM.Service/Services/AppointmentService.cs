@@ -15,6 +15,10 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private Person Person { get; set; }
+        private AppointmentViewModel Appointment { get; set; }
+        private IEnumerable<Person> People { get; set; }
+        private IEnumerable<AppointmentViewModel> Appointments { get; set; }
 
         public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -25,11 +29,15 @@ namespace CM.Service.Services
         {
             try
             {
-                IEnumerable<Person> people = new List<Person>();
-                IEnumerable<AppointmentViewModel> appointments = new List<AppointmentViewModel>();
-                people = _unitOfWork.PersonRepository.Fetch();
-                _mapper.Map(people, appointments);
-                return appointments;
+                People = new List<Person>();
+                Appointments = new List<AppointmentViewModel>();
+                People = _unitOfWork.PeopleRepository.Fetch();
+                if (People.Any())
+                {
+                    Appointments = _mapper.Map(People, Appointments);
+                    return Appointments;
+                }
+                return null;
             }
             catch (Exception)
             {
@@ -42,16 +50,38 @@ namespace CM.Service.Services
         {
             try
             {
-                Person person = new Person();
-                person = _mapper.Map(appointment, person);
-                person.Id = Guid.NewGuid();
-                _unitOfWork.PersonRepository.Add(person);
-                _unitOfWork.SaveChanges();
-                return true;
+                if (appointment != null)
+                {
+                    Person = new Person();
+                    Person = _mapper.Map(appointment, Person);
+                    Person.Id = Guid.NewGuid();
+                    _unitOfWork.PeopleRepository.Add(Person);
+                    _unitOfWork.SaveChanges();
+                    return true;
+                }
             }
             catch (Exception)
             {
 
+            }
+            return false;
+        }
+
+        public bool EditAppointment(AppointmentViewModel appointment)
+        {
+            try
+            {
+                if (appointment != null)
+                {
+                    Person = new Person();
+                    Person = _unitOfWork.PeopleRepository.FirstOrDefault(p=>p.Id==appointment.Id);
+                    Person = _mapper.Map(appointment, Person);
+                    _unitOfWork.PeopleRepository.Update(Person);
+                    _unitOfWork.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
             }
             return false;
         }

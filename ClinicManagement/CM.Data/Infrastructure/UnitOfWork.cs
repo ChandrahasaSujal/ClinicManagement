@@ -52,7 +52,7 @@ namespace CM.Data.Infrastructure
 
         private DataRepository<Person> personRepository;
 
-        public DataRepository<Person> PersonRepository
+        public DataRepository<Person> PeopleRepository
         {
             get
             {

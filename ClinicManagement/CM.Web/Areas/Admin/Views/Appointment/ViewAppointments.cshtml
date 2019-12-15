@@ -15,6 +15,7 @@
                                 <th>DOA</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
+                                <th></th>
                             </tr>
                         </thead>
                     </table>
@@ -40,14 +41,14 @@
                     up: "mdi mdi-arrow-up-bold-circle",
                     down: "mdi mdi-arrow-down-bold-circle"
                 },
-                format: 'DD/MM/YYYY HH:mm'
+                format: 'DD-MM-YYYY HH:mm'
             });
         });
 
         $('.modal').on('hidden.bs.modal', function () {
             $(this).find('form')[0].reset();
         });
-        var table =  $('#appointmentsTable').DataTable({
+        var appointMentTable =  $('#appointmentsTable').DataTable({
                 "ajax": {
                     "url": "GetAppointments",
                     "type": "GET",
@@ -58,7 +59,14 @@
                     { "data": "Gender" },
                     { "data": "DOA" },
                     { "data": "Phone" },
-                    { "data": "MailId" }
+                    { "data": "MailId" },
+                    {
+                        "data": "Id", "render": function (data) {
+                            return "<button class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
+                        },
+                        "orderable": false,
+                        "width": "10px"
+                    }
                 ],
                 "language": {
                     "emptyTable": "No data found, please click on <b>Add New</b> Button"
@@ -77,7 +85,7 @@
                     success: function (data) {
                         if (data.success) {
                             $('.modal').modal('hide');
-                            table.ajax.reload();
+                            appointMentTable.ajax.reload();
 
                             $.notify(data.message, {
                                 globalPosition: "top center",

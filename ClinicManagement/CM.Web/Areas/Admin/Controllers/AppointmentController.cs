@@ -55,5 +55,15 @@ namespace CM.Web.Areas.Admin.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public ActionResult EditAppointment(AppointmentViewModel appointment)
+        {
+            if (appointment!=null)
+            {
+                _appointmentService.EditAppointment(appointment);
+            }
+            return View();
+        }
     }
 }
