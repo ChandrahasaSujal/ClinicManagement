@@ -47,8 +47,7 @@
         $('.modal').on('hidden.bs.modal', function () {
             $(this).find('form')[0].reset();
         });
-        var dataTable = $(function () {
-            $('#appointmentsTable').DataTable({
+        var table =  $('#appointmentsTable').DataTable({
                 "ajax": {
                     "url": "GetAppointments",
                     "type": "GET",
@@ -65,7 +64,7 @@
                     "emptyTable": "No data found, please click on <b>Add New</b> Button"
                 }
             });
-        });
+      
 
         function addAppointment() {
 
@@ -78,8 +77,12 @@
                     success: function (data) {
                         if (data.success) {
                             $('.modal').modal('hide');
-                            debugger
-                            dataTable.DataTable().ajax.reload();
+                            table.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className:"success"
+                            })
                         }
                     }
                 });
