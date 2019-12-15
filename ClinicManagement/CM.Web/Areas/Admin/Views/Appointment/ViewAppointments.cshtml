@@ -32,7 +32,6 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <script>
 
-       
         $(function () {
             $("#dateOfAppointment").datetimepicker({
                 icons: {
@@ -62,7 +61,7 @@
                     { "data": "MailId" },
                     {
                         "data": "Id", "render": function (data) {
-                            return "<button class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
+                            return "<button onclick = editAppointment('" + data + "')  class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button onclick = deleteAppointment('" + data +"') class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
                         },
                         "orderable": false,
                         "width": "10px"
@@ -95,6 +94,13 @@
                     }
                 });
             }
+        }
+
+        function editAppointment(appointmentId) {
+            alert(appointmentId);
+        }
+        function deleteAppointment(appointmentId) {
+            alert(appointmentId);
         }
 
         function resetAddAppointmentForm() {
