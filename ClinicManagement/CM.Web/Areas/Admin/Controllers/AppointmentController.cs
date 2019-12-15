@@ -64,7 +64,7 @@ namespace CM.Web.Areas.Admin.Controllers
                 var appointment =_appointmentService.GetAppointment(id);
                 if (appointment != null)
                 {
-                    return Json(new { success = true, data = appointment },JsonRequestBehavior.AllowGet);
+                    return Json(new { success = true, appointee = appointment }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {

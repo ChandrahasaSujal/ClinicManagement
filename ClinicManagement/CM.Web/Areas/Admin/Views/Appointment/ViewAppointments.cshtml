@@ -40,12 +40,13 @@
                     up: "mdi mdi-arrow-up-bold-circle",
                     down: "mdi mdi-arrow-down-bold-circle"
                 },
-                format: 'DD-MM-YYYY HH:mm'
+                format: 'DD/MM/YYYY HH:mm'
             });
         });
 
         $('.modal').on('hidden.bs.modal', function () {
             $(this).find('form')[0].reset();
+            setButtonValueBasedOnAppointmentId();
         });
         var appointMentTable =  $('#appointmentsTable').DataTable({
                 "ajax": {
@@ -71,7 +72,13 @@
                     "emptyTable": "No data found, please click on <b>Add New</b> Button"
                 }
             });
-      
+        function setButtonValueBasedOnAppointmentId(id) {
+            if (id) {
+                $("#appointmentButton").val("Update");
+            } else {
+                $("#appointmentButton").val("Add");
+            }
+        }
 
         function addAppointment() {
 
@@ -106,6 +113,12 @@
                 },
                 success: function (data) {
                     if (data.success) {
+                        $("#appointeeName").val(data.appointee.Name);
+                        $("#appointeeGender").val(data.appointee.Gender);
+                        $("#appointeePhone").val(data.appointee.Phone);
+                        $("#appointeeMailId").val(data.appointee.MailId);
+                        $("#appointeeDOA").val(data.appointee.DOA);
+                        setButtonValueBasedOnAppointmentId(data.appointee.Id);
                         $('.modal').modal('show');
                     }
                 },
@@ -115,6 +128,7 @@
             });
             return false;
         }
+
         function deleteAppointment(appointmentId) {
             if (confirm("Want to Delete?")) {
                 alert("confirmed");
