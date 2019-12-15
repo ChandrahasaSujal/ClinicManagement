@@ -56,6 +56,24 @@ namespace CM.Web.Areas.Admin.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult EditAppointment(string id)
+        {
+            if (id != null)
+            {
+                var appointment =_appointmentService.GetAppointment(id);
+                if (appointment != null)
+                {
+                    return Json(new { success = true, data = appointment },JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult EditAppointment(AppointmentViewModel appointment)
         {

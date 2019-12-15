@@ -74,7 +74,7 @@ namespace CM.Service.Services
                 if (appointment != null)
                 {
                     Person = new Person();
-                    Person = _unitOfWork.PeopleRepository.FirstOrDefault(p=>p.Id==appointment.Id);
+                    Person = _unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointment.Id);
                     Person = _mapper.Map(appointment, Person);
                     _unitOfWork.PeopleRepository.Update(Person);
                     _unitOfWork.SaveChanges();
@@ -84,6 +84,32 @@ namespace CM.Service.Services
             {
             }
             return false;
+        }
+
+        public AppointmentViewModel GetAppointment(string appointmentId)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(appointmentId))
+                {
+                    if (true)
+                    {
+                        Guid appointmentGuid;
+                        Guid.TryParse(appointmentId, out appointmentGuid);
+                        Person = new Person();
+                        Appointment = new AppointmentViewModel();
+                        Person = _unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointmentGuid);
+                        Appointment = _mapper.Map(Person, Appointment);
+                        return Appointment;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return null;
         }
     }
 }

@@ -61,7 +61,7 @@
                     { "data": "MailId" },
                     {
                         "data": "Id", "render": function (data) {
-                            return "<button onclick = editAppointment('" + data + "')  class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button onclick = deleteAppointment('" + data +"') class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
+                            return "<button onclick = getAppointment('" + data + "')  class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button onclick = deleteAppointment('" + data +"') class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
                         },
                         "orderable": false,
                         "width": "10px"
@@ -94,13 +94,31 @@
                     }
                 });
             }
+            return false;
         }
 
-        function editAppointment(appointmentId) {
-            alert(appointmentId);
+        function getAppointment(appointmentId) {
+            $.ajax({
+                type: "GET",
+                url: "EditAppointment",
+                data: {
+                    id: appointmentId
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('.modal').modal('show');
+                    }
+                },
+                error: function () {
+                    alert("something goes wrong!");
+                }
+            });
+            return false;
         }
         function deleteAppointment(appointmentId) {
-            alert(appointmentId);
+            if (confirm("Want to Delete?")) {
+                alert("confirmed");
+            }
         }
 
         function resetAddAppointmentForm() {

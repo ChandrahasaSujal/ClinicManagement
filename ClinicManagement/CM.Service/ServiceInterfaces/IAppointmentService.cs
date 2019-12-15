@@ -11,6 +11,7 @@ namespace CM.Service.ServiceInterfaces
     public interface IAppointmentService
     {
        IEnumerable<AppointmentViewModel> GetAppointments();
+       AppointmentViewModel GetAppointment(string appointmentId);
        bool AddAppointment(AppointmentViewModel appointment);
        bool EditAppointment(AppointmentViewModel appointment);
     }
