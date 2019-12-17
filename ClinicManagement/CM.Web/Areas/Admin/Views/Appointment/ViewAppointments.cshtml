@@ -173,7 +173,25 @@
 
         function deleteAppointment(appointmentId) {
             if (confirm("Want to Delete?")) {
-                alert("confirmed");
+                $.ajax({
+                    type: "POST",
+                    url: "DeleteAppointment",
+                    data: {
+                        "appointmentId": appointmentId
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            $('.modal').modal('hide');
+                            appointMentTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+                        }
+                    }
+                });
+                return false;
             }
         }
 

@@ -31,15 +31,15 @@ namespace CM.Service.Services
             {
                 People = new List<Person>();
                 Appointments = new List<AppointmentViewModel>();
-                People = _unitOfWork.PeopleRepository.Fetch();
-                if (People.Any())
+                People = _unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false);
+                if (People != null)
                 {
                     Appointments = _mapper.Map(People, Appointments);
                     return Appointments;
                 }
                 return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -75,7 +75,7 @@ namespace CM.Service.Services
                 {
                     Person = new Person();
                     Person = _unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointment.Id);
-                    if(Person!=null)
+                    if (Person != null)
                     {
                         Person = _mapper.Map(appointment, Person);
                         _unitOfWork.PeopleRepository.Update(Person);
@@ -114,6 +114,24 @@ namespace CM.Service.Services
                 throw;
             }
             return null;
+        }
+
+        public bool DeleteAppointment(Guid appointmentId)
+        {
+            try
+            {
+                if (appointmentId != null)
+                {
+                    _unitOfWork.PeopleRepository.LogicalDelete(appointmentId);
+                    _unitOfWork.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return false;
         }
     }
 }

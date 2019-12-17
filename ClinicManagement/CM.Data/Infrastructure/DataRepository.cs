@@ -216,7 +216,9 @@ namespace CM.Data.Infrastructure
             {
                 var entityToDelete = _dbSet.Find(id);
                 if (entityToDelete != null)
+                {
                     Delete(entityToDelete);
+                }
             }
             catch (Exception ex)
             {
@@ -272,45 +274,17 @@ namespace CM.Data.Infrastructure
             {
                 var entityToDelete = Find(id);
                 if (entityToDelete != null)
-                    LogicalDelete(entityToDelete, modifiedByUserId);
-            }
-            catch (Exception ex)
-            {
-                GlobalUtil.LogException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Method mark IsDeleted to true in the the datacontext.
-        /// </summary>
-        /// <param name="entity">Entity</param>
-        /// <param name="modifiedByUserId">Modified By User Id(Not required to pass if dont wants to set)</param>
-        public void LogicalDelete(T entity, int? modifiedByUserId = null)
-        {
-            try
-            {
-                PropertyInfo deleted = entity.GetType().GetProperty("IsDeleted");
-                if (deleted == null)
                 {
-                    throw new Exception(String.Format("No isDeleted column found for the {0} entity.", typeof(T)));
-                }
-
-                if (modifiedByUserId != null)
-                {
-                    PropertyInfo modifiedById = entity.GetType().GetProperty("ModifiedById");
-                    if (modifiedById == null)
+                    PropertyInfo deleted = entityToDelete.GetType().GetProperty("IsDeleted");
+                    if (deleted == null)
                     {
-                        throw new Exception(String.Format("No ModifiedById column found for the {0} entity.", typeof(T)));
+                        throw new Exception(String.Format("No isDeleted column found for the {0} entity.", typeof(T)));
                     }
-                    modifiedById.SetValue(entity, modifiedByUserId, null);
+                    deleted.SetValue(entityToDelete, true, null);
+                    PropertyInfo modifiedDate = entityToDelete.GetType().GetProperty("ModifiedDate");
+                    if (modifiedDate != null)
+                        modifiedDate.SetValue(entityToDelete, DateTime.Now, null);
                 }
-
-                deleted.SetValue(entity, true, null);
-                PropertyInfo modifiedOn = entity.GetType().GetProperty("ModifiedOn");
-                if (modifiedOn != null)
-                    modifiedOn.SetValue(entity, DateTime.UtcNow, null);
-
-                AttachEntity(entity);
             }
             catch (Exception ex)
             {
@@ -579,8 +553,6 @@ namespace CM.Data.Infrastructure
                     Guid guid;
                     if (int.TryParse(Convert.ToString(idPropertyInfo.GetValue(entity, null)), out id))
                     {
-                        //  if (entry.State == EntityState.Detached)
-                        {
                             var set = _dbContext.Set<T>();
                             T attachedEntity = set.Find(id); // You need to have access to key
 
@@ -593,7 +565,6 @@ namespace CM.Data.Infrastructure
                             {
                                 entry.State = EntityState.Modified; // This should attach entity
                             }
-                        }
                     }
                     else if (Guid.TryParse(Convert.ToString(idPropertyInfo.GetValue(entity, null)), out guid))
                     {
@@ -611,7 +582,7 @@ namespace CM.Data.Infrastructure
                         }
                     }
                 }
-                PropertyInfo modifiedOn = entity.GetType().GetProperty("ModifiedOn");
+                PropertyInfo modifiedOn = entity.GetType().GetProperty("ModifiedDate");
                 if (modifiedOn != null)
                     modifiedOn.SetValue(entity, DateTime.UtcNow, null);
             }

@@ -47,13 +47,16 @@ namespace CM.Web.Areas.Admin.Controllers
             try
             {
                 var appointmentData = _appointmentService.GetAppointments();
-
-                return Json(new { data = appointmentData }, JsonRequestBehavior.AllowGet);
+                if (appointmentData != null)
+                {
+                    return Json(new { success = true, data = appointmentData }, JsonRequestBehavior.AllowGet);
+                }
             }
             catch (Exception ex)
             {
-                throw;
+
             }
+            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -68,10 +71,10 @@ namespace CM.Web.Areas.Admin.Controllers
                 }
                 else
                 {
-                    return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                    return Json(new { success = false, message = "Something went Wrong!"}, JsonRequestBehavior.AllowGet);
                 }
             }
-            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false, message = "Something went Wrong!" }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -83,6 +86,17 @@ namespace CM.Web.Areas.Admin.Controllers
                 return Json(new { success = true, message = "Updated Successfully!" }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = false, message = "Error in Updating!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAppointment(string appointmentId)
+        {
+            if (!string.IsNullOrEmpty(appointmentId) && Guid.TryParse(appointmentId,out Guid appointmentGuid) )
+            {
+                isSuccess = _appointmentService.DeleteAppointment(appointmentGuid);
+                return Json(new { success = isSuccess, message = "Deleted Successfully!" }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { success = isSuccess, message = "Something Went Wrong!" }, JsonRequestBehavior.AllowGet);
         }
     }
 }
