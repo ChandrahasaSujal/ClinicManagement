@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CM.Model.Models
+namespace CM.Model.Models.Medicine
 {
     public class Medicine : BaseEntity
     {
@@ -14,6 +14,6 @@ namespace CM.Model.Models
         public Guid CategoryId { get; set; }
         public double UnitPirce { get; set; }
         [ForeignKey("CategoryId")]
-        public virtual MedicineCategory MedicineCategory { get; set; }
+        public virtual Category MedicineCategory { get; set; }
     }
 }

@@ -182,6 +182,8 @@
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="Areas\Admin\Controllers\AppointmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManufacturerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MedicineController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -356,6 +358,8 @@
     <Content Include="Areas\Admin\Views\Shared\_AddAppointment.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\AddNew.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AddManufacturer.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -487,6 +491,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Category\" />
+    <Folder Include="Areas\Admin\Views\Manufacturer\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using CM.Data.Migrations;
 using CM.Model.Models;
 using CM.Model.Models.Account;
+using CM.Model.Models.Medicine;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
@@ -21,6 +22,6 @@ namespace CM.Data.Infrastructure
         }
         public DbSet<Person> People { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
-        public DbSet<MedicineCategory> MedicineCategories { get; set; }
+        public DbSet<Category> MedicineCategories { get; set; }
     }
 }

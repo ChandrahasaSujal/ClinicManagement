@@ -1,8 +1,11 @@
-﻿
+﻿@model CM.Data.ViewModels.Medicine.MedicineViewModel
 @{
-    ViewBag.Title = "AddNewMedicine";
+    ViewBag.Title = "Add New Medicine";
 }
 
+<button class="btn btn-outline-primary btn-fw mdi mdi-plus" type="button" data-target="#addCategory" data-toggle="modal">Add Category</button>
+<button class="btn btn-outline-primary btn-fw mdi mdi-plus" type="button" data-target="#addManufacturer" data-toggle="modal">Add Manufacturer</button>
+<hr />
 <div class="col-12">
     <div class="card">
         <div class="card-body">
@@ -11,9 +14,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Name</label>
+                            @Html.LabelFor(model => model.Name, new { @class = "control-label" })
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" />
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "categoryName" } })
                             </div>
                         </div>
                     </div>
@@ -21,12 +24,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category</label>
                             <div class="col-sm-9">
-                                <select class="form-control">
-                                    <option>Category1</option>
-                                    <option>Category2</option>
-                                    <option>Category3</option>
-                                    <option>Category4</option>
-                                </select>
+                               @Html.DropDownListFor(model=>model.SelectedCategory, Model.Categories)
                             </div>
                         </div>
                     </div>
@@ -36,3 +34,6 @@
         </div>
     </div>
 </div>
+
+@Html.Partial("_AddCategory")
+@Html.Partial("_AddManufacturer")
