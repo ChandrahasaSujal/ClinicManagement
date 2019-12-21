@@ -54,7 +54,6 @@ namespace CM.Web.App_Start
 
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
-                kernel.Bind<IAppointmentService>().To<AppointmentService>();
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -71,6 +70,8 @@ namespace CM.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IAppointmentService>().To<AppointmentService>();
+            kernel.Bind<IMedicineService>().To<MedicineService>();
         }        
     }
 }

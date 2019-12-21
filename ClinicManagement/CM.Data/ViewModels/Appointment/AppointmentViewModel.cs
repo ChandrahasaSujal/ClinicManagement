@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace CM.Data.ViewModels.Appointment
 {
-    public class AppointmentViewModel
+    public class AppointmentViewModel : BaseViewModel
     {
-        public Guid Id { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public string Name { get; set; }

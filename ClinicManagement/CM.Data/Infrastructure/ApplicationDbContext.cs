@@ -20,5 +20,7 @@ namespace CM.Data.Infrastructure
             return new ApplicationDbContext();
         }
         public DbSet<Person> People { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<MedicineCategory> MedicineCategories { get; set; }
     }
 }

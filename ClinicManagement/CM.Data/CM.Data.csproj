@@ -113,6 +113,8 @@
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="ViewModels\Account\ManageViewModels.cs" />
     <Compile Include="ViewModels\Appointment\AppointmentViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Medicine\MedicineViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
