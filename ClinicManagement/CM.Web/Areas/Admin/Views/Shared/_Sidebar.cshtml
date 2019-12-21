@@ -40,7 +40,7 @@
             </a>
             <div class="collapse" id="reminder-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("Control Panel", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
@@ -52,7 +52,7 @@
             </a>
             <div class="collapse" id="billing-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("Create", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
@@ -64,7 +64,13 @@
             </a>
             <div class="collapse" id="medicine-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Appointment", "Appointment", "Appointment", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                    <li class="nav-item"> @Html.ActionLink("Add New", "AddNew", "Medicine", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                </ul>
+            </div>
+
+            <div class="collapse" id="medicine-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> @Html.ActionLink("View", "View", "Medicine", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>
