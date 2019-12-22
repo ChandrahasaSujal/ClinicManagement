@@ -17,10 +17,14 @@ namespace CM.Service.Services
         private readonly IMapper _mapper;
         private IEnumerable<Medicine> Medicines { get; set; }
         private IEnumerable<MedicineViewModel> MedicineViewModels { get; set; }
+        private IEnumerable<Category> Categories;
+        private IEnumerable<Manufacturer> Manufacturers;
         public MedicineService(IUnitOfWork unitOfWork,IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            Categories = _unitOfWork.CategoryRepository.Fetch();
+            Manufacturers = _unitOfWork.ManufacturerRepository.Fetch();
         }
         public IEnumerable<MedicineViewModel> GetMedicines()
         {
@@ -35,12 +39,33 @@ namespace CM.Service.Services
                     return MedicineViewModels;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
             }
             return null;
+        }
+
+        public bool AddMedicine(MedicineViewModel medicine)
+        {
+            try
+            {
+                if(medicine!=null)
+                {
+                    medicine.Id = Guid.NewGuid();
+                    var medicineDb = new Medicine();
+                    medicineDb = _mapper.Map(medicine, medicineDb);
+                    _unitOfWork.MedicineRepository.Add(medicineDb);
+                    _unitOfWork.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return false;
         }
     }
 }

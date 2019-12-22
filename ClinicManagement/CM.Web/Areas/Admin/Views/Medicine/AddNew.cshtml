@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Add New Medicine</h4>
-            <form class="form-sample">
+            <form class="form-sample" method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -25,29 +25,29 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.SelectedCategory, new SelectList(ViewBag.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.SelectedCategory, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.CategoryFK, new SelectList(ViewBag.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CategoryFK, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Manufacturer</label>
+                            <label class="col-sm-3 col-form-label">Manufacture</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.SelectedManufacturrer, new SelectList(ViewBag.ManufacturerList, "Value", "Text"), "Select Category", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.SelectedManufacturrer, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(model => model.ManufacturerFk, new SelectList(ViewBag.ManufacturerList, "Value", "Text"), "Select Manufacturer", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ManufacturerFk, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Unit Price</label>
+                            <label class="col-sm-3 col-form-label">Price</label>
                             <div class="col-sm-9">
-                                @Html.EditorFor(model => model.UnitPirce, new { htmlAttributes = new { @class = "form-control"} })
-                                @Html.ValidationMessageFor(model => model.UnitPirce, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -57,8 +57,11 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">MRP</label>
                             <div class="col-sm-9">
-                                @Html.EditorFor(model => model.MRP, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.MRP, "", new { @class = "text-danger" })
+                                <div class="input-group">
+                                    <span class="input-group-prepend"></span>
+                                    @Html.EditorFor(model => model.MRP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.MRP, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -68,6 +71,26 @@
                             <div class="col-sm-9">
                                 @Html.EditorFor(model => model.OrderLevel, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.OrderLevel, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Stock Level</label>
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.StockLevel, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.StockLevel, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @cols = 40, @rows = 2 })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

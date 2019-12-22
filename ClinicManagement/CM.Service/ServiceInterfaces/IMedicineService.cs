@@ -10,5 +10,6 @@ namespace CM.Service.ServiceInterfaces
     public interface IMedicineService
     {
         IEnumerable<MedicineViewModel> GetMedicines();
+        bool AddMedicine(MedicineViewModel medicine);
     }
 }

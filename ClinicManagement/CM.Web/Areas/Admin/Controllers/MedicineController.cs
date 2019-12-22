@@ -24,7 +24,7 @@ namespace CM.Web.Areas.Admin.Controllers
         // GET: Admin/Medicine
         public ActionResult Index()
         {
-            return RedirectToAction("ViewMedicines");
+            return RedirectToAction("View");
         }
 
         public ActionResult AddNew()
@@ -40,7 +40,7 @@ namespace CM.Web.Areas.Admin.Controllers
                     categoryItem.Value = category.Id.ToString();
                     listCategory.Add(categoryItem);
                 }
-                ViewBag.CategoryList = listCategory;
+                TempData["CategoryList"] = listCategory;
 
                 var manufacturerList = _manufacturerService.GetManufacturers();
                 var listmanufacturer = new List<SelectListItem>();
@@ -51,7 +51,7 @@ namespace CM.Web.Areas.Admin.Controllers
                     manufacturerItem.Value = manufacturer.Id.ToString();
                     listmanufacturer.Add(manufacturerItem);
                 }
-                ViewBag.ManufacturerList = listmanufacturer;
+                TempData["ManufacturerList"] = listmanufacturer;
             }
             catch (Exception)
             {
@@ -62,8 +62,20 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNew(string a)
+        public ActionResult AddNew(MedicineViewModel medicine)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _medicineService.AddMedicine(medicine);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return View();
         }
 
@@ -71,6 +83,23 @@ namespace CM.Web.Areas.Admin.Controllers
         public ActionResult ViewMedicines()
         {
             return View();
+        }
+
+        public JsonResult GetMedicines()
+        {
+            try
+            {
+                var medicines = _medicineService.GetMedicines();
+                if (medicines != null)
+                {
+                    return Json(new { success = true, data = medicines }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return Json(new { success = true, message = "Something went wrong Please try again!" }, JsonRequestBehavior.AllowGet);
         }
 
     }

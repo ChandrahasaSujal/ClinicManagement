@@ -12,17 +12,20 @@ namespace CM.Data.ViewModels.Medicine
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public string Name { get; set; }
-        public string Description { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
-        public double UnitPirce { get; set; }
-
+        public double Price { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public double MRP { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public double OrderLevel { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
-        public SelectListItem SelectedCategory { get; set; }
+        public double StockLevel { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
-        public SelectListItem SelectedManufacturrer { get; set; }
+        public Guid CategoryFK { get; set; }
+        public string CategoryName { get; set; }
+        public string ManufacturerName { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
+        public Guid ManufacturerFk { get; set; }
+        public string Description { get; set; }
     }
 }

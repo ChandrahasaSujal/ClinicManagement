@@ -6,6 +6,7 @@ namespace CM.Data.ViewModels.Medicine
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public string ManufacturerName { get; set; }
+        [Display(Name = "Description")]
         public string ManufacturerDescription { get; set; }
     }
 }
