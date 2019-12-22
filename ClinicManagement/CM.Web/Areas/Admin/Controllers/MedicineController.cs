@@ -36,7 +36,7 @@ namespace CM.Web.Areas.Admin.Controllers
                 foreach (var category in categoryList)
                 {
                     var categoryItem = new SelectListItem();
-                    categoryItem.Text = category.Name;
+                    categoryItem.Text = category.CategoryName;
                     categoryItem.Value = category.Id.ToString();
                     listCategory.Add(categoryItem);
                 }
@@ -47,7 +47,7 @@ namespace CM.Web.Areas.Admin.Controllers
                 foreach (var manufacturer in manufacturerList)
                 {
                     var manufacturerItem = new SelectListItem();
-                    manufacturerItem.Text = manufacturer.Name;
+                    manufacturerItem.Text = manufacturer.ManufacturerName;
                     manufacturerItem.Value = manufacturer.Id.ToString();
                     listmanufacturer.Add(manufacturerItem);
                 }

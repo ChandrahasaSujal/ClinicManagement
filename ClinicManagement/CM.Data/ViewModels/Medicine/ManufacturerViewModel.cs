@@ -4,8 +4,8 @@ namespace CM.Data.ViewModels.Medicine
 {
     public class ManufacturerViewModel : BaseViewModel
     {
-        [Required]
-        public string Name { get; set; }
-        public string Description { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
+        public string ManufacturerName { get; set; }
+        public string ManufacturerDescription { get; set; }
     }
 }

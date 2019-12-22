@@ -25,7 +25,24 @@ namespace CM.Service.Services
 
         public bool AddManufacturer(ManufacturerViewModel manufacturer)
         {
-            throw new NotImplementedException();
+            Manufacturer manufacturerDb;
+            try
+            {
+                if (manufacturer != null)
+                {
+                    manufacturerDb = new Manufacturer();
+                    manufacturerDb = _mapper.Map(manufacturer, manufacturerDb);
+                    _unitOfWork.ManufacturerRepository.Add(manufacturerDb);
+                    _unitOfWork.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return false;
         }
 
         public IEnumerable<ManufacturerViewModel> GetManufacturers()

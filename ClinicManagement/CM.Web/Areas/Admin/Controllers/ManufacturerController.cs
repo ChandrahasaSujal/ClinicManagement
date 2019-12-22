@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CM.Data.ViewModels.Medicine;
+using CM.Service.ServiceInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,31 @@ namespace CM.Web.Areas.Admin.Controllers
 {
     public class ManufacturerController : Controller
     {
-        // GET: Admin/Manufacturer
-        public JsonResult Add()
+        private IManufacturerService _manufacturerService;
+        private bool isSuccess = false;
+
+        public ManufacturerController(IManufacturerService manufacturerService)
         {
-            return new JsonResult { };
+            _manufacturerService = manufacturerService;       
+        }
+
+        [HttpPost]
+        public JsonResult Add(ManufacturerViewModel manufacturer)
+        {
+            try
+            {
+                if (manufacturer != null)
+                {
+                    isSuccess = _manufacturerService.AddManufacturer(manufacturer);
+                    return Json(new { success = isSuccess, message = "Added Successfully!", JsonRequestBehavior.AllowGet });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return Json(new { success = isSuccess, message = "Something goes Wrong!", JsonRequestBehavior.AllowGet });
         }
     }
 }

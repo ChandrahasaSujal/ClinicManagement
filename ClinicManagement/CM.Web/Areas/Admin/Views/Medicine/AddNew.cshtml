@@ -41,6 +41,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.UnitPirce, new { @class = "control-label" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.UnitPirce, new { htmlAttributes = new { @class = "form-control", id = "unitPrice" } })
+                                @Html.ValidationMessageFor(model => model.UnitPirce, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-gradient-primary mb-2">Submit</button>
             </form>
@@ -53,58 +62,68 @@
 
 @section scripts{
     <script>
-        function addCategory(form) {
-
+        function addCategory() {
             $.validator.unobtrusive.parse(categoryForm);
-            $.ajax(
-                {
-                type: "POST",
-                url: "Add",
-                data: $("#categoryForm").serialize(),
-                success: function (data)
-                {
-                    if (data.success)
+            if ($("#categoryForm").valid()) {
+                $.ajax(
                     {
-                        $('.modal').modal('hide');
+                        type: "POST",
+                        url: "/Admin/Category/Add",
+                        data: $("#categoryForm").serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                $('.modal').modal('hide');
 
-                        $.notify(data.message,
-                            {
-                            globalPosition: "top center",
-                            className: "success"
-                        })
-                    }
-                },
-                error: function () {
-                    alert("something goes wrong!");
-                }
-            });
+                                $.notify(data.message,
+                                    {
+                                        globalPosition: "top center",
+                                        className: "success"
+                                    })
+                            }
+                        },
+                        error: function () {
+                            alert("something goes wrong!");
+                        }
+                    });
+            }
             return false;
         }
 
         function addManufacturer() {
             $.validator.unobtrusive.parse(manufacturerForm);
-            $.ajax(
-                {
-                    type: "GET",
-                    url: "Manufacturer/Add",
-                    data: $("#manufacturerForm").serialize(),
-                    success: function (data) {
-                        if (data.success) {
-                            $('.modal').modal('hide');
-
-                            $.notify(data.message,
-                                {
-                                    globalPosition: "top center",
-                                    className: "success"
-                                })
+            if ($("#manufacturerForm").valid()) {
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Admin/Manufacturer/Add",
+                        data: $("#manufacturerForm").serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                $('.modal').modal('hide');
+                                location.reload();
+                                $.notify(data.message,
+                                    {
+                                        globalPosition: "top center",
+                                        className: "success"
+                                    })
+                            }
+                        },
+                        error: function () {
+                            alert("something goes wrong!");
                         }
-                    },
-                    error: function () {
-                        alert("something goes wrong!");
-                    }
-                });
+                    });
+            }
             return false;
         }
+
+        function resetCategoryForm() {
+            $("#categoryForm").trigger("reset");
+        }
+
+        function resetManufacturerForm() {
+            $("#manufacturerForm").trigger("reset");
+        }
+
     </script>
 
 }
