@@ -10,7 +10,7 @@ namespace CM.Model.Models.Medicine
     public class Category : BaseEntity
     {
         [Required]
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string CategoryName { get; set; }
+        public string CatrgoryDescription { get; set; }
     }
 }

@@ -65,10 +65,10 @@ namespace CM.Data
                         context.Categories.Add(new Category()
                         {
                             Id = Guid.NewGuid(),
-                            Name = "Others",
+                            CategoryName = "Others",
                             CreatedDate = DateTime.Now,
                             ModifiedDate = DateTime.Now,
-                            Description = "Others",
+                            CatrgoryDescription = "Others",
                             IsDeleted = false
                         });
                         context.SaveChanges();
@@ -79,10 +79,10 @@ namespace CM.Data
                         context.Manufacturers.Add(new Manufacturer()
                         {
                             Id = Guid.NewGuid(),
-                            Name = "Others",
+                            ManufacturerName = "Others",
                             CreatedDate = DateTime.Now,
                             ModifiedDate = DateTime.Now,
-                            Description = "Others",
+                            ManufacturerDescription = "Others",
                             IsDeleted = false
                         });
                         context.SaveChanges();

@@ -14,9 +14,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                            <label class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "categoryName" } })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -25,8 +25,29 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.SelectedCategory, new SelectList(ViewBag.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control", id = "category" })
+                                @Html.DropDownListFor(model => model.SelectedCategory, new SelectList(ViewBag.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.SelectedCategory, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Manufacturer</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.SelectedManufacturrer, new SelectList(ViewBag.ManufacturerList, "Value", "Text"), "Select Category", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SelectedManufacturrer, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Unit Price</label>
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.UnitPirce, new { htmlAttributes = new { @class = "form-control"} })
+                                @Html.ValidationMessageFor(model => model.UnitPirce, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -34,24 +55,33 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Manufacturer</label>
+                            <label class="col-sm-3 col-form-label">MRP</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.SelectedManufacturrer, new SelectList(ViewBag.ManufacturerList, "Value", "Text"), "Select Manufacturer", new { @class = "form-control", id = "manufacturer" })
-                                @Html.ValidationMessageFor(model => model.SelectedManufacturrer, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.MRP, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MRP, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            @Html.LabelFor(model => model.UnitPirce, new { @class = "control-label" })
+                            <label class="col-sm-3 col-form-label">Order Level</label>
                             <div class="col-sm-9">
-                                @Html.EditorFor(model => model.UnitPirce, new { htmlAttributes = new { @class = "form-control", id = "unitPrice" } })
-                                @Html.ValidationMessageFor(model => model.UnitPirce, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.OrderLevel, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OrderLevel, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-gradient-primary mb-2">Submit</button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <button type="submit" class="btn btn-gradient-primary btn-fw">Submit</button>
+                                <button type="reset" class="btn btn-gradient-light btn-fw">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

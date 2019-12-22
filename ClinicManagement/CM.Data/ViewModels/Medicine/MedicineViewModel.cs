@@ -15,6 +15,11 @@ namespace CM.Data.ViewModels.Medicine
         public string Description { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public double UnitPirce { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
+        public double MRP { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
+        public double OrderLevel { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public SelectListItem SelectedCategory { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]

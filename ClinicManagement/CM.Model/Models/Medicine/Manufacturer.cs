@@ -10,7 +10,7 @@ namespace CM.Model.Models.Medicine
     public class Manufacturer : BaseEntity
     {
         [Required]
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string ManufacturerName { get; set; }
+        public string ManufacturerDescription { get; set; }
     }
 }

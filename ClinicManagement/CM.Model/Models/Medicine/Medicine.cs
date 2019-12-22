@@ -12,6 +12,8 @@ namespace CM.Model.Models.Medicine
         public string Name { get; set; }
         public string Description { get; set; }
         public double UnitPirce { get; set; }
+        public double MRP { get; set; }
+        public int OrderLevel { get; set; }
         public Guid CategoryFk { get; set; }
         public Guid ManufacturerFk { get; set; }
         [ForeignKey("CategoryFk")]
