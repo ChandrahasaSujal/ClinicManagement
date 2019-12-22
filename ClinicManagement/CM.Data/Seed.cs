@@ -2,6 +2,7 @@
 using CM.Data.ViewModels;
 using CM.Model.Models;
 using CM.Model.Models.Account;
+using CM.Model.Models.Medicine;
 using CM.Tools;
 using CM.Tools.Enums;
 using Microsoft.AspNet.Identity;
@@ -44,11 +45,11 @@ namespace CM.Data
                     if (result.Succeeded)
                     {
                         //Assign role to user
-                        var user = userManager.FindByName("Chandu");
+                        var user = userManager.FindByName("Admin@clinic.com");
                         if (user == null)
                             throw new Exception("User not found!");
 
-                        var role = roleManager.FindByName("Chandu");
+                        var role = roleManager.FindByName("Admin");
                         if (role == null)
                             throw new Exception("Role not found!");
 
@@ -57,6 +58,34 @@ namespace CM.Data
                             userManager.AddToRole(user.Id, role.Name);
                             context.SaveChanges();
                         }
+                    }
+
+                    if (!context.Categories.Any())
+                    {
+                        context.Categories.Add(new Category()
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = "Others",
+                            CreatedDate = DateTime.Now,
+                            ModifiedDate = DateTime.Now,
+                            Description = "Others",
+                            IsDeleted = false
+                        });
+                        context.SaveChanges();
+                    }
+
+                    if (!context.Manufacturers.Any())
+                    {
+                        context.Manufacturers.Add(new Manufacturer()
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = "Others",
+                            CreatedDate = DateTime.Now,
+                            ModifiedDate = DateTime.Now,
+                            Description = "Others",
+                            IsDeleted = false
+                        });
+                        context.SaveChanges();
                     }
                 }
             }

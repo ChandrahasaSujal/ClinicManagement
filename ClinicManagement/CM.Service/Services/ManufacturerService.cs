@@ -1,5 +1,7 @@
-﻿using CM.Data.Infrastructure;
+﻿using AutoMapper;
+using CM.Data.Infrastructure;
 using CM.Data.ViewModels.Medicine;
+using CM.Model.Models.Medicine;
 using CM.Service.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,14 @@ namespace CM.Service.Services
 {
     public class ManufacturerService : IManufacturerService
     {
-        public IUnitOfWork UnitOfWork { get; set; }
-        public ManufacturerService(IUnitOfWork unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        IEnumerable<Manufacturer> Manufacturers;
+        IEnumerable<ManufacturerViewModel> ManufacturerViewModels;
+        public ManufacturerService(IUnitOfWork unitOfWork,IMapper mapper)
         {
-            UnitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public bool AddManufacturer(ManufacturerViewModel manufacturer)
@@ -24,7 +30,23 @@ namespace CM.Service.Services
 
         public IEnumerable<ManufacturerViewModel> GetManufacturers()
         {
-            throw new NotImplementedException();
+            try
+            {
+                Manufacturers = new List<Manufacturer>();
+                ManufacturerViewModels = new List<ManufacturerViewModel>();
+                Manufacturers = _unitOfWork.ManufacturerRepository.Fetch(c => c.IsDeleted == false);
+                if (Manufacturers != null)
+                {
+                    ManufacturerViewModels = _mapper.Map(Manufacturers, ManufacturerViewModels);
+                    return ManufacturerViewModels;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return null;
         }
     }
 }

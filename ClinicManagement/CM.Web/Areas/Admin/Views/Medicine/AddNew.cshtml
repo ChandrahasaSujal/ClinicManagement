@@ -17,6 +17,7 @@
                             @Html.LabelFor(model => model.Name, new { @class = "control-label" })
                             <div class="col-sm-9">
                                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "categoryName" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -24,7 +25,19 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category</label>
                             <div class="col-sm-9">
-                               @Html.DropDownListFor(model=>model.SelectedCategory, Model.Categories)
+                                @Html.DropDownListFor(model => model.SelectedCategory, new SelectList(ViewBag.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control", id = "category" })
+                                @Html.ValidationMessageFor(model => model.SelectedCategory, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Manufacturer</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.SelectedManufacturrer, new SelectList(ViewBag.ManufacturerList, "Value", "Text"), "Select Manufacturer", new { @class = "form-control", id = "manufacturer" })
+                                @Html.ValidationMessageFor(model => model.SelectedManufacturrer, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -37,3 +50,61 @@
 
 @Html.Partial("_AddCategory")
 @Html.Partial("_AddManufacturer")
+
+@section scripts{
+    <script>
+        function addCategory(form) {
+
+            $.validator.unobtrusive.parse(categoryForm);
+            $.ajax(
+                {
+                type: "POST",
+                url: "Add",
+                data: $("#categoryForm").serialize(),
+                success: function (data)
+                {
+                    if (data.success)
+                    {
+                        $('.modal').modal('hide');
+
+                        $.notify(data.message,
+                            {
+                            globalPosition: "top center",
+                            className: "success"
+                        })
+                    }
+                },
+                error: function () {
+                    alert("something goes wrong!");
+                }
+            });
+            return false;
+        }
+
+        function addManufacturer() {
+            $.validator.unobtrusive.parse(manufacturerForm);
+            $.ajax(
+                {
+                    type: "GET",
+                    url: "Manufacturer/Add",
+                    data: $("#manufacturerForm").serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            $('.modal').modal('hide');
+
+                            $.notify(data.message,
+                                {
+                                    globalPosition: "top center",
+                                    className: "success"
+                                })
+                        }
+                    },
+                    error: function () {
+                        alert("something goes wrong!");
+                    }
+                });
+            return false;
+        }
+    </script>
+
+}

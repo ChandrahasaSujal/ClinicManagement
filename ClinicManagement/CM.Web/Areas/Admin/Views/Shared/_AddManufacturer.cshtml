@@ -19,14 +19,14 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Description, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "manufacturerDescription", @cols = 4, @rows = 8 } })
+                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "manufacturerDescription"} })
                     </div>
 
                 }
             </div>
             <div class="modal-footer">
-                <input type="submit" id="appointmentButton" onclick="Appointment()" class="btn btn-gradient-primary btn-rounded btn-fw" value="Add">
-                <input type="reset" onclick="resetAddAppointmentForm()" class="btn btn-gradient-secondary btn-rounded btn-fw" value="Reset">
+                <input type="submit" id="appointmentButton" onclick="addManufacturer()" class="btn btn-gradient-primary btn-rounded btn-fw" value="Add">
+                <input type="reset" onclick="resetManufacturerForm()" class="btn btn-gradient-secondary btn-rounded btn-fw" value="Reset">
             </div>
         </div>
     </div>

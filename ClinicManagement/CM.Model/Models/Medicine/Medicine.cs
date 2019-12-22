@@ -11,9 +11,12 @@ namespace CM.Model.Models.Medicine
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public Guid CategoryId { get; set; }
         public double UnitPirce { get; set; }
-        [ForeignKey("CategoryId")]
+        public Guid CategoryFk { get; set; }
+        public Guid ManufacturerFk { get; set; }
+        [ForeignKey("CategoryFk")]
         public virtual Category MedicineCategory { get; set; }
+        [ForeignKey("ManufacturerFk")]
+        public virtual Manufacturer Manufacturer { get; set; }
     }
 }

@@ -7,7 +7,7 @@
                 <button class="mdi mdi-close" data-dismiss="modal" />
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("AddAppointment", "Appointment", new { Area = "Admin" }, FormMethod.Post, new { id = "categoryForm" }))
+                @using (Html.BeginForm("Add", "Category", new { Area = "Admin" }, FormMethod.Post, new { id = "categoryForm", onsubmit = "alert('Hi')" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.Id, new { id = "categoryId" })
@@ -19,13 +19,13 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Description, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "categoryDescription", @cols = 4, @rows = 8 } })
+                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "categoryDescription"} })
                     </div>
                 }
             </div>
             <div class="modal-footer">
-                <input type="submit" id="appointmentButton" onclick="Appointment()" class="btn btn-gradient-primary btn-rounded btn-fw" value="Add">
-                <input type="reset" onclick="resetAddAppointmentForm()" class="btn btn-gradient-secondary btn-rounded btn-fw" value="Reset">
+                <input type="submit" class="btn btn-gradient-primary btn-rounded btn-fw" value="Add">
+                <input type="reset" onclick="resetCategoryForm()" class="btn btn-gradient-secondary btn-rounded btn-fw" value="Reset">
             </div>
         </div>
     </div>

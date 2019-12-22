@@ -22,6 +22,7 @@ namespace CM.Data.Infrastructure
         }
         public DbSet<Person> People { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
-        public DbSet<Category> MedicineCategories { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Manufacturer> Manufacturers { get; set; }
     }
 }

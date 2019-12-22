@@ -1,5 +1,6 @@
 ﻿using CM.Model.Models;
 using CM.Model.Models.Account;
+using CM.Model.Models.Medicine;
 using CM.Tools;
 using System;
 using System.Collections.Generic;
@@ -50,17 +51,54 @@ namespace CM.Data.Infrastructure
             }
         }
 
-        private DataRepository<Person> personRepository;
+        private DataRepository<Person> peopleRepository;
 
         public DataRepository<Person> PeopleRepository
         {
             get
             {
-                if (this.personRepository == null)
-                    this.personRepository = new DataRepository<Person>(ApplicationDbContext);
-                return personRepository;
+                if (this.peopleRepository == null)
+                    this.peopleRepository = new DataRepository<Person>(ApplicationDbContext);
+                return peopleRepository;
             }
         }
+
+        private DataRepository<Medicine> medicineRepository;
+
+        public DataRepository<Medicine> MedicineRepository
+        {
+            get
+            {
+                if (this.medicineRepository == null)
+                    this.medicineRepository = new DataRepository<Medicine>(ApplicationDbContext);
+                return medicineRepository;
+            }
+        }
+
+        private DataRepository<Category>categoryRepository;
+
+        public DataRepository<Category> CategoryRepository
+        {
+            get
+            {
+                if (this.categoryRepository == null)
+                    this.categoryRepository = new DataRepository<Category>(ApplicationDbContext);
+                return categoryRepository;
+            }
+        }
+
+        private DataRepository<Manufacturer> manufacturerRepository;
+
+        public DataRepository<Manufacturer> ManufacturerRepository
+        {
+            get
+            {
+                if (this.manufacturerRepository == null)
+                    this.manufacturerRepository = new DataRepository<Manufacturer>(ApplicationDbContext);
+                return manufacturerRepository;
+            }
+        }
+
 
         /// <summary>
         /// Save all th entity changed in context

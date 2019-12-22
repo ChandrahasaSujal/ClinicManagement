@@ -10,6 +10,6 @@ namespace CM.Service.ServiceInterfaces
     public interface ICategoryService
     {
         bool AddCategory(CategoryViewModel category);
-        IEnumerable<ManufacturerViewModel> GetCategories();
+        IEnumerable<CategoryViewModel> GetCategories();
     }
 }
