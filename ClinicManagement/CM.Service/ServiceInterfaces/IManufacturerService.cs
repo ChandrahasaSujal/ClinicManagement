@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CM.Service.ServiceInterfaces
 {
@@ -11,5 +12,6 @@ namespace CM.Service.ServiceInterfaces
     {
         bool AddManufacturer(ManufacturerViewModel manufacturer);
         IEnumerable<ManufacturerViewModel> GetManufacturers();
+        List<SelectListItem> GetManufacturersForDropDownList();
     }
 }

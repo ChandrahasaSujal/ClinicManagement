@@ -36,6 +36,23 @@ namespace CM.Service.Services
                 if (Medicines != null)
                 {
                     MedicineViewModels = _mapper.Map(Medicines, MedicineViewModels);
+                    foreach (var medicine in MedicineViewModels)
+                    {
+                        foreach (var item in Categories)
+                        {
+                            if (item.Id == medicine.CategoryFK)
+                            {
+                                medicine.CategoryName = item.CategoryName;
+                            }
+                        }
+                        foreach (var item in Manufacturers)
+                        {
+                            if (item.Id == medicine.ManufacturerFk)
+                            {
+                                medicine.ManufacturerName = item.ManufacturerName;
+                            }
+                        }
+                    }
                     return MedicineViewModels;
                 }
             }

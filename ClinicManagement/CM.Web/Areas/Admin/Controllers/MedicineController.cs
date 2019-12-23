@@ -31,27 +31,8 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                var categoryList = _categoryService.GetCategories();
-                var listCategory = new List<SelectListItem>();
-                foreach (var category in categoryList)
-                {
-                    var categoryItem = new SelectListItem();
-                    categoryItem.Text = category.CategoryName;
-                    categoryItem.Value = category.Id.ToString();
-                    listCategory.Add(categoryItem);
-                }
-                TempData["CategoryList"] = listCategory;
-
-                var manufacturerList = _manufacturerService.GetManufacturers();
-                var listmanufacturer = new List<SelectListItem>();
-                foreach (var manufacturer in manufacturerList)
-                {
-                    var manufacturerItem = new SelectListItem();
-                    manufacturerItem.Text = manufacturer.ManufacturerName;
-                    manufacturerItem.Value = manufacturer.Id.ToString();
-                    listmanufacturer.Add(manufacturerItem);
-                }
-                TempData["ManufacturerList"] = listmanufacturer;
+                TempData["Categories"] = _categoryService.GetCategoriesForDropDownList();
+                TempData["Manufacturers"] = _manufacturerService.GetManufacturersForDropDownList();
             }
             catch (Exception)
             {
@@ -76,7 +57,7 @@ namespace CM.Web.Areas.Admin.Controllers
 
                 throw;
             }
-            return View();
+            return RedirectToAction("View");
         }
 
         [ActionName("View")]

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CM.Service.Services
 {
@@ -64,6 +65,30 @@ namespace CM.Service.Services
                 throw;
             }
             return null;
+        }
+
+        public List<SelectListItem> GetManufacturersForDropDownList()
+        {
+            List<SelectListItem> manufacturerList = new List<SelectListItem>();
+            try
+            {
+                IEnumerable<Manufacturer> manufacturers = new List<Manufacturer>();
+                manufacturers = _unitOfWork.ManufacturerRepository.Fetch();
+                foreach (var manufacturer in manufacturers)
+                {
+                    manufacturerList.Add(new SelectListItem()
+                    {
+                        Text = manufacturer.ManufacturerName,
+                        Value = manufacturer.Id.ToString()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return manufacturerList;
         }
     }
 }

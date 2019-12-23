@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Add New Medicine</h4>
-            <form class="form-sample" method="post">
+            <form autocomplete="off" class="form-sample" method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -25,7 +25,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Category</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.CategoryFK, new SelectList(ViewBag.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.CategoryFK, new SelectList((System.Collections.IEnumerable)TempData["Categories"], "Value", "Text"), "Select Category", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.CategoryFK, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Manufacture</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ManufacturerFk, new SelectList(ViewBag.ManufacturerList, "Value", "Text"), "Select Manufacturer", new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.ManufacturerFk, new SelectList((System.Collections.IEnumerable)TempData["Manufacturers"], "Value", "Text"), "Select Manufacturer", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.ManufacturerFk, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -109,10 +109,8 @@
         </div>
     </div>
 </div>
-
 @Html.Partial("_AddCategory")
 @Html.Partial("_AddManufacturer")
-
 @section scripts{
     <script>
         function addCategory() {

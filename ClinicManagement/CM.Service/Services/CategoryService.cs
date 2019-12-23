@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CM.Service.Services
 {
@@ -64,6 +65,30 @@ namespace CM.Service.Services
                 throw;
             }
             return null;
+        }
+
+        public List<SelectListItem> GetCategoriesForDropDownList()
+        {
+            List<SelectListItem> categoriesList = new List<SelectListItem>();
+            try
+            {
+                IEnumerable<Category> categories = new List<Category>();
+                categories = _unitOfWork.CategoryRepository.Fetch();
+                foreach (var category in categories)
+                {
+                    categoriesList.Add(new SelectListItem()
+                    {
+                        Text = category.CategoryName,
+                        Value = category.Id.ToString()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return categoriesList;
         }
     }
 }
