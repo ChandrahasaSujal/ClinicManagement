@@ -15,7 +15,8 @@ namespace CM.Web.Areas.Admin.Controllers
         private readonly IMedicineService _medicineService;
         private readonly ICategoryService _categoryService;
         private readonly IManufacturerService _manufacturerService;
-        public MedicineController(IMedicineService medicineService, ICategoryService categoryService,IManufacturerService manufacturerService)
+        private bool isSucces = false;
+        public MedicineController(IMedicineService medicineService, ICategoryService categoryService, IManufacturerService manufacturerService)
         {
             _medicineService = medicineService;
             _categoryService = categoryService;
@@ -31,15 +32,28 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
+                GetDropDownData();
+                ViewBag.SubTitle = "Add New";
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return View();
+        }
+
+        private void GetDropDownData()
+        {
+            try
+            {
                 TempData["Categories"] = _categoryService.GetCategoriesForDropDownList();
                 TempData["Manufacturers"] = _manufacturerService.GetManufacturersForDropDownList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
             }
-            return View();
         }
 
         [HttpPost]
@@ -47,9 +61,13 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (medicine.Id == Guid.Empty)
                 {
                     _medicineService.AddMedicine(medicine);
+                }
+                if (medicine.Id !=Guid.Empty)
+                {
+                    isSucces = _medicineService.EditMedicine(medicine);
                 }
             }
             catch (Exception)
@@ -83,5 +101,37 @@ namespace CM.Web.Areas.Admin.Controllers
             return Json(new { success = true, message = "Something went wrong Please try again!" }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public ActionResult Update(Guid id)
+        {
+            if (id != null)
+            {
+                GetDropDownData();
+                ViewBag.SubTitle = "Update";
+                ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+                var medicine = _medicineService.GetMedicine(id);
+                return PartialView("_AddNewMedicine", medicine);
+            }
+            return RedirectToAction("View");
+        }
+
+        public JsonResult Delete(Guid id)
+        {
+            try
+            {
+                if (id != null)
+                {
+                    isSucces = _medicineService.DeleteMedicine(id);
+                    return Json(new { success = isSucces, message = "Deleted Successfully!" });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return Json(new { success = isSucces, message = "Deleted Successfully!" });
+        }
     }
 }

@@ -1,114 +1,12 @@
-﻿@model CM.Data.ViewModels.Medicine.MedicineViewModel
-@{
+﻿@{
     ViewBag.Title = "Add New Medicine";
 }
 
 <button class="btn btn-outline-primary btn-fw mdi mdi-plus" type="button" data-target="#addCategory" data-toggle="modal">Add Category</button>
 <button class="btn btn-outline-primary btn-fw mdi mdi-plus" type="button" data-target="#addManufacturer" data-toggle="modal">Add Manufacturer</button>
 <hr />
-<div class="col-12">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Add New Medicine</h4>
-            <form autocomplete="off" class="form-sample" method="post">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Name</label>
-                            <div class="col-sm-9">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Category</label>
-                            <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.CategoryFK, new SelectList((System.Collections.IEnumerable)TempData["Categories"], "Value", "Text"), "Select Category", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.CategoryFK, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Manufacture</label>
-                            <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ManufacturerFk, new SelectList((System.Collections.IEnumerable)TempData["Manufacturers"], "Value", "Text"), "Select Manufacturer", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ManufacturerFk, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Price</label>
-                            <div class="col-sm-9">
-                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">MRP</label>
-                            <div class="col-sm-9">
-                                <div class="input-group">
-                                    <span class="input-group-prepend"></span>
-                                    @Html.EditorFor(model => model.MRP, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.MRP, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Order Level</label>
-                            <div class="col-sm-9">
-                                @Html.EditorFor(model => model.OrderLevel, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.OrderLevel, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Stock Level</label>
-                            <div class="col-sm-9">
-                                @Html.EditorFor(model => model.StockLevel, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.StockLevel, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Description</label>
-                            <div class="col-sm-9">
-                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @cols = 40, @rows = 2 })
-                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <div class="col-sm-9">
-                                <button type="submit" class="btn btn-gradient-primary btn-fw">Submit</button>
-                                <button type="reset" class="btn btn-gradient-light btn-fw">Reset</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+@Html.Partial("_AddNewMedicine")
 @Html.Partial("_AddCategory")
 @Html.Partial("_AddManufacturer")
 @section scripts{

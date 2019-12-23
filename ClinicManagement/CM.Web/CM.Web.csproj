@@ -356,10 +356,11 @@
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
     <Content Include="Areas\Admin\Views\Shared\_AddAppointment.cshtml" />
-    <Content Include="Areas\Admin\Views\Medicine\AddNew.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\View.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AddCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AddManufacturer.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AddNewMedicine.cshtml" />
+    <Content Include="Areas\Admin\Views\Medicine\AddNew.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -11,5 +11,8 @@ namespace CM.Service.ServiceInterfaces
     {
         IEnumerable<MedicineViewModel> GetMedicines();
         bool AddMedicine(MedicineViewModel medicine);
+        MedicineViewModel GetMedicine(Guid id);
+        bool EditMedicine(MedicineViewModel medicine);
+        bool DeleteMedicine(Guid id);
     }
 }

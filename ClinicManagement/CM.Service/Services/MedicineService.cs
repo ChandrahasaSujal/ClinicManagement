@@ -19,6 +19,8 @@ namespace CM.Service.Services
         private IEnumerable<MedicineViewModel> MedicineViewModels { get; set; }
         private IEnumerable<Category> Categories;
         private IEnumerable<Manufacturer> Manufacturers;
+        private MedicineViewModel MedicineViewModel { get; set; }
+        private Medicine Medicine { get; set; }
         public MedicineService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
@@ -66,6 +68,70 @@ namespace CM.Service.Services
                 }
             }
             catch (Exception)
+            {
+
+                throw;
+            }
+            return false;
+        }
+
+        public MedicineViewModel GetMedicine(Guid id)
+        {
+            MedicineViewModel = new MedicineViewModel();
+            try
+            {
+                if (id != null)
+                {
+                    Medicine = _unitOfWork.MedicineRepository.FirstOrDefault(m => m.Id == id && m.IsDeleted == false);
+                    MedicineViewModel = _mapper.Map(Medicine, MedicineViewModel);
+                    return MedicineViewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return null;
+        }
+
+        public bool EditMedicine(MedicineViewModel medicine)
+        {
+            try
+            {
+                if (medicine != null)
+                {
+                    Medicine = new Medicine();
+                    Medicine = _unitOfWork.MedicineRepository.FirstOrDefault(m => m.Id == medicine.Id);
+                    Medicine = _mapper.Map(medicine, Medicine);
+                    if (Medicine != null)
+                    {
+                        _unitOfWork.MedicineRepository.Update(Medicine);
+                        _unitOfWork.SaveChanges();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return false;
+        }
+
+        public bool DeleteMedicine(Guid id)
+        {
+            try
+            {
+                if (id!=null)
+                {
+                    _unitOfWork.MedicineRepository.LogicalDelete(id);
+                    _unitOfWork.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
             {
 
                 throw;
