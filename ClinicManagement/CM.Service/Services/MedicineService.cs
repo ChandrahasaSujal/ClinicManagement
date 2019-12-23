@@ -19,7 +19,7 @@ namespace CM.Service.Services
         private IEnumerable<MedicineViewModel> MedicineViewModels { get; set; }
         private IEnumerable<Category> Categories;
         private IEnumerable<Manufacturer> Manufacturers;
-        public MedicineService(IUnitOfWork unitOfWork,IMapper mapper)
+        public MedicineService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -38,20 +38,8 @@ namespace CM.Service.Services
                     MedicineViewModels = _mapper.Map(Medicines, MedicineViewModels);
                     foreach (var medicine in MedicineViewModels)
                     {
-                        foreach (var item in Categories)
-                        {
-                            if (item.Id == medicine.CategoryFK)
-                            {
-                                medicine.CategoryName = item.CategoryName;
-                            }
-                        }
-                        foreach (var item in Manufacturers)
-                        {
-                            if (item.Id == medicine.ManufacturerFk)
-                            {
-                                medicine.ManufacturerName = item.ManufacturerName;
-                            }
-                        }
+                        medicine.CategoryName = Categories.FirstOrDefault(c => c.Id == medicine.CategoryFK)?.CategoryName;
+                        medicine.ManufacturerName = Manufacturers.FirstOrDefault(m => m.Id == medicine.ManufacturerFk)?.ManufacturerName;
                     }
                     return MedicineViewModels;
                 }
@@ -68,7 +56,7 @@ namespace CM.Service.Services
         {
             try
             {
-                if(medicine!=null)
+                if (medicine != null)
                 {
                     medicine.Id = Guid.NewGuid();
                     var medicineDb = new Medicine();
