@@ -7,18 +7,18 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Medicines List</h4>
-            <table id="medicinesTable" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+            <table id="medicinesTable" class="table row-border table-striped hover order-column table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>MRP</th>
-                        <th>Order Level</th>
-                        <th>Stock Level</th>
-                        <th>Category</th>
-                        <th>Manufacturer</th>
-                        <th></th>
-                    </tr>
+                        <th style="text-align:center">Name</th>
+                        <th style="text-align:center">Price</th>
+                        <th style="text-align:center">MRP</th>
+                        <th style="text-align:center">Order Level</th>
+                        <th style="text-align:center">Stock Level</th>
+                        <th style="text-align:center">Category</th>
+                        <th style="text-align:center">Manufacturer</th>
+                        <th style="text-align:center"></th>
+                    </tr>   
                 </thead>
             </table>
         </div>
@@ -28,7 +28,44 @@
 @section scripts{
     <script>
         var medicineTable = $('#medicinesTable').DataTable({
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: 'dt-body-center'
+                },
+                {
+                    targets: 1,
+                    className: 'dt-body-center'
+                },
+                {
+                    targets: 2,
+                    className: 'dt-body-center'
+                },
+                {
+                    targets: 3,
+                    className: 'dt-body-center'
+                },
+                {
+                    targets: 4,
+                    className: 'dt-body-center'
+                },
+                {
+                    targets: 5,
+                    className: 'dt-body-center'
+                },
+                {
+                    targets: 6,
+                    className: 'dt-body-center'
+                }
+            ],
+            serverSide: true,
+            scrollY: 200,
+            paging: false,
+            scroller: {
+                loadingIndicator: true
+            },
             dom: 'Bfrtip',
+            processing: true,
             buttons: [
                 'copy', 'excel', 'pdf', 'print'
             ],
@@ -39,8 +76,13 @@
             },
             "columns": [
                 { "data": "Name" },
-                { "data": "Price" },
-                { "data": "MRP" },
+                {
+                    "data": "Price", render: function (data) {
+                        return "&#x20b9; "+ data;
+                    }},
+                { "data": "MRP", render: function (data) {
+                        return "&#x20b9; "+ data;
+                    }},
                 { "data": "OrderLevel" },
                 { "data": "StockLevel" },
                 { "data": "CategoryName" },
