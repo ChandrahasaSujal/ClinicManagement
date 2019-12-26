@@ -132,7 +132,8 @@
 
         function addToPurchase(id) {
             var itemPurchaseTable = $("#itemPurchaseTable");
-            medicineTable.row('#' + id).remove().draw(false);
+            var row = $("#" + id);
+            medicineTable.row(row).remove().draw(false);
             return false;
         }
     </script>
