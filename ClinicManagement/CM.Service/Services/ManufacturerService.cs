@@ -31,6 +31,7 @@ namespace CM.Service.Services
             {
                 if (manufacturer != null)
                 {
+                    manufacturer.Id = Guid.NewGuid();
                     manufacturerDb = new Manufacturer();
                     manufacturerDb = _mapper.Map(manufacturer, manufacturerDb);
                     _unitOfWork.ManufacturerRepository.Add(manufacturerDb);

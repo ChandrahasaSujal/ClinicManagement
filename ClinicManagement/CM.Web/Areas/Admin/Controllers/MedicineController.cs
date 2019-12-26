@@ -12,15 +12,15 @@ namespace CM.Web.Areas.Admin.Controllers
     [Authorize]
     public class MedicineController : BaseController
     {
-        private readonly IMedicineService _medicineService;
-        private readonly ICategoryService _categoryService;
-        private readonly IManufacturerService _manufacturerService;
+        private readonly IMedicineService medicineService;
+        private readonly ICategoryService categoryService;
+        private readonly IManufacturerService manufacturerService;
         private bool isSucces = false;
         public MedicineController(IMedicineService medicineService, ICategoryService categoryService, IManufacturerService manufacturerService)
         {
-            _medicineService = medicineService;
-            _categoryService = categoryService;
-            _manufacturerService = manufacturerService;
+            this.medicineService = medicineService;
+            this.categoryService = categoryService;
+            this.manufacturerService = manufacturerService;
         }
         // GET: Admin/Medicine
         public ActionResult Index()
@@ -46,8 +46,8 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                TempData["Categories"] = _categoryService.GetCategoriesForDropDownList();
-                TempData["Manufacturers"] = _manufacturerService.GetManufacturersForDropDownList();
+                TempData["Categories"] = categoryService.GetCategoriesForDropDownList();
+                TempData["Manufacturers"] = manufacturerService.GetManufacturersForDropDownList();
             }
             catch (Exception ex)
             {
@@ -63,11 +63,11 @@ namespace CM.Web.Areas.Admin.Controllers
             {
                 if (medicine.Id == Guid.Empty)
                 {
-                    _medicineService.AddMedicine(medicine);
+                    medicineService.AddMedicine(medicine);
                 }
                 if (medicine.Id !=Guid.Empty)
                 {
-                    isSucces = _medicineService.EditMedicine(medicine);
+                    isSucces = medicineService.EditMedicine(medicine);
                 }
             }
             catch (Exception)
@@ -88,7 +88,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                var medicines = _medicineService.GetMedicines();
+                var medicines = medicineService.GetMedicines();
                 if (medicines != null)
                 {
                     return Json(new { success = true, data = medicines }, JsonRequestBehavior.AllowGet);
@@ -110,7 +110,7 @@ namespace CM.Web.Areas.Admin.Controllers
                 ViewBag.SubTitle = "Update";
                 ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 
-                var medicine = _medicineService.GetMedicine(id);
+                var medicine = medicineService.GetMedicine(id);
                 return PartialView("_AddNewMedicine", medicine);
             }
             return RedirectToAction("View");
@@ -122,7 +122,7 @@ namespace CM.Web.Areas.Admin.Controllers
             {
                 if (id != null)
                 {
-                    isSucces = _medicineService.DeleteMedicine(id);
+                    isSucces = medicineService.DeleteMedicine(id);
                     return Json(new { success = isSucces, message = "Deleted Successfully!" });
                 }
             }

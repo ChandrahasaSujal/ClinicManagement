@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Medicine List";
+﻿
+@{
+    ViewBag.Title = "Create";
 }
 
 <div class="col-lg-12 stretch-card">
@@ -16,13 +17,37 @@
                         <th class="text-align-center">Stock Level</th>
                         <th class="text-align-center">Category</th>
                         <th class="text-align-center">Manufacturer</th>
-                        <th ></th>
-                    </tr>   
+                        <th></th>
+                    </tr>
                 </thead>
             </table>
         </div>
     </div>
 </div>
+
+<hr/>
+<div class="col-lg-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Items</h4>
+            <table id="itemPurchaseTable" class="table row-border table-striped hover order-column table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-align-center">Name</th>
+                        <th class="text-align-center">Qty</th>
+                        <th class="text-align-center">Unit Price</th>
+                        <th class="text-align-center">Manufacturer</th>
+                        <th class="text-align-center">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 
 @section scripts{
     <script>
@@ -30,7 +55,13 @@
             columnDefs: [
                 {
                     targets: 0,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).attr('MedicineName', rowData.Name); 
+                        $(td).attr('Price', rowData.Price); 
+                        $(td).attr('MRP', rowData.MRP); 
+                        $(td).attr('Manufacturer', rowData.Manufacturer); 
+                    }
                 },
                 {
                     targets: 1,
@@ -57,16 +88,14 @@
                     className: 'dt-body-center'
                 }
             ],
-            serverSide: true,
             scrollY: 200,
             paging: false,
             scroller: {
                 loadingIndicator: true
             },
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'excel', 'pdf', 'print'
-            ],
+            createdRow: function (row, data) {
+                $(row).attr('id', data.Id);
+            },
             "ajax": {
                 "url": "GetMedicines",
                 "type": "GET",
@@ -76,18 +105,21 @@
                 { "data": "Name" },
                 {
                     "data": "Price", render: function (data) {
-                        return "&#x20b9; "+ data;
-                    }},
-                { "data": "MRP", render: function (data) {
-                        return "&#x20b9; "+ data;
-                    }},
+                        return "&#x20b9; " + data;
+                    }
+                },
+                {
+                    "data": "MRP", render: function (data) {
+                        return "&#x20b9; " + data;
+                    }
+                },
                 { "data": "OrderLevel" },
                 { "data": "StockLevel" },
                 { "data": "CategoryName" },
                 { "data": "ManufacturerName" },
                 {
                     "data": "Id", "render": function (data) {
-                        return "<a href='/Admin/Medicine/Update/" + data + "' class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <a onclick = deleteMedicine('" + data +"') class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
+                        return "<a onclick = addToPurchase('" + data + "') class='btn btn-gradient-primary btn-sm  mdi mdi-plus'>"
                     },
                     "orderable": false,
                     "width": "10px"
@@ -97,27 +129,12 @@
                 "emptyTable": "No data found, please add new <b>Medicine</b> from the menu."
             }
         });
-        function deleteMedicine(medicineId) {
-            if (confirm("Want to Delete?")) {
-                $.ajax({
-                    type: "POST",
-                    url: "Delete",
-                    data: {
-                        "id": medicineId
-                    },
-                    success: function (data) {
-                        if (data.success) {
-                            medicineTable.ajax.reload();
 
-                            $.notify(data.message, {
-                                globalPosition: "top center",
-                                className: "success"
-                            })
-                        }
-                    }
-                });
-                return false;
-            }
+        function addToPurchase(id) {
+            var itemPurchaseTable = $("#itemPurchaseTable");
+            medicineTable.row('#' + id).remove().draw(false);
+            return false;
         }
     </script>
 }
+

@@ -15,12 +15,12 @@ namespace CM.Web.Areas.Admin.Controllers
     [Authorize]
     public class AppointmentController : BaseController
     {
-        private readonly IAppointmentService _appointmentService;
+        private readonly IAppointmentService appointmentService;
         bool isSuccess = false;
 
         public AppointmentController(IAppointmentService appointmentService)
         {
-            this._appointmentService = appointmentService;
+            this.appointmentService = appointmentService;
         }
 
         public ActionResult ViewAppointments()
@@ -33,7 +33,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                isSuccess = _appointmentService.AddAppointment(appointment);
+                isSuccess = appointmentService.AddAppointment(appointment);
             }
             catch (Exception)
             {
@@ -46,7 +46,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                var appointmentData = _appointmentService.GetAppointments();
+                var appointmentData = appointmentService.GetAppointments();
                 if (appointmentData != null)
                 {
                     return Json(new { success = true, data = appointmentData }, JsonRequestBehavior.AllowGet);
@@ -64,7 +64,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             if (id != null)
             {
-                var appointment = _appointmentService.GetAppointment(id);
+                var appointment = appointmentService.GetAppointment(id);
                 if (appointment != null)
                 {
                     return Json(new { success = true, appointee = appointment }, JsonRequestBehavior.AllowGet);
@@ -82,7 +82,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             if (appointment != null)
             {
-                isSuccess = _appointmentService.UpdateAppointment(appointment);
+                isSuccess = appointmentService.UpdateAppointment(appointment);
                 return Json(new { success = true, message = "Updated Successfully!" }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = false, message = "Error in Updating!" }, JsonRequestBehavior.AllowGet);
@@ -93,7 +93,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             if (!string.IsNullOrEmpty(appointmentId) && Guid.TryParse(appointmentId,out Guid appointmentGuid) )
             {
-                isSuccess = _appointmentService.DeleteAppointment(appointmentGuid);
+                isSuccess = appointmentService.DeleteAppointment(appointmentGuid);
                 return Json(new { success = isSuccess, message = "Deleted Successfully!" }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = isSuccess, message = "Something Went Wrong!" }, JsonRequestBehavior.AllowGet);

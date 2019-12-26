@@ -182,6 +182,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="Areas\Admin\Controllers\AppointmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BillingController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManufacturerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MedicineController.cs" />
@@ -361,6 +362,7 @@
     <Content Include="Areas\Admin\Views\Shared\_AddManufacturer.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AddNewMedicine.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\AddNew.cshtml" />
+    <Content Include="Areas\Admin\Views\Billing\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

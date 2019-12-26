@@ -11,11 +11,11 @@ namespace CM.Web.Areas.Admin.Controllers
 {
     public class CategoryController : BaseController
     {
-        private ICategoryService _categoryService;
+        private ICategoryService categoryService;
         private bool isSuccess = false; 
         public CategoryController(ICategoryService categoryService)
         {
-            _categoryService = categoryService;
+            this.categoryService = categoryService;
         }
         
         [HttpPost]
@@ -25,7 +25,7 @@ namespace CM.Web.Areas.Admin.Controllers
             {
                 if (category != null)
                 {
-                    isSuccess = _categoryService.AddCategory(category);
+                    isSuccess = categoryService.AddCategory(category);
                     return Json(new { success = isSuccess, message = "Added Successfully!", JsonRequestBehavior.AllowGet });
                 }
             }

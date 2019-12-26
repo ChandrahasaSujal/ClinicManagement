@@ -31,6 +31,7 @@ namespace CM.Service.Services
             {
                 if (category != null)
                 {
+                    category.Id = Guid.NewGuid();
                     categoryDb = new Category();
                     categoryDb = _mapper.Map(category, categoryDb);
                     _unitOfWork.CategoryRepository.Add(categoryDb);

@@ -22,12 +22,13 @@
                         success: function (data) {
                             if (data.success) {
                                 $('.modal').modal('hide');
-
+                                
                                 $.notify(data.message,
                                     {
                                         globalPosition: "top center",
                                         className: "success"
                                     })
+                                location.reload();
                             }
                         },
                         error: function () {
@@ -55,6 +56,7 @@
                                         globalPosition: "top center",
                                         className: "success"
                                     })
+                                location.reload();
                             }
                         },
                         error: function () {

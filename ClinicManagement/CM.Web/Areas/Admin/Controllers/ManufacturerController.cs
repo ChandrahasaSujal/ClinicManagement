@@ -10,12 +10,12 @@ namespace CM.Web.Areas.Admin.Controllers
 {
     public class ManufacturerController : Controller
     {
-        private IManufacturerService _manufacturerService;
+        private IManufacturerService manufacturerService;
         private bool isSuccess = false;
 
         public ManufacturerController(IManufacturerService manufacturerService)
         {
-            _manufacturerService = manufacturerService;       
+            this.manufacturerService = manufacturerService;       
         }
 
         [HttpPost]
@@ -25,7 +25,7 @@ namespace CM.Web.Areas.Admin.Controllers
             {
                 if (manufacturer != null)
                 {
-                    isSuccess = _manufacturerService.AddManufacturer(manufacturer);
+                    isSuccess = manufacturerService.AddManufacturer(manufacturer);
                     return Json(new { success = isSuccess, message = "Added Successfully!", JsonRequestBehavior.AllowGet });
                 }
             }
