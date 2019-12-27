@@ -141,14 +141,21 @@ namespace CM.Service.Services
                 Appointment = new AppointmentViewModel();
                 Person = new Person();
                 Person = unitOfWork.PeopleRepository.FirstOrDefault(p=>p.Phone == phoneNumber);
-                Appointment =_mapper.Map(Person,Appointment);
+                if (Person != null)
+                {
+                    Appointment = _mapper.Map(Person, Appointment);
+                    return Appointment;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {
 
                 throw;
             }
-            return Appointment;
         }
     }
 }

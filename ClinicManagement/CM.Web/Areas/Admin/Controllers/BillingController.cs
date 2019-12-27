@@ -51,9 +51,12 @@ namespace CM.Web.Areas.Admin.Controllers
             if (!string.IsNullOrEmpty(phoneNumber))
             {
                 var customer = appointmentService.GetCustomerByPhoneNumber(phoneNumber);
-                     return Json(new { success = true, customer = customer }, JsonRequestBehavior.AllowGet);
+                if (customer != null)
+                    return Json(new { success = true, customer = customer }, JsonRequestBehavior.AllowGet);
+                else
+                    return Json(new { success = false, message = "No Customer found for given Phone Number" }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { success = isSuccess }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false, message = "Something Goes Wrong, Please try again!" }, JsonRequestBehavior.AllowGet);
         }
     }
 }
