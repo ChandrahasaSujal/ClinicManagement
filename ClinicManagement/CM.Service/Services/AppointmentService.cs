@@ -13,7 +13,7 @@ namespace CM.Service.Services
 {
     public class AppointmentService : IAppointmentService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
         private Person Person { get; set; }
         private AppointmentViewModel Appointment { get; set; }
@@ -22,7 +22,7 @@ namespace CM.Service.Services
 
         public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = unitOfWork;
+            this.unitOfWork = unitOfWork;
             _mapper = mapper;
         }
         public IEnumerable<AppointmentViewModel> GetAppointments()
@@ -31,7 +31,7 @@ namespace CM.Service.Services
             {
                 People = new List<Person>();
                 Appointments = new List<AppointmentViewModel>();
-                People = _unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false);
+                People = unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false);
                 if (People != null)
                 {
                     Appointments = _mapper.Map(People, Appointments);
@@ -55,8 +55,8 @@ namespace CM.Service.Services
                     Person = new Person();
                     Person = _mapper.Map(appointment, Person);
                     Person.Id = Guid.NewGuid();
-                    _unitOfWork.PeopleRepository.Add(Person);
-                    _unitOfWork.SaveChanges();
+                    unitOfWork.PeopleRepository.Add(Person);
+                    unitOfWork.SaveChanges();
                     return true;
                 }
             }
@@ -74,12 +74,12 @@ namespace CM.Service.Services
                 if (appointment != null)
                 {
                     Person = new Person();
-                    Person = _unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointment.Id);
+                    Person = unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointment.Id);
                     if (Person != null)
                     {
                         Person = _mapper.Map(appointment, Person);
-                        _unitOfWork.PeopleRepository.Update(Person);
-                        _unitOfWork.SaveChanges();
+                        unitOfWork.PeopleRepository.Update(Person);
+                        unitOfWork.SaveChanges();
                         return true;
                     }
                 }
@@ -102,7 +102,7 @@ namespace CM.Service.Services
                         Guid.TryParse(appointmentId, out appointmentGuid);
                         Person = new Person();
                         Appointment = new AppointmentViewModel();
-                        Person = _unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointmentGuid);
+                        Person = unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointmentGuid);
                         Appointment = _mapper.Map(Person, Appointment);
                         return Appointment;
                     }
@@ -122,8 +122,8 @@ namespace CM.Service.Services
             {
                 if (appointmentId != null)
                 {
-                    _unitOfWork.PeopleRepository.LogicalDelete(appointmentId);
-                    _unitOfWork.SaveChanges();
+                    unitOfWork.PeopleRepository.LogicalDelete(appointmentId);
+                    unitOfWork.SaveChanges();
                     return true;
                 }
             }
@@ -132,6 +132,23 @@ namespace CM.Service.Services
 
             }
             return false;
+        }
+
+        public AppointmentViewModel GetCustomerByPhoneNumber(string phoneNumber)
+        {
+            try
+            {
+                Appointment = new AppointmentViewModel();
+                Person = new Person();
+                Person = unitOfWork.PeopleRepository.FirstOrDefault(p=>p.Phone == phoneNumber);
+                Appointment =_mapper.Map(Person,Appointment);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return Appointment;
         }
     }
 }

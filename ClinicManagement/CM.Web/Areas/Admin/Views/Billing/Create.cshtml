@@ -6,6 +6,17 @@
 <div class="col-lg-12 stretch-card">
     <div class="card">
         <div class="card-body">
+            <input required type="text" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" /> <input type="button" onclick="return GetCustomer()" value="GetDetails" />
+            <h4 class="card-title">Customer Detials</h4>
+            <label for="customerName" >Name </label> <input required disabled type="text" id="customerName" />
+            <label for="phone" >Phone </label> <input required disabled type="text" id="phone" />
+            <label for="email" >Email </label> <input required disabled type="text" id="email" />
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
             <h4 class="card-title">Medicines List</h4>
             <table id="medicinesTable" class="table row-border table-striped hover order-column table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
@@ -25,7 +36,7 @@
     </div>
 </div>
 
-<hr/>
+<hr />
 <div class="col-lg-12 stretch-card">
     <div class="card">
         <div class="card-body">
@@ -40,9 +51,7 @@
                         <th class="text-align-center">Price</th>
                     </tr>
                 </thead>
-                <tbody>
-                    
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>
@@ -57,10 +66,10 @@
                     targets: 0,
                     className: 'dt-body-center',
                     createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).attr('MedicineName', rowData.Name); 
-                        $(td).attr('Price', rowData.Price); 
-                        $(td).attr('MRP', rowData.MRP); 
-                        $(td).attr('Manufacturer', rowData.Manufacturer); 
+                        $(td).attr('MedicineName', rowData.Name);
+                        $(td).attr('Price', rowData.Price);
+                        $(td).attr('MRP', rowData.MRP);
+                        $(td).attr('Manufacturer', rowData.Manufacturer);
                     }
                 },
                 {
@@ -135,6 +144,29 @@
             var row = $("#" + id);
             medicineTable.row(row).remove().draw(false);
             return false;
+        }
+
+        function GetCustomer() {
+            var phone = $("#phoneNumber");
+            let isValidPhone = phone[0].checkValidity();
+            if (isValidPhone) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Billing/GetCustomer",
+                    data: {
+                        phoneNumber: phone.val()
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            document.getElementById("customerName").value = data.customer.Name;
+                            document.getElementById("phone").value = data.customer.Phone;
+                            document.getElementById("email").value = data.customer.MailId;
+                        }
+                    }
+                });
+            } else {
+                alert('please enter valid phone number');
+            }
         }
     </script>
 }

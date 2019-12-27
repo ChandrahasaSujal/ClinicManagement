@@ -15,5 +15,6 @@ namespace CM.Service.ServiceInterfaces
         bool AddAppointment(AppointmentViewModel appointment);
         bool UpdateAppointment(AppointmentViewModel appointment);
         bool DeleteAppointment(Guid appointmentId);
+        AppointmentViewModel GetCustomerByPhoneNumber(string phoneNumber);
     }
 }
