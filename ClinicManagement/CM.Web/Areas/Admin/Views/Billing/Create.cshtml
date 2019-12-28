@@ -1,19 +1,26 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Create";
 }
 
 <div class="col-lg-12 stretch-card">
     <div class="card">
         <div class="card-body">
-            <input required type="text" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" /> <input type="button" onclick="return GetCustomer()" value="GetDetails" />
-            <h4 class="card-title">Customer Detials</h4>
-            <label for="customerName" >Name </label> <input required disabled type="text" id="customerName" />
-            <label for="phone" >Phone </label> <input required disabled type="text" id="phone" />
-            <label for="email" >Email </label> <input required disabled type="text" id="email" />
+            <div>
+                <input required type="text" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" />
+                <input type="button" class="btn-sm btn-gradient-info btn-fw" onclick="return GetCustomer()" value="GetDetails" />
+            </div>
+            <div>
+                <h4 class="card-title">Customer Detials</h4>
+                <label for="customerName">Name </label> <input required disabled type="text" id="customerName" />
+                <label for="phone">Phone </label> <input required disabled type="text" id="phone" />
+                <label for="email">Email </label> <input required disabled type="text" id="email" />
+            </div>
         </div>
     </div>
 </div>
+
+<hr />
+
 <div class="col-lg-12 stretch-card">
     <div class="card">
         <div class="card-body">

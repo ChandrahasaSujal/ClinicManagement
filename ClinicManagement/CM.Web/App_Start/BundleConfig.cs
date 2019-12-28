@@ -32,13 +32,13 @@ namespace CM.Web
             #region scripts
 
             bundles.Add(new ScriptBundle("~/assets/jqueryJs").Include(
-                "~/Scripts/jquery-{version}.js",
+                "~/assets/js/jquery-{version}.js",
                 "~/assets/js/moment.min.js",
                 "~/assets/vendors/js/vendor.bundle.base.js"));
 
             bundles.Add(new ScriptBundle("~/assets/validateClientSideScripts").Include(
-                "~/Scripts/jquery.validate.min.js",
-                "~/Scripts/jquery.validate.unobtrusive.min.js"));
+                "~/assets/js/jquery.validate.min.js",
+                "~/assets/js/jquery.validate.unobtrusive.min.js"));
 
             bundles.Add(new ScriptBundle("~/assets/datatablesJs").Include(
                 "~/assets/js/jquery.dataTables.min.js",
