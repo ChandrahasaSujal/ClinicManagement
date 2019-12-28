@@ -5,15 +5,19 @@
 <div class="col-lg-12 stretch-card">
     <div class="card">
         <div class="card-body">
-            <div>
-                <input required type="text" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" />
-                <input type="button" class="btn-sm btn-gradient-info btn-fw" onclick="return GetCustomer()" value="GetDetails" />
-            </div>
-            <div>
-                <h4 class="card-title">Customer Detials</h4>
-                <label for="customerName">Name </label> <input required disabled type="text" id="customerName" />
-                <label for="phone">Phone </label> <input required disabled type="text" id="phone" />
-                <label for="email">Email </label> <input required disabled type="text" id="email" />
+            <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="phoneNumber" class="sr-only">Enter Phone Number</label>
+                    <input required type="text" class="form-control" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" />
+                </div>
+                <input type="button" class="btn btn-info btn-fw mb-2" onclick="return GetCustomer()" value="Get" />
+            </form>
+            <div class="container">
+                <div class="row">
+                    <div class="col"><label for="customerName">Name </label> <input class="form-control" required disabled type="text" id="customerName" /></div>
+                    <div class="col"><label for="phone">Phone </label> <input class="form-control" required disabled type="text" id="phone" /></div>
+                    <div class="col"><label for="email">Email </label> <input class="form-control" required disabled type="text" id="email" /></div>
+                </div>
             </div>
         </div>
     </div>
@@ -135,7 +139,7 @@
                 { "data": "ManufacturerName" },
                 {
                     "data": "Id", "render": function (data) {
-                        return "<a onclick = addToPurchase('" + data + "') class='btn btn-gradient-primary btn-sm  mdi mdi-plus'>"
+                        return "<a onclick = addToPurchase('" + data + "') class='btn-gradient-success btn-fw btn-sm mdi mdi-plus'>"
                     },
                     "orderable": false,
                     "width": "10px"
