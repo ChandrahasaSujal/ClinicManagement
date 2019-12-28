@@ -19,7 +19,9 @@ namespace CM.Web
 
             bundles.Add(new StyleBundle("~/assets/jqueryDatatablesCss").Include(
                         "~/assets/css/jquery.dataTables.min.css",
-                        "~/assets/css/dataTables.bootstrap4.min.css"));
+                        "~/assets/css/dataTables.bootstrap4.min.css",
+                        "~/assets/css/responsive.bootstrap4.min.css",
+                        "~/assets/css/buttons.dataTables.min.css"));
 
             bundles.Add(new StyleBundle("~/assets/dateTimePickerCss").Include(
                        "~/assets/css/datetimepicker.min.css"));
@@ -42,7 +44,15 @@ namespace CM.Web
 
             bundles.Add(new ScriptBundle("~/assets/datatablesJs").Include(
                 "~/assets/js/jquery.dataTables.min.js",
-                "~/assets/js/dataTables.bootstrap4.min.js"));
+                "~/assets/js/dataTables.bootstrap4.min.js",
+                "~/assets/js/dataTables.buttons.min.js",
+                "~/assets/js/buttons.flash.min.js",
+                "~/assets/js/jszip.min.js",
+                "~/assets/js/pdfmake.min.js",
+                "~/assets/js/vfs_fonts.js",
+                "~/assets/js/buttons.html5.min.js",
+                "~/assets/js/buttons.print.min.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/assets/notifyJs").Include(
                "~/assets/js/notify.min.js"));

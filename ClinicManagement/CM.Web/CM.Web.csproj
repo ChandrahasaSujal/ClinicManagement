@@ -205,6 +205,7 @@
     <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\buttons.dataTables.min.css" />
     <Content Include="assets\css\dataTables.bootstrap4.min.css" />
     <Content Include="assets\css\datetimepicker.css" />
     <Content Include="assets\css\datetimepicker.min.css" />
@@ -212,6 +213,7 @@
     <Content Include="assets\css\jquery-ui.min.css" />
     <Content Include="assets\css\jquery.dataTables.css" />
     <Content Include="assets\css\jquery.dataTables.min.css" />
+    <Content Include="assets\css\responsive.bootstrap4.min.css" />
     <Content Include="assets\css\site.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\images\dashboard\circle.png" />
@@ -235,8 +237,12 @@
     <Content Include="assets\images\sprites\jsgrid-icons.png" />
     <Content Include="assets\images\sprites\red.png" />
     <Content Include="assets\images\sprites\yellow.png" />
+    <Content Include="assets\js\buttons.flash.min.js" />
+    <Content Include="assets\js\buttons.html5.min.js" />
+    <Content Include="assets\js\buttons.print.min.js" />
     <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\dataTables.bootstrap4.min.js" />
+    <Content Include="assets\js\dataTables.buttons.min.js" />
     <Content Include="assets\js\datetimepicker.js" />
     <Content Include="assets\js\datetimepicker.min.js" />
     <Content Include="assets\js\file-upload.js" />
@@ -245,6 +251,7 @@
     <Content Include="assets\js\jquery-ui.min.js" />
     <Content Include="assets\js\jquery.dataTables.js" />
     <Content Include="assets\js\jquery.dataTables.min.js" />
+    <Content Include="assets\js\jszip.min.js" />
     <Content Include="assets\js\misc.js" />
     <Content Include="assets\js\moment-with-locales.js" />
     <Content Include="assets\js\moment-with-locales.min.js" />
@@ -252,8 +259,10 @@
     <Content Include="assets\js\moment.min.js" />
     <Content Include="assets\js\notify.min.js" />
     <Content Include="assets\js\off-canvas.js" />
+    <Content Include="assets\js\pdfmake.min.js" />
     <Content Include="assets\js\todo.js" />
     <Content Include="assets\js\todolist.js" />
+    <Content Include="assets\js\vfs_fonts.js" />
     <Content Include="assets\vendors\js\vendor.bundle.base.js" />
     <Content Include="assets\vendors\css\vendor.bundle.base.css" />
     <Content Include="assets\vendors\mdi\css\materialdesignicons.min.css" />
