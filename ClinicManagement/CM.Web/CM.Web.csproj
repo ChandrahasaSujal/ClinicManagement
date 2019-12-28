@@ -254,6 +254,8 @@
     <Content Include="assets\js\off-canvas.js" />
     <Content Include="assets\js\todo.js" />
     <Content Include="assets\js\todolist.js" />
+    <Content Include="assets\vendors\js\vendor.bundle.base.js" />
+    <Content Include="assets\vendors\css\vendor.bundle.base.css" />
     <Content Include="assets\vendors\mdi\css\materialdesignicons.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -363,6 +365,7 @@
     <Content Include="Areas\Admin\Views\Shared\_AddNewMedicine.cshtml" />
     <Content Include="Areas\Admin\Views\Medicine\AddNew.cshtml" />
     <Content Include="Areas\Admin\Views\Billing\Create.cshtml" />
+    <Content Include="assets\vendors\js\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

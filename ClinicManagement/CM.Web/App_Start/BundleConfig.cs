@@ -11,13 +11,11 @@ namespace CM.Web
             #region styles
 
             bundles.Add(new StyleBundle("~/assets/materialDesignIconsCss").Include(
-                        "~/assets/vendors/mdi/css/materialdesignicons.min.css"));
+                        "~/assets/vendors/mdi/css/materialdesignicons.min.css",
+                        "~/assets/vendors/css/vendor.bundle.base.css"));
 
             bundles.Add(new StyleBundle("~/assets/styles").Include(
                         "~/assets/css/style.css"));
-
-            bundles.Add(new StyleBundle("~/assets/bootstrapCss").Include(
-                        "~/Content/bootstrap.min.css"));
 
             bundles.Add(new StyleBundle("~/assets/jqueryDatatablesCss").Include(
                         "~/assets/css/jquery.dataTables.min.css",
@@ -35,10 +33,8 @@ namespace CM.Web
 
             bundles.Add(new ScriptBundle("~/assets/jqueryJs").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/assets/js/moment.min.js"));
-
-            bundles.Add(new ScriptBundle("~/assets/bootstrapJs").Include(
-                "~/Scripts/bootstrap.min.js"));
+                "~/assets/js/moment.min.js",
+                "~/assets/vendors/js/vendor.bundle.base.js"));
 
             bundles.Add(new ScriptBundle("~/assets/validateClientSideScripts").Include(
                 "~/Scripts/jquery.validate.min.js",

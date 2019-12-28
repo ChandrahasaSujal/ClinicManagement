@@ -7,7 +7,6 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/assets/materialDesignIconsCss")
     @Styles.Render("~/assets/styles")
-    @Styles.Render("~/assets/bootstrapCss")
     @Styles.Render("~/assets/siteCss")
     @Styles.Render("~/assets/jqueryDatatablesCss")
     @Styles.Render("~/assets/dateTimePickerCss")
@@ -43,12 +42,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <script src=" https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
-    @Scripts.Render("~/assets/bootstrapJs")
     @Scripts.Render("~/assets/validateClientSideScripts")
     @Scripts.Render("~/assets/dateTimePickerJs")
     @Scripts.Render("~/assets/notifyJs")
-
-
     @Scripts.Render("~/assets/scripts")
     @RenderSection("scripts", required: false)
 </body>

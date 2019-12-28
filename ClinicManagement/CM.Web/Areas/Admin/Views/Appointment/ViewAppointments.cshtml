@@ -1,4 +1,7 @@
-﻿<button class="btn btn-outline-primary btn-fw mdi mdi-plus" type="button" data-target="#addAppointment" data-toggle="modal">Add New</button>
+﻿@{
+    ViewBag.Title = "Appointments";
+}
+<button class="btn btn-outline-primary btn-fw mdi mdi-plus" type="button" data-target="#addAppointment" data-toggle="modal">Add New</button>
 <hr />
 <div class="container">
     <div class="row">
@@ -89,29 +92,29 @@
                     className: 'dt-body-center'
                 }
             ],
-                "ajax": {
-                    "url": "GetAppointments",
-                    "type": "GET",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "Name" },
-                    { "data": "Gender" },
-                    { "data": "DOA" },
-                    { "data": "Phone" },
-                    { "data": "MailId" },
-                    {
-                        "data": "Id", "render": function (data) {
-                            return "<button onclick = getAppointment('" + data + "')  class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button onclick = deleteAppointment('" + data +"') class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
-                        },
-                        "orderable": false,
-                        "width": "10px"
-                    }
-                ],
-                "language": {
-                    "emptyTable": "No data found, please click on <b>Add New</b> Button"
+            "ajax": {
+                "url": "GetAppointments",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": "Name" },
+                { "data": "Gender" },
+                { "data": "DOA" },
+                { "data": "Phone" },
+                { "data": "MailId" },
+                {
+                    "data": "Id", "render": function (data) {
+                        return "<button onclick = getAppointment('" + data + "')  class='btn btn-gradient-primary btn-sm mdi mdi-lead-pencil'style='margin-right:10px' > <button onclick = deleteAppointment('" + data + "') class='btn btn-gradient-primary btn-sm  mdi mdi-delete'>"
+                    },
+                    "orderable": false,
+                    "width": "10px"
                 }
-            });
+            ],
+            "language": {
+                "emptyTable": "No data found, please click on <b>Add New</b> Button"
+            }
+        });
         function setButtonValueBasedOnAppointmentId(id) {
             if (id) {
                 $("#appointmentButton").val("Update");
@@ -135,7 +138,7 @@
 
                             $.notify(data.message, {
                                 globalPosition: "top center",
-                                className:"success"
+                                className: "success"
                             })
                         }
                     }
