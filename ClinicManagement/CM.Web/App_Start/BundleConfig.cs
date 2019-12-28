@@ -25,7 +25,7 @@ namespace CM.Web
                        "~/assets/css/datetimepicker.min.css"));
 
             bundles.Add(new StyleBundle("~/assets/siteCss").Include(
-                        "~/assets/css/Site.css"));
+                        "~/assets/css/site.css"));
 
             #endregion
 
