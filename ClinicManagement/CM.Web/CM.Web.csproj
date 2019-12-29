@@ -230,6 +230,11 @@
     <Content Include="assets\images\favicon.png" />
     <Content Include="assets\images\logo-mini.svg" />
     <Content Include="assets\images\logo.svg" />
+    <Content Include="assets\images\sort_asc.png" />
+    <Content Include="assets\images\sort_asc_disabled.png" />
+    <Content Include="assets\images\sort_both.png" />
+    <Content Include="assets\images\sort_desc.png" />
+    <Content Include="assets\images\sort_desc_disabled.png" />
     <Content Include="assets\images\sprites\blue.png" />
     <Content Include="assets\images\sprites\dark.png" />
     <Content Include="assets\images\sprites\flag.png" />

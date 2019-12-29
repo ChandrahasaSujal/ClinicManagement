@@ -55,6 +55,7 @@
             <table id="itemPurchaseTable" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th class="text-align-center">Name</th>
                         <th class="text-align-center">Qty</th>
                         <th class="text-align-center">Unit Price</th>
@@ -65,11 +66,14 @@
                 <tbody></tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4" class="text-align-right">Total</td>
-                        <td class="text-align-center">&#x20b9;0</td>
+                        <td colspan="5" class="text-align-right">Total</td>
+                        <td id="totalAmmount" class="text-align-center">&#x20b9;0</td>
                     </tr>
                 </tfoot>
             </table>
+            <div class="container text-align-center">
+                <input type="button" class="btn btn-primary margin-around-5px" value="Check Out">
+            </div>
         </div>
     </div>
 </div>
@@ -77,6 +81,7 @@
 
 @section scripts{
     <script>
+        var serialNoCounter = 0;
         var medicineTable = $('#medicinesTable').DataTable({
             columnDefs: [
                 {
@@ -172,6 +177,7 @@
         });
 
         function addToPurchase(id) {
+            
             var itemPurchaseTable = $("#itemPurchaseTable");
             var row = $("#" + id);
             medicineTable.row(row).remove().draw(false);
@@ -183,22 +189,27 @@
             let stockLevel = row[0].cells[4].id;
             let manufacturer = row[0].cells[6].id;
 
+            let serialnoTd = "<td>" + (serialNoCounter = serialNoCounter + 1) + "</td>";
             let medicineNameTd = "<td class='text-align-center'>" + medicineName + "</td>";
-            let qtyTd = "<td class='text-align-center'><input class='qty-cell' id='qty' type='number' value='1' min=1 max='" + stockLevel + "' ></td>";
+            let qtyTd = "<td class='text-align-center'><input onKeyDown='return false' onchange='change(this)' class='qty-cell' id='qty' type='number' value='1' min=1 max='" + stockLevel + "' ></td>";
             let unitPriceTd = "<td class='text-align-center'>" + price + "</td>";
             let manufacturerTd = "<td class='text-align-center'>" + manufacturer + "</td>";
            
             let ammount = "<td class='text-align-center'>&#x20b9;" + price + "</td>";
 
-            let rowItem = '<tr>' + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + '</tr>';
+            let rowItem = '<tr>' + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + '</tr>';
             itemPurchaseTable.append(rowItem);
             //scroll to purchase table
             itemPurchaseTable[0].scrollIntoView({ 
                     behavior: 'smooth' 
-                });
+            });
             return false;
         }
 
+        function change(quantity) {
+            let totalAmmount = $("#totalAmmount");
+            totalAmmount.html(10)
+        }
         function GetCustomer() {
             var phone = $("#phoneNumber");
             let isValidPhone = phone[0].checkValidity();
