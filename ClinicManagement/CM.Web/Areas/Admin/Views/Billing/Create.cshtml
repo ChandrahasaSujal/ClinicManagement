@@ -35,8 +35,8 @@
                         <th class="text-align-center">Name</th>
                         <th class="text-align-center">Price</th>
                         <th class="text-align-center">MRP</th>
-                        <th class="text-align-center">Order Level</th>
                         <th class="text-align-center">Stock Level</th>
+                        <th class="text-align-center">Order Level</th>
                         <th class="text-align-center">Category</th>
                         <th class="text-align-center">Manufacturer</th>
                         <th></th>
@@ -52,17 +52,23 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Items</h4>
-            <table id="itemPurchaseTable" class="table row-border table-striped hover order-column table-bordered dt-responsive nowrap" style="width:100%">
+            <table id="itemPurchaseTable" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th class="text-align-center">Name</th>
                         <th class="text-align-center">Qty</th>
                         <th class="text-align-center">Unit Price</th>
                         <th class="text-align-center">Manufacturer</th>
-                        <th class="text-align-center">Price</th>
+                        <th class="text-align-center">Ammount</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-align-right">Total</td>
+                        <td class="text-align-center">&#x20b9;0</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -76,36 +82,51 @@
                 {
                     targets: 0,
                     className: 'dt-body-center',
-                    createdCell: function (td, cellData, rowData, row, col) {
-                        $(td).attr('MedicineName', rowData.Name);
-                        $(td).attr('Price', rowData.Price);
-                        $(td).attr('MRP', rowData.MRP);
-                        $(td).attr('Manufacturer', rowData.Manufacturer);
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
                     }
                 },
                 {
                     targets: 1,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
+                    }
                 },
                 {
                     targets: 2,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
+                    }
                 },
                 {
                     targets: 3,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
+                    }
                 },
                 {
                     targets: 4,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
+                    }
                 },
                 {
                     targets: 5,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
+                    }
                 },
                 {
                     targets: 6,
-                    className: 'dt-body-center'
+                    className: 'dt-body-center',
+                    createdCell: function (td, cellData) {
+                        $(td).attr('id', cellData);
+                    }
                 }
             ],
             scrollY: 200,
@@ -133,8 +154,8 @@
                         return "&#x20b9; " + data;
                     }
                 },
-                { "data": "OrderLevel" },
                 { "data": "StockLevel" },
+                { "data": "OrderLevel" },
                 { "data": "CategoryName" },
                 { "data": "ManufacturerName" },
                 {
@@ -154,6 +175,27 @@
             var itemPurchaseTable = $("#itemPurchaseTable");
             var row = $("#" + id);
             medicineTable.row(row).remove().draw(false);
+
+            //getting values
+            let medicineName = row[0].cells[0].id;
+            let price = row[0].cells[1].id;
+            let mrp = row[0].cells[2].id;
+            let stockLevel = row[0].cells[4].id;
+            let manufacturer = row[0].cells[6].id;
+
+            let medicineNameTd = "<td class='text-align-center'>" + medicineName + "</td>";
+            let qtyTd = "<td class='text-align-center'><input class='qty-cell' id='qty' type='number' value='1' min=1 max='" + stockLevel + "' ></td>";
+            let unitPriceTd = "<td class='text-align-center'>" + price + "</td>";
+            let manufacturerTd = "<td class='text-align-center'>" + manufacturer + "</td>";
+           
+            let ammount = "<td class='text-align-center'>&#x20b9;" + price + "</td>";
+
+            let rowItem = '<tr>' + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + '</tr>';
+            itemPurchaseTable.append(rowItem);
+            //scroll to purchase table
+            itemPurchaseTable[0].scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
             return false;
         }
 

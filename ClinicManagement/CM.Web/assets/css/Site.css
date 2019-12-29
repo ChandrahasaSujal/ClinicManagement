@@ -11,3 +11,11 @@
 .text-align-center{
     text-align:center
 }
+
+.text-align-right {
+    text-align: right
+}
+
+.qty-cell{
+    width:35px;
+}
