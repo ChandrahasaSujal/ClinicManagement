@@ -55,24 +55,28 @@
             <table id="itemPurchaseTable" class="table table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th class="text-align-center">#</th>
                         <th class="text-align-center">Name</th>
                         <th class="text-align-center">Qty</th>
                         <th class="text-align-center">Unit Price</th>
                         <th class="text-align-center">Manufacturer</th>
-                        <th class="text-align-center">Ammount</th>
+                        <th>Ammount</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
                     <tr>
                         <td colspan="5" class="text-align-right">Total</td>
-                        <td id="totalAmmount" class="text-align-center">&#x20b9;0</td>
+                        <td id="totalAmmount" class="text-align-center" total="0">&#x20b9;0</td>
                     </tr>
                 </tfoot>
             </table>
-            <div class="container text-align-center">
-                <input type="button" class="btn btn-primary margin-around-5px" value="Check Out">
+            <div class="container text-align-center margin-around-5px">
+                <button type="button" class="btn btn-outline-info btn-icon-text">
+                    <i class="mdi mdi-file-check btn-icon-prepend"></i>
+                    Check Out
+                </button>
+
             </div>
         </div>
     </div>
@@ -172,7 +176,7 @@
                 }
             ],
             "language": {
-                "emptyTable": "No data found, please add new <b>Medicine</b> from the menu."
+                "emptyTable": "No other medicines found, please add new <b>Medicine</b> from the menu."
             }
         });
 
@@ -189,13 +193,13 @@
             let stockLevel = row[0].cells[4].id;
             let manufacturer = row[0].cells[6].id;
 
-            let serialnoTd = "<td>" + (serialNoCounter = serialNoCounter + 1) + "</td>";
+            let serialnoTd = "<td class='text-align-center'>" + (serialNoCounter = serialNoCounter + 1) + "</td>";
             let medicineNameTd = "<td class='text-align-center'>" + medicineName + "</td>";
             let qtyTd = "<td class='text-align-center'><input onKeyDown='return false' onchange='change(this)' class='qty-cell' id='qty' type='number' value='1' min=1 max='" + stockLevel + "' ></td>";
-            let unitPriceTd = "<td class='text-align-center'>" + price + "</td>";
+            let unitPriceTd = "<td unitPrice ='" + price + "'class='text-align-center'>&#x20b9;" + price + "</td>";
             let manufacturerTd = "<td class='text-align-center'>" + manufacturer + "</td>";
-           
-            let ammount = "<td class='text-align-center'>&#x20b9;" + price + "</td>";
+
+            let ammount = "<td data-ammount='" + price + "' class='text-align-center'>&#x20b9;" + price + "</td>";
 
             let rowItem = '<tr>' + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + '</tr>';
             itemPurchaseTable.append(rowItem);
@@ -203,13 +207,33 @@
             itemPurchaseTable[0].scrollIntoView({ 
                     behavior: 'smooth' 
             });
+            totalAmmountFunc();
             return false;
         }
 
-        function change(quantity) {
-            let totalAmmount = $("#totalAmmount");
-            totalAmmount.html(10)
+        function change(quantityObj) {
+            let unitPriceObj = $(quantityObj).closest('td').siblings()[2];
+            let unitPrice = $(unitPriceObj).attr('unitprice');
+            let amount = $(quantityObj).closest('td').siblings()[4];
+            let qty = Number(quantityObj.value);
+
+            subTotal = qty * unitPrice;
+            $(amount).attr("data-ammount", subTotal);
+            $(amount).html("&#x20b9;" + subTotal.toFixed(2));
+            totalAmmountFunc();
         }
+
+        function totalAmmountFunc() {
+            let price = 0;
+            $("td[data-ammount]").each(function () {
+                let p = $(this).attr("data-ammount")
+                price = price + Number(p);
+            });
+            let totalAmmount = $("#totalAmmount");
+            totalAmmount.attr("total", price);
+            totalAmmount.html("&#x20b9;" + price.toFixed(2));
+        }
+
         function GetCustomer() {
             var phone = $("#phoneNumber");
             let isValidPhone = phone[0].checkValidity();
