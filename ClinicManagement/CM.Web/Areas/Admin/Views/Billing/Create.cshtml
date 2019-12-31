@@ -72,7 +72,7 @@
                 </tfoot>
             </table>
             <div class="container text-align-center margin-around-5px">
-                <button type="button" class="btn btn-outline-info btn-icon-text">
+                <button onclick="checkOut()" type="button" class="btn btn-outline-info btn-icon-text">
                     <i class="mdi mdi-file-check btn-icon-prepend"></i>
                     Check Out
                 </button>
@@ -85,6 +85,7 @@
 
 @section scripts{
     <script>
+        var customerId;
         var serialNoCounter = 0;
         var medicineTable = $('#medicinesTable').DataTable({
             columnDefs: [
@@ -189,7 +190,6 @@
             //getting values
             let medicineName = row[0].cells[0].id;
             let price = row[0].cells[1].id;
-            let mrp = row[0].cells[2].id;
             let stockLevel = row[0].cells[4].id;
             let manufacturer = row[0].cells[6].id;
 
@@ -201,7 +201,7 @@
 
             let ammount = "<td data-ammount='" + price + "' class='text-align-center'>&#x20b9;" + price + "</td>";
 
-            let rowItem = '<tr>' + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + '</tr>';
+            let rowItem = "<tr id='" + id + "'>" + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + "</tr>";
             itemPurchaseTable.append(rowItem);
             //scroll to purchase table
             itemPurchaseTable[0].scrollIntoView({ 
@@ -246,6 +246,7 @@
                     },
                     success: function (data) {
                         if (data.success) {
+                            customerId = data.customer.Id;
                             document.getElementById("customerName").value = data.customer.Name;
                             document.getElementById("phone").value = data.customer.Phone;
                             document.getElementById("email").value = data.customer.MailId;
@@ -263,6 +264,32 @@
                 });
             } else {
                 alert('please enter valid phone number');
+            }
+        }
+
+        function checkOut() {
+            if ($('#itemPurchaseTable tr').length > 2) {
+                if (customerId) {
+                    var itemTableData = new Array();
+                    $('#itemPurchaseTable tr').each(function (row, tr) {
+                        itemTableData[row] = {
+                            "Id": $(tr).attr('id'),
+                            "Quantity": $(tr).find('td:eq(2)').find(':input[type="number"]').val()
+                        }
+                    });
+
+                    //removing first last row since it is a html table mark up i.e., table header and total row of item purchase table
+                    itemTableData.shift();
+                    itemTableData.pop();
+
+                    debugger
+                }
+                else {
+                    alert('Fill Customer Details');
+                }
+            }
+            else {
+                alert('Please add medicines to checkout');
             }
         }
     </script>
