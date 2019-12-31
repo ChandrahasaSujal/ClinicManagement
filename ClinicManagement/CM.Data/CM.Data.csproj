@@ -114,6 +114,8 @@
     <Compile Include="ViewModels\Account\ManageViewModels.cs" />
     <Compile Include="ViewModels\Appointment\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Billing\InvoiceViewModel.cs" />
+    <Compile Include="ViewModels\Billing\PurchasedItemViewModel.cs" />
     <Compile Include="ViewModels\Medicine\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Medicine\ManufacturerViewModel.cs" />
     <Compile Include="ViewModels\Medicine\MedicineViewModel.cs" />

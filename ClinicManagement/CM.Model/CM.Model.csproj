@@ -80,6 +80,8 @@
   <ItemGroup>
     <Compile Include="Models\Account\ApplicationUser.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Invoice\Invoice.cs" />
+    <Compile Include="Models\Invoice\PurchasedItem.cs" />
     <Compile Include="Models\Medicine\Manufacturer.cs" />
     <Compile Include="Models\Medicine\Medicine.cs" />
     <Compile Include="Models\Medicine\Category.cs" />
