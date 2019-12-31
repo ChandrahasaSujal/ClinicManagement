@@ -240,7 +240,7 @@
             if (isValidPhone) {
                 $.ajax({
                     type: "POST",
-                    url: "/Admin/Billing/GetCustomer",
+                    url: "/Admin/Invoice/GetCustomer",
                     data: {
                         phoneNumber: phone.val()
                     },

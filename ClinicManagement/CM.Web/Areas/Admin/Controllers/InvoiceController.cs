@@ -7,18 +7,18 @@ using System.Web.Mvc;
 
 namespace CM.Web.Areas.Admin.Controllers
 {
-    public class BillingController : Controller
+    public class InvoiceController : Controller
     {
         private readonly IMedicineService  medicineService;
         private readonly IAppointmentService  appointmentService;
         bool isSuccess = false;
 
-        public BillingController(IMedicineService medicineService,IAppointmentService appointmentService)
+        public InvoiceController(IMedicineService medicineService,IAppointmentService appointmentService)
         {
             this.medicineService = medicineService;
             this.appointmentService = appointmentService;
         }
-        // GET: Admin/Billing
+        // GET: Admin/Invoice
         public ActionResult Index()
         {
             return View();
