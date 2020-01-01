@@ -1,5 +1,6 @@
 ﻿using CM.Model.Models;
 using CM.Model.Models.Account;
+using CM.Model.Models.Invoice;
 using CM.Model.Models.Medicine;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace CM.Data.Infrastructure
         DataRepository<Medicine> MedicineRepository { get;}
         DataRepository<Category> CategoryRepository { get;}
         DataRepository<Manufacturer> ManufacturerRepository { get;}
+        DataRepository<Invoice> InvoiceRepository { get;}
+        DataRepository<PurchasedItem> PurchasedItemRepository { get;}
         void SaveChanges();
     }
 }

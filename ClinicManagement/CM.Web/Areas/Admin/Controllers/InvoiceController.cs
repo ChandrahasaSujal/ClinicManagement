@@ -12,11 +12,14 @@ namespace CM.Web.Areas.Admin.Controllers
     {
         private readonly IMedicineService medicineService;
         private readonly IAppointmentService appointmentService;
+        private readonly IInvoiceService invoiceService;
+        private bool isSuccess = false;
 
-        public InvoiceController(IMedicineService medicineService, IAppointmentService appointmentService)
+        public InvoiceController(IMedicineService medicineService, IAppointmentService appointmentService, IInvoiceService invoiceService)
         {
             this.medicineService = medicineService;
             this.appointmentService = appointmentService;
+            this.invoiceService = invoiceService;
         }
         // GET: Admin/Invoice
         public ActionResult Index()
@@ -62,7 +65,16 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult CreateInvoice( InvoiceViewModel order )
         {
-            return View("Create");
+            try
+            {
+                isSuccess = invoiceService.CreateInvoice(order);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return View();
         }
     }
 }

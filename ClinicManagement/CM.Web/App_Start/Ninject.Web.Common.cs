@@ -74,6 +74,7 @@ namespace CM.Web.App_Start
             kernel.Bind<IMedicineService>().To<MedicineService>();
             kernel.Bind<ICategoryService>().To<CategoryService>();
             kernel.Bind<IManufacturerService>().To<ManufacturerService>();
+            kernel.Bind<IInvoiceService>().To<InvoiceService>();
         }        
     }
 }

@@ -275,8 +275,8 @@
                     
                     $('#itemPurchaseTable tr').each(function (row, tr) {
                         itemTableData[row] = {
-                            
-                            "Id": $(tr).attr('id'),
+                            "MedicineFk": $(tr).attr('id'),
+                            "UnitPrice": $(tr).find('td:eq(3)').attr('unitPrice'),
                             "Quantity": $(tr).find('td:eq(2)').find(':input[type="number"]').val()
                         }
                     });

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using CM.Data.ViewModels.Appointment;
+using CM.Data.ViewModels.Billing;
 using CM.Data.ViewModels.Medicine;
 using CM.Model.Models;
+using CM.Model.Models.Invoice;
 using CM.Model.Models.Medicine;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,8 @@ namespace CM.Data.Mappings
             CreateMap<Medicine, MedicineViewModel>().ReverseMap();
             CreateMap<Category, CategoryViewModel>().ReverseMap();
             CreateMap<Manufacturer, ManufacturerViewModel>().ReverseMap();
+            CreateMap<Invoice, InvoiceViewModel>().ReverseMap();
+            CreateMap<PurchasedItem, PurchasedItemViewModel>().ReverseMap();
         }
     }
 }

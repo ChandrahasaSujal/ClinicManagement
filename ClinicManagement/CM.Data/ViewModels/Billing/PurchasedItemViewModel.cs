@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CM.Data.ViewModels.Billing
 {
-    public class PurchasedItemViewModel : BaseViewModel
+    public class PurchasedItemViewModel 
     {
         public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public Guid MedicineFk { get; set; }
     }
 }

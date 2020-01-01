@@ -1,5 +1,6 @@
 ﻿using CM.Model.Models;
 using CM.Model.Models.Account;
+using CM.Model.Models.Invoice;
 using CM.Model.Models.Medicine;
 using CM.Tools;
 using System;
@@ -98,6 +99,33 @@ namespace CM.Data.Infrastructure
                 return manufacturerRepository;
             }
         }
+
+        private DataRepository<Invoice> invoiceRepository;
+
+        public DataRepository<Invoice> InvoiceRepository
+        {
+            get
+            {
+                if (this.invoiceRepository == null)
+                    this.invoiceRepository = new DataRepository<Invoice>(ApplicationDbContext);
+                return invoiceRepository;
+            }
+            
+        }
+
+        private DataRepository<PurchasedItem> purchasedItemRepository;
+
+        public DataRepository<PurchasedItem> PurchasedItemRepository
+        {
+            get
+            {
+                if (this.purchasedItemRepository == null)
+                    this.purchasedItemRepository = new DataRepository<PurchasedItem>(ApplicationDbContext);
+                return purchasedItemRepository;
+            }
+
+        }
+
 
 
         /// <summary>

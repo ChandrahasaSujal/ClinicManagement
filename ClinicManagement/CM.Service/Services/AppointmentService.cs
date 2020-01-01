@@ -14,7 +14,7 @@ namespace CM.Service.Services
     public class AppointmentService : IAppointmentService
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper _mapper;
+        private readonly IMapper mapper;
         private Person Person { get; set; }
         private AppointmentViewModel Appointment { get; set; }
         private IEnumerable<Person> People { get; set; }
@@ -23,7 +23,7 @@ namespace CM.Service.Services
         public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
-            _mapper = mapper;
+            this.mapper = mapper;
         }
         public IEnumerable<AppointmentViewModel> GetAppointments()
         {
@@ -34,7 +34,7 @@ namespace CM.Service.Services
                 People = unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false);
                 if (People != null)
                 {
-                    Appointments = _mapper.Map(People, Appointments);
+                    Appointments = mapper.Map(People, Appointments);
                     return Appointments;
                 }
                 return null;
@@ -53,7 +53,7 @@ namespace CM.Service.Services
                 if (appointment != null)
                 {
                     Person = new Person();
-                    Person = _mapper.Map(appointment, Person);
+                    Person = mapper.Map(appointment, Person);
                     Person.Id = Guid.NewGuid();
                     unitOfWork.PeopleRepository.Add(Person);
                     unitOfWork.SaveChanges();
@@ -77,7 +77,7 @@ namespace CM.Service.Services
                     Person = unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointment.Id);
                     if (Person != null)
                     {
-                        Person = _mapper.Map(appointment, Person);
+                        Person = mapper.Map(appointment, Person);
                         unitOfWork.PeopleRepository.Update(Person);
                         unitOfWork.SaveChanges();
                         return true;
@@ -103,7 +103,7 @@ namespace CM.Service.Services
                         Person = new Person();
                         Appointment = new AppointmentViewModel();
                         Person = unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == appointmentGuid);
-                        Appointment = _mapper.Map(Person, Appointment);
+                        Appointment = mapper.Map(Person, Appointment);
                         return Appointment;
                     }
                 }
@@ -143,7 +143,7 @@ namespace CM.Service.Services
                 Person = unitOfWork.PeopleRepository.FirstOrDefault(p=>p.Phone == phoneNumber && p.IsDeleted==false);
                 if (Person != null)
                 {
-                    Appointment = _mapper.Map(Person, Appointment);
+                    Appointment = mapper.Map(Person, Appointment);
                     return Appointment;
                 }
                 else
