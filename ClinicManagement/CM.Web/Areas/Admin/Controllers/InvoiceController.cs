@@ -1,4 +1,5 @@
-﻿using CM.Service.ServiceInterfaces;
+﻿using CM.Data.ViewModels.Billing;
+using CM.Service.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,10 @@ namespace CM.Web.Areas.Admin.Controllers
 {
     public class InvoiceController : Controller
     {
-        private readonly IMedicineService  medicineService;
-        private readonly IAppointmentService  appointmentService;
-        bool isSuccess = false;
+        private readonly IMedicineService medicineService;
+        private readonly IAppointmentService appointmentService;
 
-        public InvoiceController(IMedicineService medicineService,IAppointmentService appointmentService)
+        public InvoiceController(IMedicineService medicineService, IAppointmentService appointmentService)
         {
             this.medicineService = medicineService;
             this.appointmentService = appointmentService;
@@ -57,6 +57,12 @@ namespace CM.Web.Areas.Admin.Controllers
                     return Json(new { success = false, message = "No Customer found for given Phone Number" }, JsonRequestBehavior.AllowGet);
             }
             return Json(new { success = false, message = "Something Goes Wrong, Please try again!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult CreateInvoice( InvoiceViewModel order )
+        {
+            return View("Create");
         }
     }
 }

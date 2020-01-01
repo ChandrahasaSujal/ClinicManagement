@@ -182,7 +182,7 @@
         });
 
         function addToPurchase(id) {
-            
+
             var itemPurchaseTable = $("#itemPurchaseTable");
             var row = $("#" + id);
             medicineTable.row(row).remove().draw(false);
@@ -204,8 +204,8 @@
             let rowItem = "<tr id='" + id + "'>" + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + "</tr>";
             itemPurchaseTable.append(rowItem);
             //scroll to purchase table
-            itemPurchaseTable[0].scrollIntoView({ 
-                    behavior: 'smooth' 
+            itemPurchaseTable[0].scrollIntoView({
+                behavior: 'smooth'
             });
             totalAmmountFunc();
             return false;
@@ -271,8 +271,11 @@
             if ($('#itemPurchaseTable tr').length > 2) {
                 if (customerId) {
                     var itemTableData = new Array();
+                    
+                    
                     $('#itemPurchaseTable tr').each(function (row, tr) {
                         itemTableData[row] = {
+                            
                             "Id": $(tr).attr('id'),
                             "Quantity": $(tr).find('td:eq(2)').find(':input[type="number"]').val()
                         }
@@ -282,7 +285,22 @@
                     itemTableData.shift();
                     itemTableData.pop();
 
-                    debugger
+                    var order = {
+                        "CustomerFk": customerId,
+                        "PurchasedItems": itemTableData
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Invoice/CreateInvoice",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify(order),
+                        success: function (data) {
+                            if (data.success) {
+                                location.reload();
+                            }
+                        }
+                    });
                 }
                 else {
                     alert('Fill Customer Details');

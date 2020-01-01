@@ -9,6 +9,5 @@ namespace CM.Data.ViewModels.Billing
     public class PurchasedItemViewModel : BaseViewModel
     {
         public int Quantity { get; set; }
-        public Guid MedicineFk { get; set; }
     }
 }
