@@ -44,6 +44,7 @@ namespace CM.Service.Services
                         purchasedItem.MedicineFk = item.MedicineFk;
                         purchasedItem.Quantity = item.Quantity;
                         purchasedItem.UnitPrice = item.UnitPrice;
+                        purchasedItem.MRP = item.MRP;
                         unitOfWork.PurchasedItemRepository.Add(purchasedItem);
 
                         // update stock level of medicine

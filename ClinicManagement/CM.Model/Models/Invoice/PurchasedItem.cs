@@ -11,6 +11,7 @@ namespace CM.Model.Models.Invoice
     {
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
+        public decimal MRP { get; set; }
         public Guid MedicineFk { get; set; }
         public Guid InvoiceFk { get; set; }
 

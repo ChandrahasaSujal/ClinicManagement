@@ -190,6 +190,7 @@
             //getting values
             let medicineName = row[0].cells[0].id;
             let price = row[0].cells[1].id;
+            let mrp = row[0].cells[2].id;
             let stockLevel = row[0].cells[4].id;
             let manufacturer = row[0].cells[6].id;
 
@@ -197,12 +198,13 @@
             let medicineNameTd = "<td class='text-align-center'>" + medicineName + "</td>";
             let qtyTd = "<td class='text-align-center'><input onKeyDown='return false' onchange='change(this)' class='qty-cell' id='qty' type='number' value='1' min=1 max='" + stockLevel + "' ></td>";
             let unitPriceTd = "<td unitPrice ='" + price + "'class='text-align-center'>&#x20b9;" + price + "</td>";
+            let mrpTd = "<td style='display: none;' mrp ='" + mrp + "'>&#x20b9;" + mrp + "</td>";
             let manufacturerTd = "<td class='text-align-center'>" + manufacturer + "</td>";
 
             let ammount = "<td data-ammount='" + price + "' class='text-align-center'>&#x20b9;" + price + "</td>";
 
-            let rowItem = "<tr id='" + id + "'>" + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + manufacturerTd + ammount + "</tr>";
-            itemPurchaseTable.append(rowItem);
+            let rowItem = "<tr id='" + id + "'>" + serialnoTd + medicineNameTd + qtyTd + unitPriceTd + mrpTd + manufacturerTd + ammount + "</tr>";
+            itemPurchaseTable.append(rowItem); 
             //scroll to purchase table
             itemPurchaseTable[0].scrollIntoView({
                 behavior: 'smooth'
@@ -277,6 +279,7 @@
                         itemTableData[row] = {
                             "MedicineFk": $(tr).attr('id'),
                             "UnitPrice": $(tr).find('td:eq(3)').attr('unitPrice'),
+                            "MRP": $(tr).find('td:eq(4)').attr('mrp'),
                             "Quantity": $(tr).find('td:eq(2)').find(':input[type="number"]').val()
                         }
                     });
