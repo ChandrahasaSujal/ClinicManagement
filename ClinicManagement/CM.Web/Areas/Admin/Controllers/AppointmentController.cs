@@ -39,7 +39,7 @@ namespace CM.Web.Areas.Admin.Controllers
             {
 
             }
-            return Json(new { success = isSuccess, message = "Added successfully!", JsonRequestBehavior.AllowGet });
+            return Json(new { success = isSuccess, message = "Added successfully!" }, JsonRequestBehavior.AllowGet );
         }
 
         public ActionResult GetAppointments()

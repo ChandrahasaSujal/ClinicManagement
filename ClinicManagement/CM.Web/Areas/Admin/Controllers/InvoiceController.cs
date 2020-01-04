@@ -63,7 +63,7 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateInvoice( InvoiceViewModel order )
+        public JsonResult CreateInvoice( InvoiceViewModel order )
         {
             try
             {
@@ -74,7 +74,7 @@ namespace CM.Web.Areas.Admin.Controllers
 
                 throw;
             }
-            return View();
+            return Json(new { success = isSuccess }, JsonRequestBehavior.AllowGet);
         }
     }
 }

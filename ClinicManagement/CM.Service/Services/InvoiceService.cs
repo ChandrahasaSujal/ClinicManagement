@@ -59,6 +59,7 @@ namespace CM.Service.Services
 
                     unitOfWork.InvoiceRepository.Add(Invoice);
                     unitOfWork.SaveChanges();
+                    return true;
                 }
             }
             catch (Exception)
