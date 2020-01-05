@@ -9,6 +9,6 @@ namespace CM.Service.ServiceInterfaces
 {
     public interface IInvoiceService
     {
-        bool CreateInvoice(InvoiceViewModel order);
+        Guid CreateInvoice(InvoiceViewModel order);
     }
 }

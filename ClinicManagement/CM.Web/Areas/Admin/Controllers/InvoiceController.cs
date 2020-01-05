@@ -13,7 +13,6 @@ namespace CM.Web.Areas.Admin.Controllers
         private readonly IMedicineService medicineService;
         private readonly IAppointmentService appointmentService;
         private readonly IInvoiceService invoiceService;
-        private bool isSuccess = false;
 
         public InvoiceController(IMedicineService medicineService, IAppointmentService appointmentService, IInvoiceService invoiceService)
         {
@@ -67,14 +66,33 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                isSuccess = invoiceService.CreateInvoice(order);
+               var invoiceId = invoiceService.CreateInvoice(order);
+                if (invoiceId!=Guid.Empty)
+                {
+                    return Json(new { success = true, invoiceId = invoiceId }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                return Json(new { success = false }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception)
             {
 
-                throw;
             }
-            return Json(new { success = isSuccess }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GenerateInvoice(Guid invoiceId)
+        {
+            try
+            {
+                
+            }
+            catch (Exception)
+            {
+
+            }
+            return View();
         }
     }
 }

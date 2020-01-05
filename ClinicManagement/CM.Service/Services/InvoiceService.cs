@@ -26,7 +26,7 @@ namespace CM.Service.Services
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
-        public bool CreateInvoice(InvoiceViewModel order)
+        public Guid CreateInvoice(InvoiceViewModel order)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace CM.Service.Services
 
                     unitOfWork.InvoiceRepository.Add(Invoice);
                     unitOfWork.SaveChanges();
-                    return true;
+                    return Invoice.Id;
                 }
             }
             catch (Exception)
@@ -67,7 +67,7 @@ namespace CM.Service.Services
 
                 throw;
             }
-            return false;
+            return Guid.Empty;
         }
     }
 }

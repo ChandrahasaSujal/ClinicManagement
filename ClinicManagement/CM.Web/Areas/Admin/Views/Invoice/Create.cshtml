@@ -8,7 +8,7 @@
             <form class="form-inline">
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="phoneNumber" class="sr-only">Enter Phone Number</label>
-                    <input required type="text" class="form-control" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" />
+                    <input required type="text" autocomplete="off" class="form-control" placeholder="Enter Phone Number" id="phoneNumber" pattern="\d{10}" />
                 </div>
                 <input type="button" class="btn btn-info btn-fw mb-2" onclick="return GetCustomer()" value="Get" />
             </form>
@@ -71,11 +71,10 @@
                 </tfoot>
             </table>
             <div class="container text-align-center margin-around-5px">
-                <button onclick="checkOut()" type="button" class="btn btn-outline-info btn-icon-text">
+                <button id="checkOutButton" onclick="checkOut()" type="button" class="btn btn-outline-info btn-icon-text">
                     <i class="mdi mdi-file-check btn-icon-prepend"></i>
                     Check Out
                 </button>
-
             </div>
         </div>
     </div>
@@ -212,7 +211,7 @@
             else {
                 alert('selected medicine is out of stock');
             }
-            
+
             return false;
         }
 
@@ -274,10 +273,11 @@
 
         function checkOut() {
             if ($('#itemPurchaseTable tr').length > 2) {
+                $('#checkOutButton').attr('disabled', 'disabled');
                 if (customerId) {
                     var itemTableData = new Array();
-                    
-                    
+
+
                     $('#itemPurchaseTable tr').each(function (row, tr) {
                         itemTableData[row] = {
                             "MedicineFk": $(tr).attr('id'),
@@ -302,11 +302,8 @@
                         dataType: "json",
                         data: JSON.stringify(order),
                         success: function (data) {
-                            if (data.success) {
-                                location.reload();
-                                window.print();
-                            }
-                        }
+                            window.location.href = "@Url.Action("GenerateInvoice","Invoice", new { Area = "Admin"})?invoiceId=" + data.invoiceId
+                                       }
                     });
                 }
                 else {

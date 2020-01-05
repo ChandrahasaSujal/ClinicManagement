@@ -9,6 +9,7 @@
     @Styles.Render("~/assets/siteCss")
     @Styles.Render("~/assets/jqueryDatatablesCss")
     @Styles.Render("~/assets/dateTimePickerCss")
+   
 
     <link rel="shortcut icon" href="~/assets/images/favicon.png" />
 </head>
@@ -19,7 +20,7 @@
         <div class="container-fluid page-body-wrapper">
             @Html.Partial("_Sidebar")
 
-            <div class="main-panel">
+            <div class="main-panel" id="mainPanel">
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>

@@ -216,6 +216,7 @@
     <Content Include="assets\css\responsive.bootstrap4.min.css" />
     <Content Include="assets\css\site.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\invoice.template.css" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\dashboard\circle.png" />
     <Content Include="assets\images\dashboard\circle.svg" />
@@ -354,6 +355,7 @@
     <Content Include="Areas\Admin\Views\Medicine\AddNew.cshtml" />
     <Content Include="Areas\Admin\Views\Invoice\Create.cshtml" />
     <Content Include="assets\vendors\js\bootstrap.min.js.map" />
+    <Content Include="Areas\Admin\Views\Invoice\GenerateInvoice.cshtml" />
     <None Include="assets\js\jquery-3.4.1.intellisense.js" />
     <Content Include="assets\js\jquery-3.4.1.js" />
     <Content Include="assets\js\jquery-3.4.1.min.js" />
