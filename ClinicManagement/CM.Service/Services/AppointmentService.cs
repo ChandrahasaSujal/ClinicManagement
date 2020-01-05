@@ -6,8 +6,6 @@ using CM.Service.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CM.Service.Services
 {
@@ -17,25 +15,25 @@ namespace CM.Service.Services
         private readonly IMapper mapper;
         private Person Person { get; set; }
         private AppointmentViewModel Appointment { get; set; }
-        private IEnumerable<Person> People { get; set; }
-        private IEnumerable<AppointmentViewModel> Appointments { get; set; }
+        private List<Person> People { get; set; }
+        private List<AppointmentViewModel> Appointments { get; set; }
 
         public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
-        public IEnumerable<AppointmentViewModel> GetAppointments()
+        public List<AppointmentViewModel> GetAppointments()
         {
             try
             {
                 People = new List<Person>();
                 Appointments = new List<AppointmentViewModel>();
-                People = unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false);
+                People = unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false).ToList();
                 if (People != null)
                 {
                     Appointments = mapper.Map(People, Appointments);
-                    return Appointments;
+                    return Appointments.OrderByDescending(a => a.CreatedDate).ToList();
                 }
                 return null;
             }

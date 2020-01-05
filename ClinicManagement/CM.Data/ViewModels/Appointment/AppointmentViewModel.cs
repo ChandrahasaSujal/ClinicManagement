@@ -28,5 +28,7 @@ namespace CM.Data.ViewModels.Appointment
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public string DOA { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }
