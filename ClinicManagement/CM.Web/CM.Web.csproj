@@ -355,6 +355,7 @@
     <Content Include="Areas\Admin\Views\Invoice\Create.cshtml" />
     <Content Include="assets\vendors\js\bootstrap.min.js.map" />
     <Content Include="Areas\Admin\Views\Invoice\GenerateInvoice.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_InvoiceTemplate.cshtml" />
     <None Include="assets\js\jquery-3.4.1.intellisense.js" />
     <Content Include="assets\js\jquery-3.4.1.js" />
     <Content Include="assets\js\jquery-3.4.1.min.js" />
