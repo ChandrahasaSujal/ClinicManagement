@@ -10,5 +10,6 @@ namespace CM.Service.ServiceInterfaces
     public interface IInvoiceService
     {
         Guid CreateInvoice(InvoiceViewModel order);
+        InvoiceViewModel GetInvoice(Guid invoiceId);
     }
 }

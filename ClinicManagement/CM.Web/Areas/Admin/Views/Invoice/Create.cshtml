@@ -302,7 +302,7 @@
                         dataType: "json",
                         data: JSON.stringify(order),
                         success: function (data) {
-                            window.location.href = "@Url.Action("GenerateInvoice","Invoice", new { Area = "Admin"})?invoiceId=" + data.invoiceId
+                            window.location.href = "@Url.Action("ShowInvoice","Invoice", new { Area = "Admin"})?invoiceId=" + data.invoiceId
                                        }
                     });
                 }

@@ -82,7 +82,22 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult GenerateInvoice(Guid invoiceId)
+        public ActionResult ShowInvoice(Guid invoiceId)
+        {
+            try
+            {
+                var invoice = invoiceService.GetInvoice(invoiceId);
+                return View(invoice);
+            }
+            catch (Exception)
+            {
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult PrintInvoice()
         {
             try
             {

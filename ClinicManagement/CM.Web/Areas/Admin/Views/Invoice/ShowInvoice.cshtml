@@ -1,0 +1,93 @@
+﻿@model CM.Data.ViewModels.Billing.InvoiceViewModel
+@{
+    ViewBag.Title = "Invoice";
+}
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <img style="width:230px;" src="~/assets/images/logo.png" alt="logo" />
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <address>
+                        From:
+                        <p>Name: <b>Dhanvantari Ayurvedic Clinic</b></p>
+                        <p>Ph: 8904115705</p>
+                        <p>Mail-ID: DhanvantariClinic@gmail.com</p>
+                    </address>
+                </div>
+                <div class="col-sm-4">
+                    <address>
+                        Bill To:
+                        <p>Name: <b>Asin</b></p>
+                        <p>Ph: 9904115705</p>
+                    </address>
+                </div>
+                <div class="col-sm-4">
+                    <p>Invoice: <b>@Model.InvoiceNumber</b></p>
+                    <p>Date: @DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss")</p>
+                </div>
+            </div>
+
+            <br/>
+            <br/>
+
+            <div class="table table-bordered">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th class="text-align-center">Product</th>
+                            <th class="text-align-center">Qty</th>
+                            <th class="text-align-center">Price</th>
+                            <th class="text-align-center">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var item in Model.PurchasedItems)
+                        {
+
+                            <tr>
+                                <td>@(count = count + 1)</td>
+                                <td>@item.MedicineName</td>
+                                <td class="text-align-center">@item.Quantity</td>
+                                <td class="text-align-center">@item.UnitPrice</td>
+                                <td>@(item.Quantity * item.UnitPrice) </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="text-align-right" colspan="4">Total</td>
+                            <td>@Model.Total</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="row margin-top-5px">
+                <div class="col-12">
+                    <p>Note to recipients:</p>
+                    <p class="text-muted text-small">
+                        Nothing Note here
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-footer">
+        <div class="text-align-center">
+            <a href="@Url.Action("PrintInvoice","Invoice", new { Area="Admin"})" target="_blank" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+</div>

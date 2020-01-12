@@ -12,5 +12,6 @@ namespace CM.Data.ViewModels.Billing
         public decimal UnitPrice { get; set; }
         public decimal MRP { get; set; }
         public Guid MedicineFk { get; set; }
+        public string MedicineName { get; set; }
     }
 }

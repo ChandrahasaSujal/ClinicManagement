@@ -424,6 +424,20 @@ namespace CM.Data.Infrastructure
             }
         }
 
+
+        public T LastOrDefault(bool isIncludeLogicalDeleted=false)
+        {
+            try
+            {
+                return Fetch(isIncludeLogicalDeleted).LastOrDefault();
+            }
+            catch (Exception ex)
+            {
+                GlobalUtil.LogException(ex);
+                return null;
+            }
+        }
+
         /// <summary>
         /// Method fetches the first or default item from the datacontext based on the the supplied function.
         /// </summary>

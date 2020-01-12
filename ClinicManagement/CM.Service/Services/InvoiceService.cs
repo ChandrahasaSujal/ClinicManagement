@@ -18,6 +18,7 @@ namespace CM.Service.Services
         private readonly IMapper mapper;
         private Invoice Invoice { get; set; }
         private List<PurchasedItem> PurchasedItems { get; set; }
+        private PurchasedItem PurchasedItem { get; set; }
         private InvoiceViewModel InvoiceViewModel { get; set; }
         private List<PurchasedItemViewModel> PurchasedItemViewModels { get; set; }
 
@@ -34,12 +35,15 @@ namespace CM.Service.Services
                 {
                     Invoice = new Invoice();
                     Invoice.Id = Guid.NewGuid();
+                    var dateTimeNow = DateTime.Now.ToString("yyMMddHHmmssfff");
+                    Invoice.InvoiceNumber = dateTimeNow + DateTime.Now.Day;
                     Invoice.CustomerFk = order.CustomerFk;
 
                     foreach (var item in order.PurchasedItems)
                     {
                         PurchasedItem purchasedItem = new PurchasedItem();
                         purchasedItem.Id = Guid.NewGuid();
+                        
                         purchasedItem.InvoiceFk = Invoice.Id;
                         purchasedItem.MedicineFk = item.MedicineFk;
                         purchasedItem.Quantity = item.Quantity;
@@ -68,6 +72,45 @@ namespace CM.Service.Services
                 throw;
             }
             return Guid.Empty;
+        }
+
+        public InvoiceViewModel GetInvoice(Guid invoiceId)
+        {
+            try
+            {
+                Invoice = new Invoice();
+                Invoice = unitOfWork.InvoiceRepository.FirstOrDefault(p => p.Id == invoiceId);
+                PurchasedItems = unitOfWork.PurchasedItemRepository.Fetch(p=>p.InvoiceFk==Invoice.Id).ToList();
+                return GetInvoiceViewModel(Invoice, PurchasedItems);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private InvoiceViewModel GetInvoiceViewModel(Invoice invoice, List<PurchasedItem> purchasedItems)
+        {
+            try
+            {
+                InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
+                invoiceViewModel = mapper.Map(invoice, invoiceViewModel);
+                List<PurchasedItemViewModel> purchasedItemsViewModels = new List<PurchasedItemViewModel>();
+
+                purchasedItemsViewModels = mapper.Map(purchasedItems, purchasedItemsViewModels);
+                invoiceViewModel.PurchasedItems = mapper.Map(purchasedItems, purchasedItemsViewModels);
+                foreach (var item in invoiceViewModel.PurchasedItems)
+                {
+                    item.MedicineName = unitOfWork.MedicineRepository.FirstOrDefault(m=>m.Id==item.MedicineFk).Name;
+                    decimal subTotal = item.Quantity * item.UnitPrice;
+                    invoiceViewModel.Total += subTotal;
+                }
+                return invoiceViewModel;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }
