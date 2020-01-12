@@ -11,6 +11,7 @@ namespace CM.Data.ViewModels.Billing
         public Guid CustomerFk { get; set; }
         public string InvoiceNumber { get; set; }
         public decimal Total { get; set; }
+        public DateTime CreatedDate { get; set; }
         public List<PurchasedItemViewModel> PurchasedItems { get; set; }
     }
 }

@@ -4,7 +4,6 @@
 }
 
 <div class="container">
-
     <div class="card">
         <div class="card-header">
             <img style="width:230px;" src="~/assets/images/logo.png" alt="logo" />
@@ -29,13 +28,11 @@
                 </div>
                 <div class="col-sm-4">
                     <p>Invoice: <b>@Model.InvoiceNumber</b></p>
-                    <p>Date: @DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss")</p>
+                    <p>Date: @Model.CreatedDate.ToString("dd-MM-yyyy hh:mm:ss")</p>
                 </div>
             </div>
-
-            <br/>
-            <br/>
-
+            <br />
+            <br />
             <div class="table table-bordered">
                 <table class="table">
                     <thead>
@@ -80,14 +77,10 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="card-footer">
-        <div class="text-align-center">
-            <a href="@Url.Action("PrintInvoice","Invoice", new { Area="Admin"})" target="_blank" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i></a>
+        <div class="card-footer">
+            <div class="text-align-center">
+                <a href="@Url.Action("PrintInvoice","Invoice", new { Area="Admin", invoiceId = Model.Id})" target="_blank" class="btn btn-gradient-info btn-icon-text"> Print <i class="mdi mdi-printer btn-icon-append"></i></a>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="clearfix"></div>
 </div>

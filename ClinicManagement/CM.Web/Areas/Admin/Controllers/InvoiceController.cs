@@ -97,17 +97,17 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult PrintInvoice()
+        public ActionResult PrintInvoice(Guid invoiceId)
         {
             try
             {
-                
+                var invoice = invoiceService.GetInvoice(invoiceId);
+                return View(invoice);
             }
             catch (Exception)
             {
-
+                return null;
             }
-            return View();
         }
     }
 }
