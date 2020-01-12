@@ -216,6 +216,7 @@
     <Content Include="assets\css\responsive.bootstrap4.min.css" />
     <Content Include="assets\css\site.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\images\logo-Black-White.png" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\dashboard\circle.png" />
     <Content Include="assets\images\dashboard\circle.svg" />
@@ -230,9 +231,6 @@
     <Content Include="assets\images\faces\face1.jpg" />
     <Content Include="assets\images\favicon.png" />
     <Content Include="assets\images\logo-mini.svg" />
-    <Content Include="assets\images\logo.svg">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="assets\images\sort_asc.png" />
     <Content Include="assets\images\sort_asc_disabled.png" />
     <Content Include="assets\images\sort_both.png" />

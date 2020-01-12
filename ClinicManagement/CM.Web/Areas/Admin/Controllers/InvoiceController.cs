@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CM.Web.Areas.Admin.Controllers
 {
+    [Authorize]
     public class InvoiceController : Controller
     {
         private readonly IMedicineService medicineService;
@@ -82,18 +83,24 @@ namespace CM.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult ShowInvoice(Guid invoiceId)
+        public ActionResult ShowInvoice(string invoiceId)
         {
             try
             {
-                var invoice = invoiceService.GetInvoice(invoiceId);
-                return View(invoice);
+                if (Guid.TryParse(invoiceId, out Guid invoiceGuid))
+                {
+                    var invoice = invoiceService.GetInvoice(invoiceGuid);
+                    return View(invoice);
+                }
+                else
+                {
+                    throw new HttpException();
+                }
             }
             catch (Exception)
             {
-
+                throw new HttpException();
             }
-            return View();
         }
 
         [HttpGet]
