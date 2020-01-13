@@ -186,6 +186,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManufacturerController.cs" />
     <Compile Include="Areas\Admin\Controllers\MedicineController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MedicineStockController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\CSharpRazorViewEngine.cs" />
@@ -407,6 +408,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Areas\Admin\Views\Manufacturer\" />
+    <Folder Include="Areas\Admin\Views\MedicineStock\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

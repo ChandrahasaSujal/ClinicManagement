@@ -34,7 +34,7 @@ namespace CM.Service.Services
             {
                 Medicines = new List<Medicine>();
                 MedicineViewModels = new List<MedicineViewModel>();
-                Medicines = _unitOfWork.MedicineRepository.Fetch(m => m.IsDeleted == false);
+                Medicines = _unitOfWork.MedicineRepository.Fetch();
                 if (Medicines != null)
                 {
                     MedicineViewModels = _mapper.Map(Medicines, MedicineViewModels);

@@ -43,12 +43,19 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -81,11 +88,13 @@
     <Compile Include="ServiceInterfaces\IInvoiceService.cs" />
     <Compile Include="ServiceInterfaces\IManufacturerService.cs" />
     <Compile Include="ServiceInterfaces\IMedicineService.cs" />
+    <Compile Include="ServiceInterfaces\IMedicineStockService.cs" />
     <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
     <Compile Include="Services\ManufacturerService.cs" />
     <Compile Include="Services\MedicineService.cs" />
+    <Compile Include="Services\MedicineStockService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CM.Data\CM.Data.csproj">
