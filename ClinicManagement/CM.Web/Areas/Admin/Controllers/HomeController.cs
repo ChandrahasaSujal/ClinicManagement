@@ -1,4 +1,6 @@
 ﻿using CM.Data.Infrastructure;
+using CM.Data.ViewModels.DashBoard;
+using CM.Service.ServiceInterfaces;
 using CM.Web.Common;
 using System;
 using System.Collections.Generic;
@@ -11,9 +13,20 @@ namespace CM.Web.Areas.Admin.Controllers
     [Authorize]
     public class HomeController : BaseController
     {
+        private readonly IDashBoardService dashBoardService;
+        public HomeController(IDashBoardService dashBoardService)
+        {
+            this.dashBoardService = dashBoardService;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            DashBoardViewModel dashBoard = new DashBoardViewModel();
+            dashBoard.DayAppointments = dashBoardService.GetDayAppointments();
+            dashBoard.WeeklyAppointments = dashBoardService.GetWeeklyAppointments();
+            dashBoard.WeeklySales = dashBoardService.GetWeeklySales();
+
+            return View(dashBoard);
         }
     }
 }
