@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CM.Data.Infrastructure;
+using CM.Data.ViewModels.DashBoard;
 using CM.Service.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        public DashBoardViewModel DashBoard { get; set; }
 
         public DashBoardService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -21,51 +23,34 @@ namespace CM.Service.Services
             this.mapper = mapper;
         }
 
-        public int GetDayAppointments()
+        public DashBoardViewModel GetDataForDashBoard()
         {
+            DashBoard = new DashBoardViewModel();
             try
             {
+                
                 var todayDate = DateTime.Now;
-                var NumberOfAppointments = (from People in unitOfWork.PeopleRepository.Fetch().ToList()
-                                            where People.CreatedDate.Day == todayDate.Day
-                                            && People.CreatedDate.Month == todayDate.Month
-                                            && People.CreatedDate.Year == todayDate.Year
-                                            select People).Count();
-                return NumberOfAppointments;
+                var appointmentsList = unitOfWork.PeopleRepository.Fetch().ToList();
+                DashBoard.DayAppointments = (from people in appointmentsList
+                                             where people.CreatedDate.Day == todayDate.Day
+                                             && people.CreatedDate.Month == todayDate.Month
+                                             && people.CreatedDate.Year == todayDate.Year
+                                             select people).Count();
+
+                DashBoard.WeeklyAppointments = (from people in appointmentsList
+                                                where people.CreatedDate >= DateTime.Now.AddDays(-7)
+                                                select people).Count();
+
+
+                DashBoard.WeeklySales = (from purchases in unitOfWork.PurchasedItemRepository.Fetch().ToList()
+                                         where purchases.CreatedDate >= DateTime.Now.AddDays(-7)
+                                         select purchases.Quantity * purchases.UnitPrice).Sum();
             }
             catch (Exception ex)
             {
-
-                throw;
+                
             }
-        }
-
-        public int GetWeeklyAppointments()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-            return 0;
-        }
-
-        public decimal GetWeeklySales()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-            return 0;
+            return DashBoard;
         }
     }
 }

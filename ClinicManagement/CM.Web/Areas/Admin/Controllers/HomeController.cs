@@ -21,10 +21,7 @@ namespace CM.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            DashBoardViewModel dashBoard = new DashBoardViewModel();
-            dashBoard.DayAppointments = dashBoardService.GetDayAppointments();
-            dashBoard.WeeklyAppointments = dashBoardService.GetWeeklyAppointments();
-            dashBoard.WeeklySales = dashBoardService.GetWeeklySales();
+            var dashBoard = dashBoardService.GetDataForDashBoard();
 
             return View(dashBoard);
         }
