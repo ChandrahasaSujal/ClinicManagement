@@ -45,6 +45,8 @@ namespace CM.Web
             bundles.Add(new ScriptBundle("~/assets/datatablesJs").Include(
                 "~/assets/js/jquery.dataTables.min.js",
                 "~/assets/js/dataTables.bootstrap4.min.js",
+                "~/assets/js/dataTables.responsive.min.js",
+                "~/assets/js/responsive.bootstrap4.min.js",
                 "~/assets/js/dataTables.buttons.min.js",
                 "~/assets/js/buttons.flash.min.js",
                 "~/assets/js/jszip.min.js",

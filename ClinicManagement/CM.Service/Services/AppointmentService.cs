@@ -13,15 +13,18 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        private readonly IEmailService emailService;
+
         private Person Person { get; set; }
         private AppointmentViewModel Appointment { get; set; }
         private List<Person> People { get; set; }
         private List<AppointmentViewModel> Appointments { get; set; }
 
-        public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper)
+        public AppointmentService(IUnitOfWork unitOfWork, IMapper mapper,IEmailService emailService)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.emailService = emailService;
         }
         public List<AppointmentViewModel> GetAppointments()
         {
@@ -55,6 +58,11 @@ namespace CM.Service.Services
                     Person.Id = Guid.NewGuid();
                     unitOfWork.PeopleRepository.Add(Person);
                     unitOfWork.SaveChanges();
+
+                    //send appointment as an email to the owner
+
+                    emailService.SendAppointmentEMail(appointment);
+
                     return true;
                 }
             }

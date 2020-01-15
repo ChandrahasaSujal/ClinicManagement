@@ -250,6 +250,7 @@
     <Content Include="assets\js\dashboard.js" />
     <Content Include="assets\js\dataTables.bootstrap4.min.js" />
     <Content Include="assets\js\dataTables.buttons.min.js" />
+    <Content Include="assets\js\dataTables.responsive.min.js" />
     <Content Include="assets\js\datetimepicker.js" />
     <Content Include="assets\js\datetimepicker.min.js" />
     <Content Include="assets\js\file-upload.js" />
@@ -267,6 +268,7 @@
     <Content Include="assets\js\notify.min.js" />
     <Content Include="assets\js\off-canvas.js" />
     <Content Include="assets\js\pdfmake.min.js" />
+    <Content Include="assets\js\responsive.bootstrap4.min.js" />
     <Content Include="assets\js\todo.js" />
     <Content Include="assets\js\todolist.js" />
     <Content Include="assets\js\vfs_fonts.js" />

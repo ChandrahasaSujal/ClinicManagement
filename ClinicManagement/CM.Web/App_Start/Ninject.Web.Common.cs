@@ -77,6 +77,7 @@ namespace CM.Web.App_Start
             kernel.Bind<IInvoiceService>().To<InvoiceService>();
             kernel.Bind<IMedicineStockService>().To<MedicineStockService>();
             kernel.Bind<IDashBoardService>().To<DashBoardService>();
+            kernel.Bind<IEmailService>().To<EmailService>();
         }        
     }
 }

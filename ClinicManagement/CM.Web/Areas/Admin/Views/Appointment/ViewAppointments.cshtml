@@ -30,11 +30,8 @@
 
 
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <script>
-        function Appointment() {
+        function appointment() {
             var submitButtonValue = $("#appointmentButton").val();
             switch (submitButtonValue) {
                 case "Add":
@@ -128,13 +125,14 @@
 
             $.validator.unobtrusive.parse(addAppointmentForm);
             if ($("#addAppointmentForm").valid()) {
+                debugger;
+                $('.modal').modal('hide');
                 $.ajax({
                     type: "POST",
                     url: addAppointmentForm.action,
                     data: $("#addAppointmentForm").serialize(),
                     success: function (data) {
                         if (data.success) {
-                            $('.modal').modal('hide');
                             appointMentTable.ajax.reload();
 
                             $.notify(data.message, {
@@ -142,6 +140,9 @@
                                 className: "success"
                             })
                         }
+                    },
+                    error: function () {
+
                     }
                 });
             }
