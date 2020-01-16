@@ -20,6 +20,6 @@ namespace CM.Model.Models
         [Required]
         public string Phone { get; set; }
 
-        public string MailId { get; set; }
+        public string EMail { get; set; }
     }
 }

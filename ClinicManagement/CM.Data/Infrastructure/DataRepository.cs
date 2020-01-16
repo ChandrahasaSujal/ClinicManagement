@@ -598,7 +598,7 @@ namespace CM.Data.Infrastructure
                 }
                 PropertyInfo modifiedOn = entity.GetType().GetProperty("ModifiedDate");
                 if (modifiedOn != null)
-                    modifiedOn.SetValue(entity, DateTime.UtcNow, null);
+                    modifiedOn.SetValue(entity, DateTime.Now, null);
             }
             catch (Exception ex)
             {

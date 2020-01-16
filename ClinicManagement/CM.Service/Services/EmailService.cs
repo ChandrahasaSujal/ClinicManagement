@@ -62,7 +62,7 @@ namespace CM.Service.Services
                     body = bodyStreamReader.ReadToEnd();
                 }
 
-                var messageBody = string.Format(body, appointment.Name, appointment.Gender.ToString(), appointment.DOA, appointment.Phone, appointment.MailId ?? string.Empty);
+                var messageBody = string.Format(body, appointment.Name, appointment.Gender.ToString(), appointment.DOA, appointment.Phone, appointment.EMail ?? string.Empty);
                 // Replace the actual data with {data} from html file.
 
                 mail.Body = messageBody;

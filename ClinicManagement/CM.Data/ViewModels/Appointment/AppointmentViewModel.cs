@@ -24,11 +24,9 @@ namespace CM.Data.ViewModels.Appointment
 
         [Display(Name ="Email-ID")]
         [RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Please Provide Valid Email")]
-        public string MailId { get; set; }
+        public string EMail { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         public string DOA { get; set; }
-
-        public DateTime CreatedDate { get; set; }
     }
 }

@@ -32,11 +32,11 @@ namespace CM.Service.Services
             {
                 People = new List<Person>();
                 Appointments = new List<AppointmentViewModel>();
-                People = unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false).ToList();
+                People = unitOfWork.PeopleRepository.Fetch(p => p.IsDeleted == false).OrderByDescending(a => a.CreatedDate).ToList();
                 if (People != null)
                 {
                     Appointments = mapper.Map(People, Appointments);
-                    return Appointments.OrderByDescending(a => a.CreatedDate).ToList();
+                    return Appointments;
                 }
                 return null;
             }

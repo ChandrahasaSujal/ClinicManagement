@@ -100,7 +100,7 @@
                 { "data": "Gender" },
                 { "data": "DOA" },
                 { "data": "Phone" },
-                { "data": "MailId" },
+                { "data": "EMail" },
                 {
                     "data": "Id", "render": function (data) {
                         return "<button onclick = getAppointment('" + data + "')  class='btn-sm btn-warning btn-fw mdi mdi-lead-pencil'style='margin-right:10px' > <button onclick = deleteAppointment('" + data + "') class='btn-sm btn-danger btn-fw mdi mdi-delete'>"
@@ -162,7 +162,7 @@
                         $("#appointeeName").val(data.appointee.Name);
                         $("#appointeeGender").val(data.appointee.Gender);
                         $("#appointeePhone").val(data.appointee.Phone);
-                        $("#appointeeMailId").val(data.appointee.MailId);
+                        $("#appointeeMailId").val(data.appointee.EMail);
                         $("#appointeeDOA").val(data.appointee.DOA);
                         setButtonValueBasedOnAppointmentId(data.appointee.Id);
                         $('.modal').modal('show');
