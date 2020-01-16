@@ -125,12 +125,12 @@
 
             $.validator.unobtrusive.parse(addAppointmentForm);
             if ($("#addAppointmentForm").valid()) {
-                debugger;
+                let appointmentFormData = $("#addAppointmentForm").serialize();
                 $('.modal').modal('hide');
                 $.ajax({
                     type: "POST",
                     url: addAppointmentForm.action,
-                    data: $("#addAppointmentForm").serialize(),
+                    data: appointmentFormData,
                     success: function (data) {
                         if (data.success) {
                             appointMentTable.ajax.reload();

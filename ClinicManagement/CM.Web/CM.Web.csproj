@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\EmailTemplates\AppointmentTemplate.html" />
     <Content Include="assets\css\buttons.dataTables.min.css" />
     <Content Include="assets\css\dataTables.bootstrap4.min.css" />
     <Content Include="assets\css\datetimepicker.css" />
@@ -406,7 +407,6 @@
     <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Areas\Admin\Views\Manufacturer\" />

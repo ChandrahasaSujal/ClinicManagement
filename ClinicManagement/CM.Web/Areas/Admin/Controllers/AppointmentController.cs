@@ -33,10 +33,7 @@ namespace CM.Web.Areas.Admin.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    isSuccess = appointmentService.AddAppointment(appointment);
-                }
+                isSuccess = appointmentService.AddAppointment(appointment);
             }
             catch (Exception)
             {

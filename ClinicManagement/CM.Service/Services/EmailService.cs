@@ -55,21 +55,20 @@ namespace CM.Service.Services
                 mail.IsBodyHtml = true;
                 mail.BodyEncoding = UTF8Encoding.UTF8;
 
-                mail.Subject = "Appointment at" + DateTime.Now.ToString("ddMMyy hh:mm::ss");
-                var emailBody = File.ReadAllText(@"~/CM.Service/EmailTemplates/AppointmentTemplate.html");
+                mail.Subject = "Appointment at " + DateTime.Now.ToString("dd-MMM-yy hh:mm:ss");
+                string body;
+                using (var bodyStreamReader = new StreamReader(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/EmailTemplates/AppointmentTemplate.html")))
+                {
+                    body = bodyStreamReader.ReadToEnd();
+                }
 
+                var messageBody = string.Format(body, appointment.Name, appointment.Gender.ToString(), appointment.DOA, appointment.Phone, appointment.MailId ?? string.Empty);
                 // Replace the actual data with {data} from html file.
 
-                emailBody.Replace("{name}", appointment.Name);
-                emailBody.Replace("{gender}", appointment.Gender.ToString());
-                emailBody.Replace("{DOA}", appointment.DOA);
-                emailBody.Replace("{PhoneNumber}", appointment.Phone);
-                emailBody.Replace("{email}", appointment.MailId??string.Empty);
-
-                mail.Body = emailBody;
+                mail.Body = messageBody;
                 return mail;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
