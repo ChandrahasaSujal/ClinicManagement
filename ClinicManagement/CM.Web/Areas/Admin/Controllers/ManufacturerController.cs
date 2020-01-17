@@ -12,6 +12,7 @@ namespace CM.Web.Areas.Admin.Controllers
     {
         private IManufacturerService manufacturerService;
         private bool isSuccess = false;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         public ManufacturerController(IManufacturerService manufacturerService)
         {
@@ -29,10 +30,9 @@ namespace CM.Web.Areas.Admin.Controllers
                     return Json(new { success = isSuccess, message = "Added Successfully!", JsonRequestBehavior.AllowGet });
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = isSuccess, message = "Something goes Wrong!", JsonRequestBehavior.AllowGet });
         }

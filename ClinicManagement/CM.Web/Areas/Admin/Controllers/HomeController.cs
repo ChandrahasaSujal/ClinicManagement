@@ -14,6 +14,8 @@ namespace CM.Web.Areas.Admin.Controllers
     public class HomeController : BaseController
     {
         private readonly IDashBoardService dashBoardService;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public HomeController(IDashBoardService dashBoardService)
         {
             this.dashBoardService = dashBoardService;
@@ -21,9 +23,17 @@ namespace CM.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var dashBoard = dashBoardService.GetDataForDashBoard();
+            try
+            {
+                var dashBoard = dashBoardService.GetDataForDashBoard();
 
-            return View(dashBoard);
+                return View(dashBoard);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Something bad happened");
+            }
+            return View();
         }
     }
 }

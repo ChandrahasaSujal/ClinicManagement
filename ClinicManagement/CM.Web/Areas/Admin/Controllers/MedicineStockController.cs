@@ -11,6 +11,8 @@ namespace CM.Web.Areas.Admin.Controllers
     public class MedicineStockController : Controller
     {
         private readonly IMedicineStockService medicineStockService;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public MedicineStockController(IMedicineStockService medicineStockService)
         {
             this.medicineStockService = medicineStockService;       
@@ -25,8 +27,9 @@ namespace CM.Web.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-                throw new HttpException();
+                logger.Error(ex, "Something bad happened");
             }
+            return null;
         }
     }
 }

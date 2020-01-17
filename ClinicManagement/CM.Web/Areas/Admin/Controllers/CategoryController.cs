@@ -12,7 +12,9 @@ namespace CM.Web.Areas.Admin.Controllers
     public class CategoryController : BaseController
     {
         private ICategoryService categoryService;
-        private bool isSuccess = false; 
+        private bool isSuccess = false;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public CategoryController(ICategoryService categoryService)
         {
             this.categoryService = categoryService;
@@ -29,10 +31,9 @@ namespace CM.Web.Areas.Admin.Controllers
                     return Json(new { success = isSuccess, message = "Added Successfully!", JsonRequestBehavior.AllowGet });
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = isSuccess, message = "Something goes Wrong!", JsonRequestBehavior.AllowGet });
         }

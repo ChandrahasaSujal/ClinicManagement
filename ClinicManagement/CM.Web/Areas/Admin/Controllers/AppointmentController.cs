@@ -4,6 +4,7 @@ using CM.Model.Models;
 using CM.Service.ServiceInterfaces;
 using CM.Tools.Enums;
 using CM.Web.Common;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace CM.Web.Areas.Admin.Controllers
     {
         private readonly IAppointmentService appointmentService;
         bool isSuccess = false;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         public AppointmentController(IAppointmentService appointmentService)
         {
@@ -35,9 +37,9 @@ namespace CM.Web.Areas.Admin.Controllers
             {
                 isSuccess = appointmentService.AddAppointment(appointment);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = isSuccess, message = "Added successfully!" }, JsonRequestBehavior.AllowGet );
         }
@@ -54,7 +56,7 @@ namespace CM.Web.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = false }, JsonRequestBehavior.AllowGet);
         }
@@ -62,17 +64,24 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult GetAppointment(string id)
         {
-            if (id != null)
+            try
             {
-                var appointment = appointmentService.GetAppointment(id);
-                if (appointment != null)
+                if (id != null)
                 {
-                    return Json(new { success = true, appointee = appointment }, JsonRequestBehavior.AllowGet);
+                    var appointment = appointmentService.GetAppointment(id);
+                    if (appointment != null)
+                    {
+                        return Json(new { success = true, appointee = appointment }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = "Something went Wrong!" }, JsonRequestBehavior.AllowGet);
+                    }
                 }
-                else
-                {
-                    return Json(new { success = false, message = "Something went Wrong!"}, JsonRequestBehavior.AllowGet);
-                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = false, message = "Something went Wrong!" }, JsonRequestBehavior.AllowGet);
         }
@@ -80,10 +89,17 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult UpdateAppointment(AppointmentViewModel appointment)
         {
-            if (appointment != null)
+            try
             {
-                isSuccess = appointmentService.UpdateAppointment(appointment);
-                return Json(new { success = true, message = "Updated Successfully!" }, JsonRequestBehavior.AllowGet);
+                if (appointment != null)
+                {
+                    isSuccess = appointmentService.UpdateAppointment(appointment);
+                    return Json(new { success = true, message = "Updated Successfully!" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = false, message = "Error in Updating!" }, JsonRequestBehavior.AllowGet);
         }
@@ -91,10 +107,17 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult DeleteAppointment(string appointmentId)
         {
-            if (!string.IsNullOrEmpty(appointmentId) && Guid.TryParse(appointmentId,out Guid appointmentGuid) )
+            try
             {
-                isSuccess = appointmentService.DeleteAppointment(appointmentGuid);
-                return Json(new { success = isSuccess, message = "Deleted Successfully!" }, JsonRequestBehavior.AllowGet);
+                if (!string.IsNullOrEmpty(appointmentId) && Guid.TryParse(appointmentId, out Guid appointmentGuid))
+                {
+                    isSuccess = appointmentService.DeleteAppointment(appointmentGuid);
+                    return Json(new { success = isSuccess, message = "Deleted Successfully!" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = isSuccess, message = "Something Went Wrong!" }, JsonRequestBehavior.AllowGet);
         }

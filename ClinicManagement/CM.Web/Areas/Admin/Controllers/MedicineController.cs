@@ -16,6 +16,8 @@ namespace CM.Web.Areas.Admin.Controllers
         private readonly ICategoryService categoryService;
         private readonly IManufacturerService manufacturerService;
         private bool isSucces = false;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public MedicineController(IMedicineService medicineService, ICategoryService categoryService, IManufacturerService manufacturerService)
         {
             this.medicineService = medicineService;
@@ -35,9 +37,9 @@ namespace CM.Web.Areas.Admin.Controllers
                 GetDropDownData();
                 ViewBag.SubTitle = "Add New";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return View();
         }
@@ -51,8 +53,7 @@ namespace CM.Web.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -70,10 +71,9 @@ namespace CM.Web.Areas.Admin.Controllers
                     isSucces = medicineService.EditMedicine(medicine);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return RedirectToAction("View");
         }
@@ -94,9 +94,9 @@ namespace CM.Web.Areas.Admin.Controllers
                     return Json(new { success = true, data = medicines }, JsonRequestBehavior.AllowGet);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = true, message = "Something went wrong Please try again!" }, JsonRequestBehavior.AllowGet);
         }
@@ -104,14 +104,21 @@ namespace CM.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Update(Guid id)
         {
-            if (id != null)
+            try
             {
-                GetDropDownData();
-                ViewBag.SubTitle = "Update";
-                ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+                if (id != null)
+                {
+                    GetDropDownData();
+                    ViewBag.SubTitle = "Update";
+                    ViewBag.Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 
-                var medicine = medicineService.GetMedicine(id);
-                return PartialView("_AddNewMedicine", medicine);
+                    var medicine = medicineService.GetMedicine(id);
+                    return PartialView("_AddNewMedicine", medicine);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Something bad happened");
             }
             return RedirectToAction("View");
         }
@@ -128,8 +135,7 @@ namespace CM.Web.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return Json(new { success = isSucces, message = "Deleted Successfully!" });
         }
