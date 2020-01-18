@@ -146,7 +146,7 @@ namespace CM.Service.Services
             {
                 Appointment = new AppointmentViewModel();
                 Person = new Person();
-                Person = unitOfWork.PeopleRepository.FirstOrDefault(p=>p.Phone == phoneNumber && p.IsDeleted==false);
+                Person = unitOfWork.PeopleRepository.FirstOrDefault(p=>p.PhoneNumber == phoneNumber && p.IsDeleted==false);
                 if (Person != null)
                 {
                     Appointment = mapper.Map(Person, Appointment);

@@ -19,7 +19,7 @@ namespace CM.Model.Models
         [Required]
         public string DOA { get; set; }
         [Required]
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string EMail { get; set; }
     }

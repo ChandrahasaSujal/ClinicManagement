@@ -107,7 +107,7 @@
                 { "data": "Gender" },
                 { "data": "Age" },
                 { "data": "DOA" },
-                { "data": "Phone" },
+                { "data": "PhoneNumber" },
                 { "data": "EMail" },
                 {
                     "data": "Id", "render": function (data) {
@@ -170,7 +170,7 @@
                         $("#appointeeName").val(data.appointee.Name);
                         $("#appointeeGender").val(data.appointee.Gender);
                         $("#appointeeAge").val(data.appointee.Age);
-                        $("#appointeePhone").val(data.appointee.Phone);
+                        $("#appointeePhone").val(data.appointee.PhoneNumber);
                         $("#appointeeMailId").val(data.appointee.EMail);
                         $("#appointeeDOA").val(data.appointee.DOA);
                         setButtonValueBasedOnAppointmentId(data.appointee.Id);
