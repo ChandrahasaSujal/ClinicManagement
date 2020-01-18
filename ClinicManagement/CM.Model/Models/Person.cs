@@ -15,6 +15,8 @@ namespace CM.Model.Models
         [Required]
         public string Gender { get; set; }
         [Required]
+        public int Age { get; set; }
+        [Required]
         public string DOA { get; set; }
         [Required]
         public string Phone { get; set; }

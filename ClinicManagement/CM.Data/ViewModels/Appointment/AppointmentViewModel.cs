@@ -18,6 +18,9 @@ namespace CM.Data.ViewModels.Appointment
         public string Gender { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
+        public int Age { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Please Provide Valid Phone Numbers")]
         public string Phone { get; set; }
 
