@@ -18,6 +18,7 @@ namespace CM.Data.Infrastructure
         private readonly DbContext _dbContext;
         private readonly DbSet<T> _dbSet;
         private bool _isDisposed;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         #endregion "Private Member(s)"
 
@@ -37,7 +38,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -114,7 +115,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return 0;
             }
         }
@@ -131,7 +132,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return 0;
             }
         }
@@ -152,7 +153,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -169,7 +170,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -186,7 +187,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -202,7 +203,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -222,7 +223,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -238,7 +239,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -259,7 +260,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -288,7 +289,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -311,7 +312,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -337,7 +338,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -356,7 +357,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -383,7 +384,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -401,7 +402,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -419,7 +420,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -433,7 +434,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -452,7 +453,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }
@@ -470,7 +471,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -489,7 +490,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -507,7 +508,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
                 return false;
             }
         }
@@ -524,7 +525,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -546,7 +547,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -602,7 +603,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 
@@ -617,7 +618,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);
+                logger.Error(ex, "Something bad happened");
             }
         }
 

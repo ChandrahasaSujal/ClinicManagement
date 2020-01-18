@@ -18,6 +18,8 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         private IEnumerable<Medicine> Medicines { get; set; }
         private IEnumerable<MedicineViewModel> MedicineViewModels { get; set; }
         private IEnumerable<Category> Categories;
@@ -99,7 +101,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-                
+                logger.Error(ex, "Something bad happened");
             }
             fileName = string.Empty;
             return null;

@@ -15,6 +15,8 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public DashBoardViewModel DashBoard { get; set; }
 
         public DashBoardService(IUnitOfWork unitOfWork, IMapper mapper)
@@ -48,7 +50,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-                
+                logger.Error(ex, "Something bad happened");
             }
             return DashBoard;
         }

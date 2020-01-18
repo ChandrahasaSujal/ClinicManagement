@@ -15,6 +15,8 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         private IEnumerable<Medicine> Medicines { get; set; }
         private IEnumerable<MedicineViewModel> MedicineViewModels { get; set; }
         private IEnumerable<Category> Categories;
@@ -48,8 +50,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return null;
         }
@@ -67,10 +68,9 @@ namespace CM.Service.Services
                     _unitOfWork.SaveChanges();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -89,8 +89,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return null;
         }
@@ -114,8 +113,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -133,8 +131,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }

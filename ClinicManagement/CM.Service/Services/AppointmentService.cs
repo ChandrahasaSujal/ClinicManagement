@@ -14,6 +14,7 @@ namespace CM.Service.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IEmailService emailService;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         private Person Person { get; set; }
         private AppointmentViewModel Appointment { get; set; }
@@ -42,7 +43,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
+                logger.Error(ex, "Something bad happened");
             }
             return null;
         }
@@ -66,9 +67,9 @@ namespace CM.Service.Services
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -90,8 +91,9 @@ namespace CM.Service.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -114,10 +116,9 @@ namespace CM.Service.Services
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return null;
         }
@@ -133,9 +134,9 @@ namespace CM.Service.Services
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -159,8 +160,8 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
+                return null;
             }
         }
     }

@@ -13,6 +13,9 @@ namespace CM.Service.Services
 {
     public class EmailService : IEmailService
     {
+
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public bool SendAppointmentEMail(AppointmentViewModel appointee)
         {
             try
@@ -43,6 +46,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex, "Something bad happened");
                 return false;
             }
         }
@@ -70,6 +74,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
+                logger.Error(ex, "Something bad happened");
                 return null;
             }
         }

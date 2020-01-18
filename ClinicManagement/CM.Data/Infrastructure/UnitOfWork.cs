@@ -14,7 +14,7 @@ namespace CM.Data.Infrastructure
 
         private bool _disposed = false;
         private readonly DbContext _context;
-        
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
 
         #endregion
@@ -136,7 +136,7 @@ namespace CM.Data.Infrastructure
             }
             catch (Exception ex)
             {
-                GlobalUtil.LogException(ex);   
+                logger.Error(ex, "Something bad happened");
             }
         }
 

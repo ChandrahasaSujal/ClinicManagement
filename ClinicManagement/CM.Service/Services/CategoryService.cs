@@ -16,6 +16,8 @@ namespace CM.Service.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         IEnumerable<Category> Categories;
         IEnumerable<CategoryViewModel> CategoriesViewModel;
         public CategoryService(IUnitOfWork unitOfWork, IMapper mapper)
@@ -39,10 +41,9 @@ namespace CM.Service.Services
                     return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return false;
         }
@@ -60,10 +61,9 @@ namespace CM.Service.Services
                     return CategoriesViewModel;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return null;
         }
@@ -86,8 +86,7 @@ namespace CM.Service.Services
             }
             catch (Exception ex)
             {
-
-                throw;
+                logger.Error(ex, "Something bad happened");
             }
             return categoriesList;
         }
