@@ -25,7 +25,7 @@
                         @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
                         @Html.DropDownListFor(model=>model.Gender, new List<SelectListItem>{
                             new SelectListItem{ Text="Male", Value="Male"},
-                            new SelectListItem{ Text="Female", Value="Male"}
+                            new SelectListItem{ Text="Female", Value="Female"}
                         }, "--- Select ---", new { @class = "form-control",id="appointeeGender" })
                         @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                     </div>

@@ -178,6 +178,8 @@
         function updateAppointment() {
             $.validator.unobtrusive.parse(addAppointmentForm);
             if ($("#addAppointmentForm").valid()) {
+                var test = $("#addAppointmentForm").serialize();
+                debugger;
                 $.ajax({
                     type: "POST",
                     url: "UpdateAppointment",
