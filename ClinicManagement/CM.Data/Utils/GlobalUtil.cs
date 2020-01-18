@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CM.Tools
+namespace CM.Data.Utils
 {
     public static class GlobalUtil
     {

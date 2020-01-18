@@ -2,7 +2,6 @@
 using CM.Data.ViewModels.Appointment;
 using CM.Model.Models;
 using CM.Service.ServiceInterfaces;
-using CM.Tools.Enums;
 using CM.Web.Common;
 using NLog;
 using System;

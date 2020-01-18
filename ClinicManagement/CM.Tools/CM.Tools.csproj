@@ -90,7 +90,6 @@
   <ItemGroup>
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\Role.cs" />
-    <Compile Include="GlobalUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

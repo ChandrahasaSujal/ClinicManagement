@@ -33,18 +33,6 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#billing-pages" aria-expanded="false" aria-controls="general-pages">
-                <span class="menu-title">Billing</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-book-open menu-icon" ></i>
-            </a>
-            <div class="collapse" id="billing-pages">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> @Html.ActionLink("Create", "Create", "Invoice", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#medicine-pages" aria-expanded="false" aria-controls="general-pages">
                 <span class="menu-title">Medicine</span>
                 <i class="menu-arrow"></i>
@@ -59,6 +47,18 @@
             <div class="collapse" id="medicine-pages">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> @Html.ActionLink("View", "View", "Medicine", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#billing-pages" aria-expanded="false" aria-controls="general-pages">
+                <span class="menu-title">Billing</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-book-open menu-icon"></i>
+            </a>
+            <div class="collapse" id="billing-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> @Html.ActionLink("Create", "Create", "Invoice", new { Area = "Admin" }, new { @class = "nav-link" }) </li>
                 </ul>
             </div>
         </li>

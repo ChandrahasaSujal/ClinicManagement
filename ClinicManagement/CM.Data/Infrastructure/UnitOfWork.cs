@@ -1,14 +1,10 @@
-﻿using CM.Model.Models;
+﻿using CM.Data.Utils;
+using CM.Model.Models;
 using CM.Model.Models.Account;
 using CM.Model.Models.Invoice;
 using CM.Model.Models.Medicine;
-using CM.Tools;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CM.Data.Infrastructure
 {
@@ -18,6 +14,7 @@ namespace CM.Data.Infrastructure
 
         private bool _disposed = false;
         private readonly DbContext _context;
+        
 
 
         #endregion

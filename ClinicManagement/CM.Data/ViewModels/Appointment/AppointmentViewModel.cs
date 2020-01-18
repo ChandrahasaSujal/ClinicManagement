@@ -1,5 +1,4 @@
-﻿using CM.Tools.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +15,7 @@ namespace CM.Data.ViewModels.Appointment
         public string Name { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "This Field is requiered")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Please Provide Valid Phone Numbers")]

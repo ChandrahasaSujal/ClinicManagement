@@ -94,7 +94,12 @@ namespace CM.Service.Services
             try
             {
                 InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
+                var customer = unitOfWork.PeopleRepository.FirstOrDefault(p => p.Id == invoiceViewModel.CustomerFk);
+                InvoiceViewModel.CustomerName = customer.Name;
+                InvoiceViewModel.PhoneNumber = customer.Phone;
                 invoiceViewModel = mapper.Map(invoice, invoiceViewModel);
+                
+
                 List<PurchasedItemViewModel> purchasedItemsViewModels = new List<PurchasedItemViewModel>();
 
                 purchasedItemsViewModels = mapper.Map(purchasedItems, purchasedItemsViewModels);

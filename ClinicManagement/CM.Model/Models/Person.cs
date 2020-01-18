@@ -1,5 +1,4 @@
-﻿using CM.Tools.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +13,7 @@ namespace CM.Model.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
         [Required]
         public string DOA { get; set; }
         [Required]

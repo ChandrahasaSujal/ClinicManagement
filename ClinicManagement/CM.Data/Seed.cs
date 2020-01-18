@@ -1,10 +1,10 @@
-﻿using CM.Data.Infrastructure;
+﻿using CM.Data.Enums;
+using CM.Data.Infrastructure;
+using CM.Data.Utils;
 using CM.Data.ViewModels;
 using CM.Model.Models;
 using CM.Model.Models.Account;
 using CM.Model.Models.Medicine;
-using CM.Tools;
-using CM.Tools.Enums;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;

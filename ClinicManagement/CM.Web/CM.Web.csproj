@@ -364,7 +364,6 @@
     <Content Include="Areas\Admin\Views\Invoice\Create.cshtml" />
     <Content Include="assets\vendors\js\bootstrap.min.js.map" />
     <Content Include="Areas\Admin\Views\Invoice\ShowInvoice.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_InvoiceTemplate.cshtml" />
     <Content Include="Areas\Admin\Views\Invoice\PrintInvoice.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_StyleSheetsForPrintWindow.cshtml" />
     <None Include="assets\js\jquery-3.4.1.intellisense.js" />
@@ -441,10 +440,6 @@
     <ProjectReference Include="..\CM.Service\CM.Service.csproj">
       <Project>{6DEBFFDF-D385-4E3C-BCB5-39DB5C755F45}</Project>
       <Name>CM.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CM.Tools\CM.Tools.csproj">
-      <Project>{34385DC2-E077-4F02-AC46-9519973C31C9}</Project>
-      <Name>CM.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -89,12 +89,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CM.Tools\CM.Tools.csproj">
-      <Project>{34385DC2-E077-4F02-AC46-9519973C31C9}</Project>
-      <Name>CM.Tools</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
