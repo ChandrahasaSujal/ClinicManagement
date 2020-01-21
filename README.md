@@ -16,11 +16,10 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
 2.	Software dependencies
                 .NET Framework 4.8
 
-3.	Latest releases
 4.	API references
-               EPPlus for Excel Generation: https://www.nuget.org/packages/EPPlus/
-               NLog for Logging Exceptions: https://nlog-project.org/
-               Jquery DataTable: https://datatables.net/
+               1. EPPlus for Excel Generation: https://www.nuget.org/packages/EPPlus/
+               2. NLog for Logging Exceptions: https://nlog-project.org/
+               3. Jquery DataTable: https://datatables.net/
 
 # Build and Test
 1. Since this Deployed in Local IIS you need to run Visual Studio as Adminstrator or change to change to IIS Express by right clicking    on CM.Web project and WEB > Server then change Local IIS to IIS Express click on Create Virtual Directory.
