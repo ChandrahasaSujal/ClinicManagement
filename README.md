@@ -8,6 +8,10 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
     clone: https://github.com/chanducodemonk/ClinicManagement.git
     
     Update Config file as per your machine.
+    
+    syntax: <add name="keyName" connectionString="Data Source={{replace this with system name}};Initial Catalog={{replace this with Database name}};User Id = {{replace this with user ID}};Password={{replace this with your sql password }}" providerName="System.Data.SqlClient" />
+    
+    ex: 
    
     
 
