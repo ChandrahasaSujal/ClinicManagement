@@ -17,8 +17,11 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
                 .NET Framework 4.8
 
 4.	API references
+
                1. EPPlus for Excel Generation: https://www.nuget.org/packages/EPPlus/
+               
                2. NLog for Logging Exceptions: https://nlog-project.org/
+               
                3. Jquery DataTable: https://datatables.net/
 
 # Build and Test
