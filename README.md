@@ -31,4 +31,4 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
 3. Enter the Admin credentials click on Login.
 
 
-# Feel Free to reach me here on https://www.linkedin.com/in/chandrahasa-sujal/
+Feel Free to reach me here on https://www.linkedin.com/in/chandrahasa-sujal/
