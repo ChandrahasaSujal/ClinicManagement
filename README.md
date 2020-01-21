@@ -5,7 +5,11 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
 
 1.	Installation process:
 
-    clone: 
+    clone: https://github.com/chanducodemonk/ClinicManagement.git
+    
+    Update Config file as per your machine.
+   
+    
 
 
 
