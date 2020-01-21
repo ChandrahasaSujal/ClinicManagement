@@ -11,7 +11,7 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
     
     syntax: <add name="keyName" connectionString="Data Source={{replace this with system name}};Initial Catalog={{replace this with Database name}};User Id = {{replace this with user ID}};Password={{replace this with your sql password }}" providerName="System.Data.SqlClient" />
     
-    ex: 
+    ex: <add name="DefaultConnection" connectionString="Data Source=CHANDU;Initial Catalog=CMTest3;User Id = sa;Password=test#123" providerName="System.Data.SqlClient" />
    
     
 
