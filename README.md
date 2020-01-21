@@ -23,9 +23,9 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
                Jquery DataTable: https://datatables.net/
 
 # Build and Test
-1. ## Since this Deployed in Local IIS you need to run Visual Studio as Adminstrator or change to change to IIS Express by right clicking    on CM.Web project and WEB > Server then change Local IIS to IIS Express click on Create Virtual Directory.
+1. Since this Deployed in Local IIS you need to run Visual Studio as Adminstrator or change to change to IIS Express by right clicking    on CM.Web project and WEB > Server then change Local IIS to IIS Express click on Create Virtual Directory.
 
-2. ## Open CM.Data Project and go to **Seed Class** and if you want to change Admin Credentials on first go or go with default.
+2. Open CM.Data Project and go to **Seed Class** and if you want to change Admin Credentials on first go or go with default.
    Right Click on Solution Explorer if you're opening in a visual studio and restore packages and build solution.
 
 3. Enter the Admin credentials click on Login.
