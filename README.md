@@ -30,7 +30,9 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
 2. Open CM.Data Project and go to **Seed Class** and if you want to change Admin Credentials on first go or go with default.
    Right Click on Solution Explorer if you're opening in a visual studio and restore packages and build solution.
 
-3. Enter the Admin credentials click on Login.
+3. Enter the Admin credentials and click on Login.
+
+Happie Coding! 
 
 
-Feel Free to reach me here on https://www.linkedin.com/in/chandrahasa-sujal/
+Feel free to reach me here on https://www.linkedin.com/in/chandrahasa-sujal/
