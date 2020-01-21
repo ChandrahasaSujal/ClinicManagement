@@ -14,16 +14,21 @@ Main agenda of this project is to maintain clinic those includes appointmnets cr
     ex: >    ```<add name="DefaultConnection" connectionString="Data Source=CHANDU;Initial Catalog=CMTest3;User Id = sa;Password=test#123"                   providerName="System.Data.SqlClient" />```
    
 2.	Software dependencies
+                .NET Framework 4.8
+
 3.	Latest releases
 4.	API references
+               EPPlus for Excel Generation: https://www.nuget.org/packages/EPPlus/
+               NLog for Logging Exceptions: https://nlog-project.org/
+               Jquery DataTable: https://datatables.net/
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1. ## Since this Deployed in Local IIS you need to run Visual Studio as Adminstrator or change to change to IIS Express by right clicking    on CM.Web project and WEB > Server then change Local IIS to IIS Express click on Create Virtual Directory.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+2. ## Open CM.Data Project and go to **Seed Class** and if you want to change Admin Credentials on first go or go with default.
+   Right Click on Solution Explorer if you're opening in a visual studio and restore packages and build solution.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+3. Enter the Admin credentials click on Login.
+
+
+# Feel Free to reach me here on https://www.linkedin.com/in/chandrahasa-sujal/
